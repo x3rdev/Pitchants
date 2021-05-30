@@ -1,53 +1,137 @@
--------------------------------------------
-Source installation information for modders
--------------------------------------------
-This code follows the Minecraft Forge installation methodology. It will apply
-some small patches to the vanilla MCP source code, giving you and it access 
-to some of the data and functions you need to build a successful mod.
+Pitchants:
 
-Note also that the patches are built against "unrenamed" MCP source code (aka
-srgnames) - this means that you will not be able to read them directly against
-normal code.
+enchantments we still have to do
 
-Source pack installation information:
 
-Standalone source installation
-==============================
+bow
+    arrow armory
+    bottomless quiver*
+    chipping
+    critically rich*
+    faster than their shadow
+    fletching
+    first shot
+    gold boost
+    gold bump
+    jumpspammer
+    mixed combat
+    moctezuma
+    pants radar
+    parasite
+    pin down
+    push comes to shove
+    spammer and proud
+    sprint drain
+    sniper
+    strike gold
+    sweaty
+    what doesn't kill you
+    wasp
+    xp boost
 
-See the Forge Documentation online for more detailed instructions:
-http://mcforge.readthedocs.io/en/latest/gettingstarted/
+    lucky shot
+    mega longbow
+    pullbow
+    telebow
+    true shot
+    volley
 
-Step 1: Open your command-line and browse to the folder where you extracted the zip file.
+pants
+    billy
+    boo-hoo
+    creative
+    cricket
+    critically funky
+    critically rich*
+    counter-offensive
+    danger close
+    david and goliath
+    diamond allergy
+    eggs
+    electrolytes
+    excess
+    gold boost*
+    gold bump*
+    golden heart
+    gotta go fast
+    hearts
+    hunt the hunter
+    last stand
+    lodbrok
+    mcswimmer
+    mirror
+    negotiator*
+    "not" gladiator
+    pants radar
+    pebble
+    peroxide
+    prick
+    protection*
+    respawn absorption*
+    respawn resistance*
+    revitalize
+    self checkout
+    steaks
+    strike gold*
+    tnt
+    xp boost
 
-Step 2: You're left with a choice.
-If you prefer to use Eclipse:
-1. Run the following command: "gradlew genEclipseRuns" (./gradlew genEclipseRuns if you are on Mac/Linux)
-2. Open Eclipse, Import > Existing Gradle Project > Select Folder 
-   or run "gradlew eclipse" to generate the project.
-(Current Issue)
-4. Open Project > Run/Debug Settings > Edit runClient and runServer > Environment
-5. Edit MOD_CLASSES to show [modid]%%[Path]; 2 times rather then the generated 4.
+    assasin
+    divine miracle
+    double-jump
+    escape pod
+    gomraw's heart
+    instaboom
+    phoenix
+    pit blob
+    singularity
+    snowballs
+    snowman army
+    wolf pack
 
-If you prefer to use IntelliJ:
-1. Open IDEA, and import project.
-2. Select your build.gradle file and have it import.
-3. Run the following command: "gradlew genIntellijRuns" (./gradlew genIntellijRuns if you are on Mac/Linux)
-4. Refresh the Gradle Project in IDEA if required.
+sword
+    berserker
+    bounty reaper
+    bruiser
+    bullet time
+    combo damage
+    combo heal
+    combo swift
+    combo xp
+    counter-janitor
+    critically rich
+    crush
+    diamond stomp
+    duelist
+    fancy raider
+    grasshopper
+    gold and boosted
+    gold boost
+    gold bump
+    guts
+    king buster
+    lifesteal
+    moctezuma
+    pain focus
+    pitpocket
+    pants radar
+    punisher
+    revengeance
+    revitalize
+    sierra
+    shark
+    sharp
+    strike gold
+    sweaty
+    xp boost
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can run "gradlew --refresh-dependencies" to refresh the local cache. "gradlew clean" to reset everything {this does not affect your code} and then start the processs again.
-
-Should it still not work, 
-Refer to #ForgeGradle on EsperNet for more information about the gradle environment.
-or the Forge Project Discord discord.gg/UvedJ9m
-
-Forge source installation
-=========================
-MinecraftForge ships with this code and installs it as part of the forge
-installation process, no further action is required on your part.
-
-LexManos' Install Video
-=======================
-https://www.youtube.com/watch?v=8VEdtQLuLO0&feature=youtu.be
-
-For more details update more often refer to the Forge Forums:
-http://www.minecraftforge.net/forum/index.php/topic,14048.0.html
+    billionare
+    combo perun's wrath
+    combo stun
+    executioner
+    gamble
+    healer
+    hemorrhage
+    knockback*
+    speedy hit
+    the punch
