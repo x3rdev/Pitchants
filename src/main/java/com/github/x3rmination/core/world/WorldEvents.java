@@ -13,11 +13,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class WorldEvents {
 
 
-
+    //stun
     @SubscribeEvent
     public static void stunPotionActive(TickEvent.PlayerTickEvent event) {
-
-
 
         boolean isActive = false;
 
@@ -29,7 +27,6 @@ public class WorldEvents {
             event.player.closeScreen();
             event.player.stopActiveHand();
         }
-
     }
 
 

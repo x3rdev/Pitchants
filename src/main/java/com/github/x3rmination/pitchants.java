@@ -1,6 +1,7 @@
 package com.github.x3rmination;
 
 
+import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.util.handlers.EventHandler;
 import com.github.x3rmination.util.handlers.RenderGuiHandler;
 import com.github.x3rmination.proxy.CommonProxy;
@@ -50,6 +51,7 @@ public class pitchants {
         proxy.postInit(e);
         MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
         MinecraftForge.EVENT_BUS.register(new EventHandler());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentInit());
 //        RegistryHandler.postInitRegistries(event);
 
     }

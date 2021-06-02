@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments;
 
 
+import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
@@ -12,11 +13,12 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 
+import static com.github.x3rmination.core.damagesources.TrueDamage.TRUE_DAMAGE;
+
 public class EnchantmentPerun extends Enchantment
 {
-	public EnchantmentPerun()
-	{
-		super(Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[] {EntityEquipmentSlot.FEET});
+	public EnchantmentPerun() {
+		super(Rarity.UNCOMMON, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 		this.setName("perun");
 		this.setRegistryName(new ResourceLocation(pitchants.MODID + ":perun"));
 		
@@ -35,13 +37,12 @@ public class EnchantmentPerun extends Enchantment
 		}
 	}
 	*/
-	public static final DamageSource TRUE_DAMAGE = (new DamageSource("trueDamage")).setDamageBypassesArmor().setDamageIsAbsolute();
+
 	@Override
 	public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-		//create DamageSource truedamage and maybe make it have particles
 		float truedamage = (float) (1 + (0.5 * level));
 		if(!user.isSwingInProgress) {
-			target.attackEntityFrom(TRUE_DAMAGE, truedamage);
+			target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, truedamage);
 			user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
 
 		}
