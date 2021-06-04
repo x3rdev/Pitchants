@@ -3,6 +3,7 @@ package com.github.x3rmination.init;
 
 
 import com.github.x3rmination.common.enchantments.EnchantmentArrowArmory;
+import com.github.x3rmination.common.enchantments.EnchantmentBottomlessQuiver;
 import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -22,7 +23,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber
 public class EnchantmentInit {
 
     public static final List<Enchantment> ENCHANTMENTS = new ArrayList<Enchantment>();
@@ -33,26 +33,6 @@ public class EnchantmentInit {
 
     public static final Enchantment PERUN = new EnchantmentPerun();
     public static final Enchantment ARROW_ARMORY = new EnchantmentArrowArmory();
+    public static final Enchantment BOTTOMLESS_QUIVER = new EnchantmentBottomlessQuiver();
 
-//    @SubscribeEvent
-//    public static void arrowArmory(LivingEntityUseItemEvent event) {
-//
-//
-//
-//        EntityLivingBase living = event.getEntityLiving();
-//        int level = EnchantmentHelper.getMaxEnchantmentLevel(ARROW_ARMORY, living);
-//
-//
-//        if(level > 0) {
-//
-//
-//            ItemStack arrow = new ItemStack(Items.ARROW);
-//            arrow.setCount(4);
-//
-//
-//            for (int i = 0; i<=35; i++) {
-//                System.out.println("slot " + living.getItemStackFromSlot(EntityEquipmentSlot.valueOf(Integer.toString(i))));
-//            }
-//        }
-//    }
 }

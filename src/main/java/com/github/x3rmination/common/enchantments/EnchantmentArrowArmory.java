@@ -5,26 +5,19 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.datafix.walkers.ItemStackData;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.client.config.GuiEditArrayEntries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Iterator;
 
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
@@ -32,38 +25,11 @@ public class EnchantmentArrowArmory extends Enchantment {
 
 
     public EnchantmentArrowArmory() {
-        super(Rarity.COMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("arrow_armory");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":arrow_armory"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
-    }
-
-
-//    @Override
-//    public void Items.BOW.onPlayerStoppedUsing(bow, event.getWorld(), event.getEntityLiving(), 10);
-
-
-    @Override
-    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-
-        EntityPlayer player = ((EntityPlayer) user);
-        ItemStack arrow = new ItemStack(Items.ARROW);
-        arrow.setCount(3);
-        user.getLastDamageSource();
-
-
-        // 12% 3 arrows (-1)
-        // 25% 5 arrows (-1)
-        // 60% 8 arrows (-1)
-
-
-//        if(player.isCreative() || ((EnchantmentHelper.getEnchantments(player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND))).get(Enchantments.INFINITY)) == 1){
-//            target.attackEntityFrom(DamageSource.GENERIC, );
-//        }
-//        else(player.inventory.hasItemStack(arrow)) {
-//
-//        }
     }
 
 
@@ -84,28 +50,90 @@ public class EnchantmentArrowArmory extends Enchantment {
 
 
     @SubscribeEvent
-    public static void onAttack(LivingHurtEvent event) {
+    public void onAttack(LivingHurtEvent event) {
 
 
 
         if (event.getSource().getTrueSource() instanceof EntityPlayer) {
+
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
 
             if (level > 0) {
+                float damage = event.getAmount();
+                double percentcalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
+                int percentDamage = (int)(percentcalc*damage);
+                int arrowCount = (int) ((0.5*(Math.pow(level, 2)))+(0.5*level)+2);
                 ItemStack arrow = new ItemStack(Items.ARROW);
-                arrow.setCount(3);
-//                arrow.setCount((int) ((0.5*(Math.pow(level, 2)))+(0.5*level)+2));
+                arrow.setCount(arrowCount);
 
-                if(player.inventory.hasItemStack(arrow)) {
-                    System.out.println("has arrows");
+
+
+                if(player.isCreative() || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND)) > 0) {
                     EntityLiving entity = (EntityLiving) event.getEntityLiving();
-                    float damage = event.getAmount();
-                    double percentDamage = (damage * ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100);
-                    entity.attackEntityFrom(DamageSource.GENERIC, (float) (damage + percentDamage));
+                    entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
+                }
+                else if(itemStackMatching(player, arrowCount)) {
+                    ItemStack playerArrows = new ItemStack(Items.ARROW);
+                    try {
+                        int inventorySlot = player.inventory.getSlotFor(new ItemStack(Items.ARROW));
+                        playerArrows.setCount(player.inventory.getStackInSlot(inventorySlot).getCount() - arrowCount - 1);
+                        player.inventory.setInventorySlotContents(inventorySlot, playerArrows);
+
+                    } catch(ArrayIndexOutOfBoundsException exception){
+                        playerArrows.setCount(player.getItemStackFromSlot(EntityEquipmentSlot.OFFHAND).getCount() - arrowCount - 1);
+                        player.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, playerArrows);
+                    }
+                    EntityLiving entity = (EntityLiving) event.getEntityLiving();
+                    entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
                 }
 
             }
         }
+    }
+
+    private boolean itemStackMatching(EntityPlayer player, int arrowCount) {
+
+        ItemStack arrow = new ItemStack(Items.ARROW);
+        arrow.setCount(arrowCount);
+
+
+        Iterator<ItemStack> invIterator = player.inventory.mainInventory.iterator();
+        Iterator<ItemStack> armorIterator = player.inventory.armorInventory.iterator();
+        Iterator<ItemStack> offhandIterator = player.inventory.offHandInventory.iterator();
+
+        while (invIterator.hasNext()) {
+
+            ItemStack itemstack = invIterator.next();
+
+            if (itemCountMatching(itemstack, arrow)) {
+                return true;
+            }
+
+        }
+        while (armorIterator.hasNext()) {
+
+            ItemStack itemstack = armorIterator.next();
+
+            if (itemCountMatching(itemstack, arrow)) {
+                return true;
+            }
+
+        }
+        while (offhandIterator.hasNext()) {
+
+            ItemStack itemstack = offhandIterator.next();
+
+            if (itemCountMatching(itemstack, arrow)) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    private boolean itemCountMatching(ItemStack itemStack1, ItemStack arrowstack) {
+        return !itemStack1.isEmpty() && !arrowstack.isEmpty() && itemStack1.getItem() == arrowstack.getItem() && itemStack1.getCount() >= arrowstack.getCount();
     }
 }

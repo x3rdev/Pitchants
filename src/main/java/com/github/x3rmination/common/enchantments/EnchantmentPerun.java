@@ -28,15 +28,6 @@ public class EnchantmentPerun extends Enchantment
 
 
 
-	/* sets enemy on fire
-	@Override
-	public void onEntityDamaged(EntityLivingBase user, Entity target, int level){
-		super.onEntityDamaged(user, target, level);
-		if (true) {
-			target.setFire(10);
-		}
-	}
-	*/
 
 	@Override
 	public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {

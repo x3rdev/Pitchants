@@ -3,7 +3,6 @@ package com.github.x3rmination;
 
 import com.github.x3rmination.common.enchantments.EnchantmentArrowArmory;
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.util.handlers.EventHandler;
 import com.github.x3rmination.util.handlers.RenderGuiHandler;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
@@ -51,7 +50,6 @@ public class pitchants {
     public void postInit(FMLPostInitializationEvent e) {
         proxy.postInit(e);
         MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new EnchantmentInit());
         MinecraftForge.EVENT_BUS.register(new EnchantmentArrowArmory());
 //        RegistryHandler.postInitRegistries(event);
