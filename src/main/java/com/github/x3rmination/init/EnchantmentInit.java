@@ -2,24 +2,9 @@ package com.github.x3rmination.init;
 
 
 
-import com.github.x3rmination.common.enchantments.EnchantmentArrowArmory;
-import com.github.x3rmination.common.enchantments.EnchantmentBottomlessQuiver;
-import com.github.x3rmination.common.enchantments.EnchantmentPerun;
+import com.github.x3rmination.common.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemAppleGold;
-import net.minecraft.item.ItemArrow;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.client.event.ColorHandlerEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +19,9 @@ public class EnchantmentInit {
     public static final Enchantment PERUN = new EnchantmentPerun();
     public static final Enchantment ARROW_ARMORY = new EnchantmentArrowArmory();
     public static final Enchantment BOTTOMLESS_QUIVER = new EnchantmentBottomlessQuiver();
-
+    public static final Enchantment CHIPPING = new EnchantmentChipping();
+    public static final Enchantment FASTER_THAN_THEIR_SHADOW = new EnchantmentFasterThanTheirShadow();
+    public static final Enchantment FLETCHING = new EnchantmentFletching();
+    public static final Enchantment FIRST_SHOT = new EnchantmentFirstShot();
+    public static final Enchantment JUMP_SPAMMER = new EnchantmentJumpSpammer();
 }

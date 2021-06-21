@@ -15,8 +15,10 @@ import net.minecraft.util.ResourceLocation;
 
 import static com.github.x3rmination.core.damagesources.TrueDamage.TRUE_DAMAGE;
 
-public class EnchantmentPerun extends Enchantment
-{
+public class EnchantmentPerun extends Enchantment {
+
+	private static boolean handled = false;
+
 	public EnchantmentPerun() {
 		super(Rarity.UNCOMMON, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 		this.setName("perun");
@@ -31,12 +33,18 @@ public class EnchantmentPerun extends Enchantment
 
 	@Override
 	public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
+
+		if (handled){
+			handled = false;
+			return;
+		}
+
 		float truedamage = (float) (1 + (0.5 * level));
 		if(!user.isSwingInProgress) {
 			target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, truedamage);
 			user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
-
 		}
+		handled = true;
 	}
 
 	@Override

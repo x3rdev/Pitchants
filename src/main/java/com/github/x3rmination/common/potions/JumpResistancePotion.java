@@ -5,9 +5,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 
-public class StunPotion extends Potion {
+public class JumpResistancePotion extends Potion {
 
-    public StunPotion(String name, boolean isBadPotion, int color, int iconIndexX, int iconIndexY) {
+    public JumpResistancePotion(String name, boolean isBadPotion, int color, int iconIndexX, int iconIndexY) {
         super(isBadPotion, color);
         setPotionName("effect." + name);
         setIconIndex(iconIndexX, iconIndexY);
