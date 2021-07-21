@@ -1,6 +1,8 @@
 package com.github.x3rmination.common.enchantments;
 
+import com.github.x3rmination.common.potions.PinDownPotion;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -11,6 +13,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionHelper;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
@@ -51,7 +54,8 @@ public class EnchantmentPinDown extends Enchantment {
                     handled = false;
                     return;
                 }
-                ((EntityLiving) target).removePotionEffect(MobEffects.SPEED);
+                int potionDuration = (int) (((1.5 * Math.pow(level, 2)) - (2.5*level) + 4)*20);
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(PotionInit.PIN_DOWN, potionDuration));
                 handled = true;
             }
         }

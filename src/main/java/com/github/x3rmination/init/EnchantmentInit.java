@@ -28,4 +28,5 @@ public class EnchantmentInit {
     public static final Enchantment PARASITE = new EnchantmentParasite();
     public static final Enchantment PIN_DOWN = new EnchantmentPinDown();
     public static final Enchantment PUSH_COMES_TO_SHOVE = new EnchantmentPushComesToShove();
+    public static final Enchantment SPAMMER_AND_PROUD = new EnchantmentSpammerAndProud();
 }
