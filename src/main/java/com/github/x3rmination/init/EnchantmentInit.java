@@ -24,4 +24,8 @@ public class EnchantmentInit {
     public static final Enchantment FLETCHING = new EnchantmentFletching();
     public static final Enchantment FIRST_SHOT = new EnchantmentFirstShot();
     public static final Enchantment JUMP_SPAMMER = new EnchantmentJumpSpammer();
+    public static final Enchantment MIXED_COMBAT = new EnchantmentMixedCombat();
+    public static final Enchantment PARASITE = new EnchantmentParasite();
+    public static final Enchantment PIN_DOWN = new EnchantmentPinDown();
+    public static final Enchantment PUSH_COMES_TO_SHOVE = new EnchantmentPushComesToShove();
 }

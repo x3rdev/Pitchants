@@ -20,18 +20,9 @@ public class WorldEvents {
     //stun
     @SubscribeEvent
     public static void stunPotionActive(TickEvent.PlayerTickEvent event) {
-
         if(event.player.isPotionActive(PotionInit.STUN) && !event.player.isCreative()) {
             event.player.closeScreen();
             event.player.stopActiveHand();
-        }
-    }
-    //jump protection
-    @SubscribeEvent
-    public static void jumpResistancePotionActive(TickEvent.PlayerTickEvent event) {
-
-        if(event.player.isPotionActive(PotionInit.JUMP_RESISTANCE)) {
-            
         }
     }
 

@@ -22,7 +22,6 @@ public class RenderGuiHandler {
     }
 
     private boolean isEffectActive() {
-
         EntityPlayer currentPlayer = Minecraft.getMinecraft().player;
         return currentPlayer.isPotionActive(PotionInit.STUN);
     }

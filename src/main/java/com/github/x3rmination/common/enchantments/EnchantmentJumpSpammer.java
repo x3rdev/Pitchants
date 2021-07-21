@@ -24,8 +24,8 @@ public class EnchantmentJumpSpammer extends Enchantment {
 
     public EnchantmentJumpSpammer() {
         super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("fletching");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":fletching"));
+        this.setName("jump_spammer");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":jump_spammer"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
@@ -58,5 +58,18 @@ public class EnchantmentJumpSpammer extends Enchantment {
             }
         }
 
+    }
+    @SubscribeEvent
+    public void onAttack(LivingHurtEvent event) {
+
+        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
+            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            if (level > 0) {
+                int x = (int) event.getAmount();
+                int calcAmount = (int) (Math.pow(x, 2) + 3*x + 6);
+                event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);
+            }
+        }
     }
 }

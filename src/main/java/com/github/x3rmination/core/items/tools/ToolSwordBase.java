@@ -1,14 +1,15 @@
-package com.github.x3rmination.core.items;
+package com.github.x3rmination.core.items.tools;
 
 import com.github.x3rmination.init.ItemInit;
 import com.github.x3rmination.pitchants;
 import com.github.x3rmination.util.interfaces.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemSword;
 
-public class ItemBase extends Item implements IHasModel {
+public class ToolSwordBase extends ItemSword implements IHasModel {
 
-    public ItemBase(String name, CreativeTabs tab) {
+    public ToolSwordBase(String name, ToolMaterial material, CreativeTabs tab) {
+        super(material);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(tab);
@@ -17,8 +18,7 @@ public class ItemBase extends Item implements IHasModel {
     }
 
     @Override
-    public void registerModels()
-    {
+    public void registerModels() {
         pitchants.proxy.registerModel(this, 0);
     }
 }
