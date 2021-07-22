@@ -61,6 +61,8 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentMixedCombat());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPerun());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPushComesToShove());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentSpammerAndProud());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentSniper());
 //        RegistryHandler.postInitRegistries(event);
 
     }

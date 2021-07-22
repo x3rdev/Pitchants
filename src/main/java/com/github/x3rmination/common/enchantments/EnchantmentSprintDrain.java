@@ -1,6 +1,5 @@
 package com.github.x3rmination.common.enchantments;
 
-import com.github.x3rmination.common.potions.PinDownPotion;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
@@ -10,23 +9,19 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
-import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Objects;
 
-public class EnchantmentPinDown extends Enchantment {
-    private static boolean handled = false;
+public class EnchantmentSprintDrain extends Enchantment {
 
-    public EnchantmentPinDown() {
+    private static boolean handled = false;
+    public EnchantmentSprintDrain() {
         super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
-        this.setName("pin_down");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":pin_down"));
+        this.setName("sprint_drain");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":sprint_drain"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
@@ -54,10 +49,17 @@ public class EnchantmentPinDown extends Enchantment {
                     handled = false;
                     return;
                 }
-                int potionDuration = (int) (((1.5 * Math.pow(level, 2)) - (2.5*level) + 4)*20);
-                PotionEffect pinDown = new PotionEffect(PotionInit.PIN_DOWN, potionDuration, 1, true, true);
-
-                ((EntityLiving) target).addPotionEffect(pinDown);
+                if(level == 1){
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 2, 1, true, true));
+                }
+                if(level == 2){
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 5, 1, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 3, 1, true, true));
+                }
+                if(level > 2){
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 7, 2, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 3, 1, true, true));
+                }
                 handled = true;
             }
         }

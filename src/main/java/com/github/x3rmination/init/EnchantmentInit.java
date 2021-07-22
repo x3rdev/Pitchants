@@ -29,4 +29,7 @@ public class EnchantmentInit {
     public static final Enchantment PIN_DOWN = new EnchantmentPinDown();
     public static final Enchantment PUSH_COMES_TO_SHOVE = new EnchantmentPushComesToShove();
     public static final Enchantment SPAMMER_AND_PROUD = new EnchantmentSpammerAndProud();
+    public static final Enchantment SPRINT_DRAIN = new EnchantmentSprintDrain();
+    public static final Enchantment SNIPER = new EnchantmentSniper();
+    public static final Enchantment WHAT_DOESNT_KILL_YOU = new EnchantmentWhatDoesntKillYou();
 }

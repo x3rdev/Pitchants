@@ -8,19 +8,17 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentSpammerAndProud extends Enchantment {
+public class EnchantmentSniper extends Enchantment {
 
-    public EnchantmentSpammerAndProud() {
+    public EnchantmentSniper() {
         super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
-        this.setName("spammer_and_proud");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":spammer_and_proud"));
+        this.setName("sniper");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":sniper"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
@@ -44,9 +42,9 @@ public class EnchantmentSpammerAndProud extends Enchantment {
     public void onDamage(LivingHurtEvent event) {
         if (event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SPAMMER_AND_PROUD, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SNIPER, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if (level > 0 && event.getEntity().getDistance(event.getSource().getTrueSource()) < 8) {
-                float totalAmount = event.getAmount() + ((event.getAmount()*((6*level) + 3))/100);
+                float totalAmount = (float) (event.getAmount() + ((event.getAmount()*((1.5*Math.pow(level, 2))+(4.5*level)+3)/100)));
                 event.setAmount(totalAmount);
             }
         }
