@@ -2,7 +2,11 @@ package com.github.x3rmination.init;
 
 
 
-import com.github.x3rmination.common.enchantments.*;
+import com.github.x3rmination.common.enchantments.EnchantmentPerun;
+import com.github.x3rmination.common.enchantments.bow.*;
+import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentLuckyShot;
+import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentMegaLongbow;
+import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentPullBow;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -15,7 +19,9 @@ public class EnchantmentInit {
 
 
 
-
+    /*
+    Bow Enchantments
+     */
     public static final Enchantment PERUN = new EnchantmentPerun();
     public static final Enchantment ARROW_ARMORY = new EnchantmentArrowArmory();
     public static final Enchantment BOTTOMLESS_QUIVER = new EnchantmentBottomlessQuiver();
@@ -32,4 +38,8 @@ public class EnchantmentInit {
     public static final Enchantment SPRINT_DRAIN = new EnchantmentSprintDrain();
     public static final Enchantment SNIPER = new EnchantmentSniper();
     public static final Enchantment WHAT_DOESNT_KILL_YOU = new EnchantmentWhatDoesntKillYou();
+    public static final Enchantment WASP = new EnchantmentWasp();
+    public static final Enchantment LUCKY_SHOT = new EnchantmentLuckyShot();
+    public static final Enchantment MEGA_LONGBOW = new EnchantmentMegaLongbow();
+    public static final Enchantment PULL_BOW = new EnchantmentPullBow();
 }

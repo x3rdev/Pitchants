@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments;
+package com.github.x3rmination.common.enchantments.bow;
 
 import akka.japi.Effect;
 import com.github.x3rmination.core.damagesources.TrueDamage;
@@ -46,7 +46,7 @@ public class EnchantmentFasterThanTheirShadow extends Enchantment {
                 attackCount += 1;
                 int reqattack = (int) ((Math.pow(level, 2))*0.5 - (2.5*level) + 5);
                 if (attackCount >= reqattack) {
-                    user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80, 1 + level));
+                    user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80, level));
                     attackCount = 0;
                 }
                 handled = true;

@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments;
+package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
@@ -9,27 +9,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Objects;
+
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentFletching extends Enchantment {
+public class EnchantmentLuckyShot extends Enchantment{
 
-
-    public EnchantmentFletching() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("fletching");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":fletching"));
+    public EnchantmentLuckyShot() {
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        this.setName("lucky_shot");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":lucky_shot"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
@@ -50,16 +45,13 @@ public class EnchantmentFletching extends Enchantment {
     }
 
     @SubscribeEvent
-    public void onAttack(LivingHurtEvent event) {
-
-        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
+    public void onDamage(LivingHurtEvent event) {
+        if (event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.FLETCHING, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-
-            if (level > 0) {
-                int x = (int) event.getAmount();
-                int calcAmount = (int) (1.5*(Math.pow(x, 2)) + 0.5*x + 5);
-                event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            float reqAmount = (float) (Math.pow(level, 2) + 1);
+            if (level > 0 && (Math.random()*100) < reqAmount) {
+                event.setAmount(event.getAmount()*4);
             }
         }
     }

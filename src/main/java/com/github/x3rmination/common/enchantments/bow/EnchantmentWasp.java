@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments;
+package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
@@ -14,13 +14,13 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.Objects;
 
-public class EnchantmentWhatDoesntKillYou extends Enchantment {
+public class EnchantmentWasp extends Enchantment{
 
     private static boolean handled = false;
-    public EnchantmentWhatDoesntKillYou() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
-        this.setName("what_doesn't_kill_you");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":what_doesn't_kill_you"));
+    public EnchantmentWasp() {
+        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        this.setName("wasp");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":wasp"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
@@ -48,9 +48,10 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
                     handled = false;
                     return;
                 }
-                if(user == target) {
-                    user.heal((float) (1 + (level * 0.5)));
-                }
+
+                int duration = (5*level) + 1;
+                int potency = level +1;
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, duration*20, potency -1, true, true));
                 handled = true;
             }
         }

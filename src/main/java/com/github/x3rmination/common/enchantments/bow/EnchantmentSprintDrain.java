@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments;
+package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
@@ -50,15 +50,15 @@ public class EnchantmentSprintDrain extends Enchantment {
                     return;
                 }
                 if(level == 1){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 2, 1, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 40, 0, true, true));
                 }
                 if(level == 2){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 5, 1, true, true));
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 3, 1, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, 0, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
                 }
                 if(level > 2){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 7, 2, true, true));
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 3, 1, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, true, true));
+                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
                 }
                 handled = true;
             }

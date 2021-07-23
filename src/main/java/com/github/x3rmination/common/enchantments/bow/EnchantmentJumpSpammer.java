@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments;
+package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
