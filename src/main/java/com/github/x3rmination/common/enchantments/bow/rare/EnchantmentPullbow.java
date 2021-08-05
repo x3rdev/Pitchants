@@ -48,17 +48,14 @@ public class EnchantmentPullbow extends Enchantment {
                 float distance = (float) Math.sqrt(Math.pow(event.getEntity().posX-event.getAttacker().posX, 2)+Math.pow(event.getEntity().posY-event.getAttacker().posY, 2)+Math.pow(event.getEntity().posZ-event.getAttacker().posZ, 2));
                 event.setStrength((float) (-distance*0.37));
                 isReady = false;
-                new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(8000);
-                            isReady = true;
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(8000);
+                        isReady = true;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                }.start();
+                }).start();
             }
         }
     }

@@ -26,7 +26,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentTelebow extends Enchantment {
 
-    private static boolean handled = false;
     private boolean isReady = true;
     private int coolDown = 0;
     public EnchantmentTelebow() {
@@ -63,20 +62,17 @@ public class EnchantmentTelebow extends Enchantment {
                 coolDown = (int) (((Math.pow(level, 2) * 10) - (75 * level) + 155)*100);
                 player.setPosition(event.getEntity().getPosition().getX(), event.getEntity().getPosition().getY(), event.getEntity().getPosition().getZ());
                 isReady = false;
-                new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            while(coolDown > 0) {
-                                Thread.sleep(10);
-                                coolDown-=1;
-                            }
-                            isReady = true;
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                new Thread(() -> {
+                    try {
+                        while(coolDown > 0) {
+                            Thread.sleep(10);
+                            coolDown-=1;
                         }
+                        isReady = true;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                }.start();
+                }).start();
             }
             if(!isReady && level > 0) {
                 player.sendStatusMessage(new TextComponentString("Cooldown " + (coolDown/100) + " seconds"), true);

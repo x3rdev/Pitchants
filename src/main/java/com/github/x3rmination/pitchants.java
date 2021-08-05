@@ -5,6 +5,9 @@ import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.EnchantmentBooboo;
+import com.github.x3rmination.common.enchantments.pants.EnchantmentCricket;
+import com.github.x3rmination.common.enchantments.pants.EnchantmentCriticallyFunky;
+import com.github.x3rmination.common.enchantments.pants.EnchantmentDangerClose;
 import com.github.x3rmination.util.handlers.RenderGuiHandler;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
@@ -72,6 +75,9 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentVolley());
 
         MinecraftForge.EVENT_BUS.register(new EnchantmentBooboo());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentCricket());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentCriticallyFunky());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentDangerClose());
 //        RegistryHandler.postInitRegistries(event);
 
     }

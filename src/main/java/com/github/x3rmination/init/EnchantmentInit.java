@@ -5,7 +5,7 @@ package com.github.x3rmination.init;
 import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
-import com.github.x3rmination.common.enchantments.pants.EnchantmentBooboo;
+import com.github.x3rmination.common.enchantments.pants.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -44,5 +44,12 @@ public class EnchantmentInit {
     public static final Enchantment TELE_BOW = new EnchantmentTelebow();
     public static final Enchantment TRUE_SHOT = new EnchantmentTrueShot();
     public static final Enchantment VOLLEY = new EnchantmentVolley();
+    /*
+    Pants Enchantment
+     */
     public static final Enchantment BOOBOO = new EnchantmentBooboo();
+    public static final Enchantment CRICKET = new EnchantmentCricket();
+    public static final Enchantment CRITICALLY_FUNKY = new EnchantmentCriticallyFunky();
+    public static final Enchantment COUNTER_OFFENSIVE = new EnchantmentCounterOffensive();
+    public static final Enchantment DANGER_CLOSE = new EnchantmentDangerClose();
 }
