@@ -4,9 +4,8 @@ package com.github.x3rmination.init;
 
 import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentLuckyShot;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentMegaLongbow;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentPullBow;
+import com.github.x3rmination.common.enchantments.bow.rare.*;
+import com.github.x3rmination.common.enchantments.pants.EnchantmentBooboo;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -41,5 +40,9 @@ public class EnchantmentInit {
     public static final Enchantment WASP = new EnchantmentWasp();
     public static final Enchantment LUCKY_SHOT = new EnchantmentLuckyShot();
     public static final Enchantment MEGA_LONGBOW = new EnchantmentMegaLongbow();
-    public static final Enchantment PULL_BOW = new EnchantmentPullBow();
+    public static final Enchantment PULL_BOW = new EnchantmentPullbow();
+    public static final Enchantment TELE_BOW = new EnchantmentTelebow();
+    public static final Enchantment TRUE_SHOT = new EnchantmentTrueShot();
+    public static final Enchantment VOLLEY = new EnchantmentVolley();
+    public static final Enchantment BOOBOO = new EnchantmentBooboo();
 }

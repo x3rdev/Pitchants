@@ -12,14 +12,6 @@ import net.minecraft.item.ItemSword;
 
 public class TestSword extends ToolSwordBase implements IHasModel {
 
-//    public TestSword(String name, CreativeTabs tab) {
-////        setRegistryName("testsword");
-////        setUnlocalizedName(pitchants.MODID + ".testsword");
-//        setRegistryName(name);
-//        setUnlocalizedName(name);
-//        setCreativeTab(tab);
-//        ItemInit.ITEMS.add(this);
-//    }
 
     public TestSword(String name, ToolMaterial material, CreativeTabs tab) {
         super(name, material, tab);

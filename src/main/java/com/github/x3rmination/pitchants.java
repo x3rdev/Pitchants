@@ -3,9 +3,8 @@ package com.github.x3rmination;
 
 import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentLuckyShot;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentMegaLongbow;
-import com.github.x3rmination.common.enchantments.bow.rare.EnchantmentPullBow;
+import com.github.x3rmination.common.enchantments.bow.rare.*;
+import com.github.x3rmination.common.enchantments.pants.EnchantmentBooboo;
 import com.github.x3rmination.util.handlers.RenderGuiHandler;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
@@ -67,7 +66,12 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentSniper());
         MinecraftForge.EVENT_BUS.register(new EnchantmentLuckyShot());
         MinecraftForge.EVENT_BUS.register(new EnchantmentMegaLongbow());
-        MinecraftForge.EVENT_BUS.register(new EnchantmentPullBow());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentPullbow());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentTelebow());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentTrueShot());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentVolley());
+
+        MinecraftForge.EVENT_BUS.register(new EnchantmentBooboo());
 //        RegistryHandler.postInitRegistries(event);
 
     }

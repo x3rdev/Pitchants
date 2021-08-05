@@ -58,7 +58,6 @@ public class EnchantmentPushComesToShove extends Enchantment {
                 if(hitcount >=3) {
                     hitcount=0;
                     double amountToAdd = (-0.6 * (Math.pow(level, 2)) + (4.2 * level) - 3);
-                    System.out.println("amount" + amountToAdd);
                     event.setStrength((float) (event.getStrength() + amountToAdd));
                 }
 

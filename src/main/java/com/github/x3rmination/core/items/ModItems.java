@@ -11,6 +11,6 @@ public class ModItems {
     public static TestItem testItem;
     @GameRegistry.ObjectHolder("pitchants:testchestplateitem")
     public static TestChestplateItem testChestplateItem;
-    @GameRegistry.ObjectHolder("modtut:firstitem")
+    @GameRegistry.ObjectHolder("pitchants:firstitem")
     public static TestSword testSword;
 }
