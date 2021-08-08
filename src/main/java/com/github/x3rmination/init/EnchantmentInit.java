@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EnchantmentInit {
 
-    public static final List<Enchantment> ENCHANTMENTS = new ArrayList<Enchantment>();
+    public static final List<Enchantment> ENCHANTMENTS = new ArrayList<>();
     public static final DamageSource TRUE_DAMAGE = (new DamageSource("trueDamage")).setDamageBypassesArmor().setDamageIsAbsolute();
 
 
@@ -52,4 +52,7 @@ public class EnchantmentInit {
     public static final Enchantment CRITICALLY_FUNKY = new EnchantmentCriticallyFunky();
     public static final Enchantment COUNTER_OFFENSIVE = new EnchantmentCounterOffensive();
     public static final Enchantment DANGER_CLOSE = new EnchantmentDangerClose();
+    public static final Enchantment DIAMOND_ALLERGY = new EnchantmentDiamondAllergy();
+    public static final Enchantment EGGS = new EnchantmentEggs();
+    public static final Enchantment ELECTROLYTES = new EnchantmentElectrolytes();
 }
