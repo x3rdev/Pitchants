@@ -20,9 +20,8 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentLuckyShot extends Enchantment{
-
     public EnchantmentLuckyShot() {
-        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("lucky_shot");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":lucky_shot"));
 
@@ -31,12 +30,12 @@ public class EnchantmentLuckyShot extends Enchantment{
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 10 * enchantmentLevel;
     }
 
     @Override
     public int getMaxEnchantability(int enchantmentLevel) {
-        return this.getMinEnchantability(enchantmentLevel) + 10;
+        return this.getMinEnchantability(enchantmentLevel) + 20;
     }
 
     @Override

@@ -70,6 +70,8 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentTelebow());
         MinecraftForge.EVENT_BUS.register(new EnchantmentTrueShot());
         MinecraftForge.EVENT_BUS.register(new EnchantmentVolley());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentDevilChicks());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentExplosive());
 
         MinecraftForge.EVENT_BUS.register(new EnchantmentBooboo());
         MinecraftForge.EVENT_BUS.register(new EnchantmentCricket());
@@ -78,6 +80,10 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentDiamondAllergy());
         MinecraftForge.EVENT_BUS.register(new EnchantmentEggs());
         MinecraftForge.EVENT_BUS.register(new EnchantmentElectrolytes());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentGoldenHeart());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentGottaGoFast());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentHearts());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentMcSwimmer());
 //        RegistryHandler.postInitRegistries(event);
 
     }

@@ -22,7 +22,7 @@ public class EnchantmentBottomlessQuiver extends Enchantment {
     private static boolean handled = false;
 
     public EnchantmentBottomlessQuiver() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("bottomless_quiver");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":bottomless_quiver"));
 
@@ -55,7 +55,7 @@ public class EnchantmentBottomlessQuiver extends Enchantment {
     @Override
     public int getMinEnchantability(int enchantmentLevel)
     {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

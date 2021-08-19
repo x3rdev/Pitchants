@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class EnchantmentBooboo extends Enchantment {
     private boolean isReady = true;
     public EnchantmentBooboo() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("boo-boo");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":boo-boo"));
 
@@ -25,7 +25,7 @@ public class EnchantmentBooboo extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -53,6 +53,7 @@ public class EnchantmentBooboo extends Enchantment {
                     isReady = true;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }).start();
             player.heal(2);

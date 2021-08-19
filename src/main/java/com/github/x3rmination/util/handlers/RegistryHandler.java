@@ -2,9 +2,7 @@ package com.github.x3rmination.util.handlers;
 
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.init.ItemInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.util.interfaces.IHasModel;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -18,23 +16,13 @@ public class RegistryHandler {
 
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event)
-    {
-        event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
+    public static void registerItems(RegistryEvent.Register<Item> event) {
     }
 
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event)
     {
-
-        for(Item item : ItemInit.ITEMS)
-        {
-            if(item instanceof IHasModel)
-            {
-                ((IHasModel)item).registerModels();
-            }
-        }
 
     }
 

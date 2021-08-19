@@ -24,7 +24,7 @@ import java.util.Objects;
 public class EnchantmentDiamondAllergy extends Enchantment {
 
     public EnchantmentDiamondAllergy() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("diamond_allergy");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":diamond_allergy"));
         EnchantmentInit.ENCHANTMENTS.add(this);
@@ -32,7 +32,7 @@ public class EnchantmentDiamondAllergy extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -47,12 +47,14 @@ public class EnchantmentDiamondAllergy extends Enchantment {
 
     @SubscribeEvent
     public void onTick(LivingHurtEvent event) {
-        EntityLivingBase victimEntity = event.getEntityLiving();
-        EntityLivingBase attackerEntity = (EntityLivingBase) event.getSource().getTrueSource();
-        int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DIAMOND_ALLERGY, victimEntity.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && Objects.requireNonNull(attackerEntity).getHeldItemMainhand().isItemEqual(new ItemStack(Items.DIAMOND_SWORD))) {
-            float percent = (float) (0.10 * level);
-            event.setAmount(event.getAmount() - (event.getAmount() * percent));
+        if (event.getSource().getTrueSource() instanceof EntityLiving && event.getEntityLiving() instanceof EntityLiving) {
+            EntityLiving victimEntity = (EntityLiving) event.getEntityLiving();
+            EntityLiving attackerEntity = (EntityLiving) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DIAMOND_ALLERGY, victimEntity.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            if (level > 0 && Objects.requireNonNull(attackerEntity).getHeldItemMainhand().isItemEqual(new ItemStack(Items.DIAMOND_SWORD))) {
+                float percent = (float) (0.10 * level);
+                event.setAmount(event.getAmount() - (event.getAmount() * percent));
+            }
         }
     }
 }

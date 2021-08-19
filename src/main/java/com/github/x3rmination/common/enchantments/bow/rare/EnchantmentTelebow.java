@@ -29,7 +29,7 @@ public class EnchantmentTelebow extends Enchantment {
     private boolean isReady = true;
     private int coolDown = 0;
     public EnchantmentTelebow() {
-        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("telebow");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":telebow"));
 
@@ -38,7 +38,7 @@ public class EnchantmentTelebow extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 10 * enchantmentLevel;
     }
 
     @Override
@@ -53,7 +53,6 @@ public class EnchantmentTelebow extends Enchantment {
 
     @SubscribeEvent
     public void onProjectileLand(ProjectileImpactEvent event) {
-
         if (event.getEntity() instanceof EntityArrow && ((EntityArrow) event.getEntity()).shootingEntity instanceof EntityPlayer) {
             EntityArrow arrow = (EntityArrow) event.getEntity();
             EntityPlayer player = (EntityPlayer) arrow.shootingEntity;
@@ -71,6 +70,7 @@ public class EnchantmentTelebow extends Enchantment {
                         isReady = true;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }).start();
             }

@@ -19,7 +19,7 @@ public class EnchantmentSprintDrain extends Enchantment {
 
     private static boolean handled = false;
     public EnchantmentSprintDrain() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("sprint_drain");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":sprint_drain"));
 
@@ -28,7 +28,7 @@ public class EnchantmentSprintDrain extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -43,26 +43,23 @@ public class EnchantmentSprintDrain extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLiving) {
-            if((Objects.requireNonNull(((EntityLiving) target).getLastDamageSource())).isProjectile()) {
-                if (handled) {
-                    handled = false;
-                    return;
-                }
-                if(level == 1){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 40, 0, true, true));
-                }
-                if(level == 2){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, 0, true, true));
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
-                }
-                if(level > 2){
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, true, true));
-                    ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
-                }
-                handled = true;
+        if(Objects.requireNonNull(((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+            if (handled) {
+                handled = false;
+                return;
             }
+            if(level == 1){
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 40, 0, true, true));
+            }
+            if(level == 2){
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, 0, true, true));
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
+            }
+            if(level > 2){
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, true, true));
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 0, true, true));
+            }
+            handled = true;
         }
-
     }
 }

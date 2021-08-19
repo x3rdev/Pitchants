@@ -21,7 +21,7 @@ import java.util.Objects;
 public class EnchantmentEggs extends Enchantment {
 
     public EnchantmentEggs() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("eggs");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":eggs"));
         EnchantmentInit.ENCHANTMENTS.add(this);
@@ -29,7 +29,7 @@ public class EnchantmentEggs extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

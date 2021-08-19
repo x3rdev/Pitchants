@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EnchantmentSpammerAndProud extends Enchantment {
 
     public EnchantmentSpammerAndProud() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("spammer_and_proud");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":spammer_and_proud"));
 
@@ -27,7 +27,7 @@ public class EnchantmentSpammerAndProud extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

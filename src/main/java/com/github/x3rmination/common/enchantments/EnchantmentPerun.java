@@ -50,7 +50,7 @@ public class EnchantmentPerun extends Enchantment {
 	@Override
 	public int getMinEnchantability(int enchantmentLevel) 
 	{
-		return 20 * enchantmentLevel;
+		return 10 * enchantmentLevel;
 	}
 	
 	@Override

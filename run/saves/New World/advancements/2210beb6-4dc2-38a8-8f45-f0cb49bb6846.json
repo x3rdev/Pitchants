@@ -1,0 +1,21 @@
+{
+  "minecraft:recipes/redstone/dispenser": {
+    "criteria": {
+      "has_bow": "2021-08-18 13:55:37 -0700"
+    },
+    "done": true
+  },
+  "minecraft:adventure/shoot_arrow": {
+    "criteria": {
+      "shot_arrow": "2021-08-18 13:55:46 -0700"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "mesa_rock": "2021-08-18 13:55:37 -0700",
+      "mesa": "2021-08-18 13:55:48 -0700"
+    },
+    "done": false
+  }
+}

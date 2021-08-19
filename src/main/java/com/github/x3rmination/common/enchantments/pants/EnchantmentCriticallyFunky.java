@@ -21,7 +21,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
 
     private static boolean empowered = false;
     public EnchantmentCriticallyFunky() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("critically_funky");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":critically_funky"));
         EnchantmentInit.ENCHANTMENTS.add(this);
@@ -29,7 +29,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -48,7 +48,6 @@ public class EnchantmentCriticallyFunky extends Enchantment {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne) {
-                float percent = (float) (0.95 - (0.15 * level));
                 event.setAmount(event.getAmount());
                 empowered = true;
             }

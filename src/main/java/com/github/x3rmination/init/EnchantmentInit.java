@@ -38,6 +38,8 @@ public class EnchantmentInit {
     public static final Enchantment SNIPER = new EnchantmentSniper();
     public static final Enchantment WHAT_DOESNT_KILL_YOU = new EnchantmentWhatDoesntKillYou();
     public static final Enchantment WASP = new EnchantmentWasp();
+    public static final Enchantment DEVIL_CHICKS = new EnchantmentDevilChicks();
+    public static final Enchantment EXPLOSIVE = new EnchantmentExplosive();
     public static final Enchantment LUCKY_SHOT = new EnchantmentLuckyShot();
     public static final Enchantment MEGA_LONGBOW = new EnchantmentMegaLongbow();
     public static final Enchantment PULL_BOW = new EnchantmentPullbow();
@@ -55,4 +57,8 @@ public class EnchantmentInit {
     public static final Enchantment DIAMOND_ALLERGY = new EnchantmentDiamondAllergy();
     public static final Enchantment EGGS = new EnchantmentEggs();
     public static final Enchantment ELECTROLYTES = new EnchantmentElectrolytes();
+    public static final Enchantment GOLDEN_HEART = new EnchantmentGoldenHeart();
+    public static final Enchantment GOTTA_GO_FAST = new EnchantmentGottaGoFast();
+    public static final Enchantment HEARTS = new EnchantmentHearts();
+    public static final Enchantment MCSWIMMER = new EnchantmentMcSwimmer();
 }

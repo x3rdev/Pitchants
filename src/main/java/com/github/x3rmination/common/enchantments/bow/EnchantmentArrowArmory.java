@@ -24,7 +24,7 @@ import java.util.Iterator;
 public class EnchantmentArrowArmory extends Enchantment {
 
     public EnchantmentArrowArmory() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("arrow_armory");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":arrow_armory"));
 
@@ -34,7 +34,7 @@ public class EnchantmentArrowArmory extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

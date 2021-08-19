@@ -28,7 +28,7 @@ public class EnchantmentFasterThanTheirShadow extends Enchantment {
     private static int attackCount = 0;
 
     public EnchantmentFasterThanTheirShadow() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("faster_than_their_shadow");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":faster_than_their_shadow"));
 
@@ -37,27 +37,25 @@ public class EnchantmentFasterThanTheirShadow extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLiving) {
-            if((((EntityLiving) target).getLastDamageSource()).isProjectile()) {
-                if (handled) {
-                    handled = false;
-                    return;
-                }
-                attackCount += 1;
-                int reqattack = (int) ((Math.pow(level, 2))*0.5 - (2.5*level) + 5);
-                if (attackCount >= reqattack) {
-                    user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80, level));
-                    attackCount = 0;
-                }
-                handled = true;
+        if(Objects.requireNonNull(((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+            if (handled) {
+                handled = false;
+                return;
             }
+            attackCount += 1;
+            int reqattack = (int) ((Math.pow(level, 2))*0.5 - (2.5*level) + 5);
+            if (attackCount >= reqattack) {
+                user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80, level));
+                attackCount = 0;
+            }
+            handled = true;
         }
     }
 
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

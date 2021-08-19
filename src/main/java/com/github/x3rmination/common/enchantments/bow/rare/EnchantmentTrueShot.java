@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EnchantmentTrueShot extends Enchantment {
 
     public EnchantmentTrueShot() {
-        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("true_shot");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":true_shot"));
 
@@ -25,7 +25,7 @@ public class EnchantmentTrueShot extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 10 * enchantmentLevel;
     }
 
     @Override

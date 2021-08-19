@@ -18,7 +18,7 @@ public class EnchantmentFirstShot extends Enchantment {
 
 
     public EnchantmentFirstShot() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("first_shot");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":first_shot"));
 
@@ -27,7 +27,7 @@ public class EnchantmentFirstShot extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

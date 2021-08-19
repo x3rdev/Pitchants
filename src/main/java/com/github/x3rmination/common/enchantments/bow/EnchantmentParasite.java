@@ -19,7 +19,7 @@ public class EnchantmentParasite extends Enchantment {
     private static boolean handled = false;
 
     public EnchantmentParasite() {
-        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("parasite");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":parasite"));
 
@@ -28,7 +28,7 @@ public class EnchantmentParasite extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -43,16 +43,13 @@ public class EnchantmentParasite extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLiving) {
-            if((Objects.requireNonNull(((EntityLiving) target).getLastDamageSource())).isProjectile()) {
-                if (handled) {
-                    handled = false;
-                    return;
-                }
-                user.heal((float) (0.125*(Math.pow(level, 2)) - (0.125*level) + 0.25));
-                handled = true;
+        if(Objects.requireNonNull(((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+            if (handled) {
+                handled = false;
+                return;
             }
+            user.heal((float) (0.125*(Math.pow(level, 2)) - (0.125*level) + 0.25));
+            handled = true;
         }
-
     }
 }

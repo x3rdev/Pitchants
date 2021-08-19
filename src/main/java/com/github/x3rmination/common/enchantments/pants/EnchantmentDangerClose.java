@@ -22,9 +22,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class EnchantmentDangerClose extends Enchantment {
 
     private boolean isReady = true;
-    private int coolDown = 100;
+
     public EnchantmentDangerClose() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("danger_close");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":danger_close"));
         EnchantmentInit.ENCHANTMENTS.add(this);
@@ -32,7 +32,7 @@ public class EnchantmentDangerClose extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -50,7 +50,6 @@ public class EnchantmentDangerClose extends Enchantment {
         EntityPlayer player = event.player;
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DANGER_CLOSE, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
         if (level > 0 && event.player.getHealth() <= 8 && isReady) {
-            coolDown = 100;
             player.addPotionEffect(new PotionEffect(MobEffects.SPEED, (3*level)*20, 2, true, true));
             isReady = false;
             new Thread(() -> {
@@ -59,6 +58,7 @@ public class EnchantmentDangerClose extends Enchantment {
                     isReady = true;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }).start();
         }

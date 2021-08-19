@@ -18,7 +18,7 @@ public class EnchantmentMixedCombat extends Enchantment {
     private static boolean empowered = false;
 
     public EnchantmentMixedCombat() {
-        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("mixed_combat");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":mixed_combat"));
 
@@ -27,7 +27,7 @@ public class EnchantmentMixedCombat extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

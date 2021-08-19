@@ -21,7 +21,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
 
     private boolean isReady = true;
     public EnchantmentMegaLongbow() {
-        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("mega_longbow");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":mega_longbow"));
 
@@ -30,7 +30,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 10 * enchantmentLevel;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
 
 
     @SubscribeEvent
-    public void onLetGo(ArrowLooseEvent event) throws InterruptedException {
+    public void onLetGo(ArrowLooseEvent event) {
 
         EntityPlayer player = event.getEntityPlayer();
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
@@ -64,17 +64,15 @@ public class EnchantmentMegaLongbow extends Enchantment {
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
         if(!isReady && level>0) {
             event.isCanceled();
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1000);
-                        isReady = true;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                    isReady = true;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
-            }.start();
+            }).start();
         }
     }
 

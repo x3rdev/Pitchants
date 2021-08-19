@@ -17,7 +17,7 @@ public class EnchantmentPullbow extends Enchantment {
 
     private boolean isReady = true;
     public EnchantmentPullbow() {
-        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("pullbow");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":pullbow"));
 
@@ -26,7 +26,7 @@ public class EnchantmentPullbow extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 10 * enchantmentLevel;
     }
 
     @Override
@@ -54,6 +54,7 @@ public class EnchantmentPullbow extends Enchantment {
                         isReady = true;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }).start();
             }

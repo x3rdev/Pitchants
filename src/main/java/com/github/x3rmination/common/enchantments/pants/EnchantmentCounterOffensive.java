@@ -15,7 +15,7 @@ public class EnchantmentCounterOffensive extends Enchantment {
 
     private short hitCount = 0;
     public EnchantmentCounterOffensive() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("counter_offensive");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":counter_offensive"));
         EnchantmentInit.ENCHANTMENTS.add(this);
@@ -23,7 +23,7 @@ public class EnchantmentCounterOffensive extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

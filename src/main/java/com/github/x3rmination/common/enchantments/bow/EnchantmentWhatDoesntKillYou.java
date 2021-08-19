@@ -18,7 +18,7 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
 
     private static boolean handled = false;
     public EnchantmentWhatDoesntKillYou() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("what_doesn't_kill_you");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":what_doesn't_kill_you"));
 
@@ -27,7 +27,7 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

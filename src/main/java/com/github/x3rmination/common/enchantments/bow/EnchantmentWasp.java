@@ -18,7 +18,7 @@ public class EnchantmentWasp extends Enchantment{
 
     private static boolean handled = false;
     public EnchantmentWasp() {
-        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("wasp");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":wasp"));
 
@@ -27,7 +27,7 @@ public class EnchantmentWasp extends Enchantment{
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

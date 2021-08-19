@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EnchantmentJumpSpammer extends Enchantment {
 
     public EnchantmentJumpSpammer() {
-        super(Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("jump_spammer");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":jump_spammer"));
 
@@ -32,7 +32,7 @@ public class EnchantmentJumpSpammer extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

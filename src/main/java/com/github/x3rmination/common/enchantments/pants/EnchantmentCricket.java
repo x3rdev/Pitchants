@@ -29,7 +29,7 @@ public class EnchantmentCricket extends Enchantment {
 
     private boolean onGrass = false;
     public EnchantmentCricket() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("cricket");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":cricket"));
 
@@ -38,7 +38,7 @@ public class EnchantmentCricket extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
@@ -63,7 +63,6 @@ public class EnchantmentCricket extends Enchantment {
                 player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 40, 0, true, true));
             }
             onGrass = true;
-            System.out.println("ongrass");
         }
         if(!Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS)){
             onGrass = false;

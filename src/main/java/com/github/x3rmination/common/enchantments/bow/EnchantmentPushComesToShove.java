@@ -24,7 +24,7 @@ public class EnchantmentPushComesToShove extends Enchantment {
 
     private static int hitcount = 0;
     public EnchantmentPushComesToShove() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("push_comes_to_shove");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":push_comes_to_shove"));
 
@@ -33,7 +33,7 @@ public class EnchantmentPushComesToShove extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override

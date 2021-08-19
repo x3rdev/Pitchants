@@ -27,7 +27,7 @@ public class EnchantmentFletching extends Enchantment {
 
 
     public EnchantmentFletching() {
-        super(Rarity.UNCOMMON, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("fletching");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":fletching"));
 
@@ -36,7 +36,7 @@ public class EnchantmentFletching extends Enchantment {
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 20 * enchantmentLevel;
+        return 8 * enchantmentLevel;
     }
 
     @Override
