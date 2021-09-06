@@ -63,7 +63,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
         if(!isReady && level>0) {
-            event.isCanceled();
+            event.setCanceled(true);
             new Thread(() -> {
                 try {
                     Thread.sleep(1000);

@@ -51,7 +51,7 @@ public class EnchantmentExplosive extends Enchantment {
                 EntityPlayer entityLiving = (EntityPlayer) arrow.shootingEntity;
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPLOSIVE, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
                 if (level > 0 && !world.isRemote) {
-                    world.createExplosion(null, arrow.posX, arrow.posY, arrow.posZ, level + 1, false);
+                    world.createExplosion(null, arrow.posX, arrow.posY, arrow.posZ, (float) (level + 1.0), false);
                 }
             }
         }

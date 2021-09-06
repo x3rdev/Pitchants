@@ -11,16 +11,15 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
-public class EnchantmentLastStand extends Enchantment {
+public class EnchantmentPeroxide extends Enchantment {
 
-    private boolean ready = true;
-    private static boolean handled = false;
-    public EnchantmentLastStand() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("last_stand");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":last_stand"));
+    public EnchantmentPeroxide() {
+        super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        this.setName("peroxide");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":peroxide"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
+
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
@@ -39,17 +38,6 @@ public class EnchantmentLastStand extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if (handled) {
-            handled = false;
-            return;
-        }
-        if(user.getHealth() <= 6 && ready) {
-            ready = false;
-            user.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, (int) (((-0.5 * Math.pow(level, 2)) + (2.5 * level) + 1)*20), level -1, true, true));
-        }
-        if(user.getHealth() > 6) {
-            ready = true;
-        }
-        handled = true;
+        user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) ((Math.pow(level, 2) * -30) + (150 * level) - 20), (int) ((Math.pow(level, 2)*0.25) - (1.5*level) + 1)));
     }
 }

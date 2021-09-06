@@ -6,23 +6,24 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= pitchants.MODID)
-public class EnchantmentMcSwimmer extends Enchantment {
+@Mod.EventBusSubscriber(modid=pitchants.MODID)
+public class EnchantmentNotGladiator extends Enchantment {
 
-    public EnchantmentMcSwimmer() {
+    public EnchantmentNotGladiator() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("mcswimmer");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":mcswimmer"));
+        this.setName("not_gladiator");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":not_gladiator"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
+
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
@@ -43,10 +44,13 @@ public class EnchantmentMcSwimmer extends Enchantment {
     public void onDamage(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving) {
             EntityLiving entityLiving = (EntityLiving) event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MCSWIMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && entityLiving.getLastDamageSource().isUnblockable()) {
-                int percent = (int) (2.5 * Math.pow(level, 2) + (7.5 * level) + 15);
-                event.setAmount((event.getAmount() * 100) - (event.getAmount() * percent));
+            World world = event.getEntityLiving().getEntityWorld();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NOT_GLADIATOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            if(level > 0) {
+                AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 16D, entityLiving.getPosition().getY() - 16D, entityLiving.getPosition().getZ() - 16D, entityLiving.getPosition().getX() + 32D, entityLiving.getPosition().getY() + 32D, entityLiving.getPosition().getZ() + 32D);
+                double damageReduc = event.getAmount() * ((0.005*level) + 0.005) * world.getEntitiesWithinAABB(EntityLiving.class, bounding).size();
+                event.setAmount((float) (event.getAmount() - damageReduc));
+
             }
         }
     }

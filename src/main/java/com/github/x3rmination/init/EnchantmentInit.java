@@ -61,4 +61,11 @@ public class EnchantmentInit {
     public static final Enchantment GOTTA_GO_FAST = new EnchantmentGottaGoFast();
     public static final Enchantment HEARTS = new EnchantmentHearts();
     public static final Enchantment MCSWIMMER = new EnchantmentMcSwimmer();
+    public static final Enchantment MIRROR = new EnchantmentMirror();
+    public static final Enchantment NOT_GLADIATOR = new EnchantmentNotGladiator();
+    public static final Enchantment PIT_BLOB = new EnchantmentPitBlob();
+    public static final Enchantment PRICK = new EnchantmentPrick();
+    public static final Enchantment REVITALIZE = new EnchantmentRevitalize();
+    public static final Enchantment RING_ARMOR = new EnchantmentRingArmor();
+    public static final Enchantment TNT = new EnchantmentTNT();
 }
