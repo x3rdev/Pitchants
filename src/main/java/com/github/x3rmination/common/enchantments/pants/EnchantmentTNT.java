@@ -2,27 +2,28 @@ package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockWorldState;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentTNT extends Enchantment {
@@ -54,12 +55,26 @@ public class EnchantmentTNT extends Enchantment {
 
     @SubscribeEvent
     public void onPlace(BlockEvent.EntityPlaceEvent event) {
+        // check if item is right type of tnt
         if(event.getEntity() instanceof EntityPlayer && event.getPlacedBlock().getBlock() instanceof BlockTNT) {
             EntityPlayer entityLiving = (EntityPlayer) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TNT, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0) {
+            if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText())) {
                 BlockTNT tntBlock = (BlockTNT) event.getPlacedBlock().getBlock();
                 tntBlock.removedByPlayer(event.getPlacedBlock(), event.getWorld(), event.getPos(), entityLiving, false);
+                EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(event.getWorld(), event.getPos().getX() + 0.5F, event.getPos().getY(), event.getPos().getZ() + 0.5F, entityLiving);
+                entitytntprimed.setFuse(40);
+                event.getWorld().spawnEntity(entitytntprimed);
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(1500);
+                        event.getWorld().removeEntity(entitytntprimed);
+                        event.getWorld().createExplosion(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (float) ((0.2*level) + 0.3), false);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
+                    }
+                }).start();
             }
         }
     }
@@ -70,6 +85,7 @@ public class EnchantmentTNT extends Enchantment {
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TNT, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {
                 tnt = new ItemStack(Item.getItemById(46), level);
+                tnt.setStackDisplayName((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText());
                 entityLiving.addItemStackToInventory(tnt);
             }
         }

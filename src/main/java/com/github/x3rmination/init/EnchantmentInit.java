@@ -6,6 +6,8 @@ import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
+import com.github.x3rmination.common.enchantments.pants.rare.EnchantmentAssassin;
+import com.github.x3rmination.common.enchantments.pants.rare.EnchantmentEscapePod;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -68,4 +70,6 @@ public class EnchantmentInit {
     public static final Enchantment REVITALIZE = new EnchantmentRevitalize();
     public static final Enchantment RING_ARMOR = new EnchantmentRingArmor();
     public static final Enchantment TNT = new EnchantmentTNT();
+    public static final Enchantment ASSASSIN = new EnchantmentAssassin();
+    public static final Enchantment ESCAPE_POD = new EnchantmentEscapePod();
 }

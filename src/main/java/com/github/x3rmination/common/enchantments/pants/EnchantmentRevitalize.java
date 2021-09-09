@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 public class EnchantmentRevitalize extends Enchantment {
 
     private boolean isReady = true;
+    private static boolean handled = false;
 
     public EnchantmentRevitalize() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
@@ -42,6 +43,10 @@ public class EnchantmentRevitalize extends Enchantment {
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
         if(user.getHealth() <= 6 && isReady) {
+            if (handled) {
+                handled = false;
+                return;
+            }
             isReady = false;
             double v1 = (Math.pow(level, 2) * -0.5) + (2.5 * level);
             double v = (Math.pow(level, 2) * 20) - (60 * level);
@@ -60,6 +65,7 @@ public class EnchantmentRevitalize extends Enchantment {
                     Thread.currentThread().interrupt();
                 }
             }).start();
+            handled = true;
         }
     }
 }

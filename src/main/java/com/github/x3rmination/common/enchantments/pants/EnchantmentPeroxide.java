@@ -13,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentPeroxide extends Enchantment {
 
+    private static boolean handled = false;
+
     public EnchantmentPeroxide() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("peroxide");
@@ -38,6 +40,11 @@ public class EnchantmentPeroxide extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
+        if (handled) {
+            handled = false;
+            return;
+        }
         user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) ((Math.pow(level, 2) * -30) + (150 * level) - 20), (int) ((Math.pow(level, 2)*0.25) - (1.5*level) + 1)));
+        handled = true;
     }
 }
