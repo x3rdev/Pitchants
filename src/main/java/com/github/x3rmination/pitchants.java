@@ -5,7 +5,7 @@ import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
-import com.github.x3rmination.util.handlers.RenderGuiHandler;
+import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,11 +33,11 @@ public class pitchants {
     @Mod.Instance
     public static pitchants instance;
 
-    public static Logger logger;
+    public static Logger gamelogger;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
+        gamelogger = event.getModLog();
         proxy.preInit(event);
         RegistryHandler.preInitRegistries(event);
     }
@@ -51,7 +51,6 @@ public class pitchants {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         proxy.postInit(e);
-        MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
         MinecraftForge.EVENT_BUS.register(new EnchantmentArrowArmory());
         MinecraftForge.EVENT_BUS.register(new EnchantmentBottomlessQuiver());
         MinecraftForge.EVENT_BUS.register(new EnchantmentChipping());
@@ -84,6 +83,18 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentGottaGoFast());
         MinecraftForge.EVENT_BUS.register(new EnchantmentHearts());
         MinecraftForge.EVENT_BUS.register(new EnchantmentMcSwimmer());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentMirror());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentNotGladiator());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentPitBlob());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentRingArmor());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentTNT());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentEscapePod());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentGomrawsHeart());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentInstaboom());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentPhoenix());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentSingularity());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentSolitude());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentWolfPack());
 //        RegistryHandler.postInitRegistries(event);
 
     }

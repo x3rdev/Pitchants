@@ -1,6 +1,5 @@
 package com.github.x3rmination.common.potions;
 
-import akka.japi.Effect;
 import com.github.x3rmination.pitchants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
