@@ -67,8 +67,8 @@ public class EnchantmentPitBlob extends Enchantment {
                     blob = new EntitySlime(world);
                     blob.setDropItemsWhenDead(false);
                     blob.setLocationAndAngles(user.posX, user.posY, user.posZ, 0.0F, 0.0F);
-                    blob.setHealth(blob.getMaxHealth());
                     world.spawnEntity(blob);
+                    blob.setHealth(blob.getMaxHealth());
                     slimeSize = 0;
                     kills = 0;
                 } else {

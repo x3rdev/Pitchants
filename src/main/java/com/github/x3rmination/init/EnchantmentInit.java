@@ -6,8 +6,7 @@ import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
-import com.github.x3rmination.common.enchantments.pants.rare.EnchantmentAssassin;
-import com.github.x3rmination.common.enchantments.pants.rare.EnchantmentEscapePod;
+import com.github.x3rmination.common.enchantments.pants.rare.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -72,4 +71,11 @@ public class EnchantmentInit {
     public static final Enchantment TNT = new EnchantmentTNT();
     public static final Enchantment ASSASSIN = new EnchantmentAssassin();
     public static final Enchantment ESCAPE_POD = new EnchantmentEscapePod();
+    public static final Enchantment GOMRAWS_HEART = new EnchantmentGomrawsHeart();
+    public static final Enchantment INSTABOOM = new EnchantmentInstaboom();
+    public static final Enchantment PHOENIX = new EnchantmentPhoenix();
+    public static final Enchantment SINGULARITY = new EnchantmentSingularity();
+    public static final Enchantment SOLITUDE = new EnchantmentSolitude();
+    public static final Enchantment WOLF_PACK = new EnchantmentWolfPack();
+
 }

@@ -8,8 +8,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -18,18 +16,18 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.List;
 
+@Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentEscapePod extends Enchantment {
 
     private boolean isReady = true;
-    private static boolean handled = false;
+
 
     public EnchantmentEscapePod() {
         super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
@@ -55,9 +53,8 @@ public class EnchantmentEscapePod extends Enchantment {
     }
 
     @SubscribeEvent
-    public void onDeath(LivingHurtEvent event) {
+    public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityPlayer) {
-            System.out.println(event.getEntityLiving()+"-");
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ESCAPE_POD, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && player.getHealth() <= 5 && isReady) {
@@ -70,7 +67,6 @@ public class EnchantmentEscapePod extends Enchantment {
 
                 AxisAlignedBB bounding = new AxisAlignedBB(player.getPosition().getX() - 2D, player.getPosition().getY() - 2D, player.getPosition().getZ() - 2D, player.getPosition().getX() + 2D, player.getPosition().getY() + 2D, player.getPosition().getZ() + 2D);
                 List<Entity> dmgList = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, bounding);
-                System.out.println("- " + dmgList);
                 int index = 0;
                 while(index < dmgList.size()) {
                     Entity bT = dmgList.get(index);
@@ -81,14 +77,16 @@ public class EnchantmentEscapePod extends Enchantment {
                 }
                 new Thread(() -> {
                     try {
-                        Thread.sleep(1);
+                        Thread.sleep(100000);
                         isReady = true;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                         Thread.currentThread().interrupt();
                     }
                 }).start();
-
+            }
+            if(level > 0 && player.getHealth() <= 5 && !isReady) {
+                Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString("Escape Pod is still on cooldown!"), true);
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.github.x3rmination.common.enchantments.pants;
 
-import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
@@ -9,14 +8,10 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentRingArmor extends Enchantment {
