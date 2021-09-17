@@ -7,6 +7,10 @@ import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
+import com.github.x3rmination.common.enchantments.sword.EnchantmentBeatTheSpammer;
+import com.github.x3rmination.common.enchantments.sword.EnchantmentBerserker;
+import com.github.x3rmination.common.enchantments.sword.EnchantmentBulletTime;
+import com.github.x3rmination.common.enchantments.sword.EnchantmentComboDamage;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -48,7 +52,7 @@ public class EnchantmentInit {
     public static final Enchantment TRUE_SHOT = new EnchantmentTrueShot();
     public static final Enchantment VOLLEY = new EnchantmentVolley();
     /*
-    Pants Enchantment
+    Pants Enchantments
      */
     public static final Enchantment BOOBOO = new EnchantmentBooboo();
     public static final Enchantment CRICKET = new EnchantmentCricket();
@@ -77,5 +81,12 @@ public class EnchantmentInit {
     public static final Enchantment SINGULARITY = new EnchantmentSingularity();
     public static final Enchantment SOLITUDE = new EnchantmentSolitude();
     public static final Enchantment WOLF_PACK = new EnchantmentWolfPack();
+    /*
+    Sword Enchantments
+     */
+    public static final Enchantment BEAT_THE_SPAMMER = new EnchantmentBeatTheSpammer();
+    public static final Enchantment BERSERKER = new EnchantmentBerserker();
+    public static final Enchantment BULLET_TIME = new EnchantmentBulletTime();
+    public static final Enchantment COMBO_DAMAGE = new EnchantmentComboDamage();
 
 }
