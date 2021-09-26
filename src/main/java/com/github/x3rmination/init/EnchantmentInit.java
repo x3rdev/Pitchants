@@ -7,16 +7,17 @@ import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBeatTheSpammer;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBerserker;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBulletTime;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentComboDamage;
+import com.github.x3rmination.common.enchantments.sword.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnchantmentInit {
+public final class EnchantmentInit {
+
+    private EnchantmentInit() {
+
+    }
 
     public static final List<Enchantment> ENCHANTMENTS = new ArrayList<>();
     public static final DamageSource TRUE_DAMAGE = (new DamageSource("trueDamage")).setDamageBypassesArmor().setDamageIsAbsolute();
@@ -88,5 +89,12 @@ public class EnchantmentInit {
     public static final Enchantment BERSERKER = new EnchantmentBerserker();
     public static final Enchantment BULLET_TIME = new EnchantmentBulletTime();
     public static final Enchantment COMBO_DAMAGE = new EnchantmentComboDamage();
+    public static final Enchantment COMBO_PERUNS_WRATH = new EnchantmentComboPerunsWrath();
+    public static final Enchantment CRUSH = new EnchantmentCrush();
+    public static final Enchantment DIAMOND_STOMP = new EnchantmentDiamondStomp();
+    public static final Enchantment GOLD_AND_BOOSTED = new EnchantmentGoldAndBoosted();
+    public static final Enchantment GRASSHOPPER = new EnchantmentGrasshopper();
+    public static final Enchantment GUTS = new EnchantmentGuts();
+    public static final Enchantment KING_BUSTER = new EnchantmentKingBuster();
 
 }

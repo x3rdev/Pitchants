@@ -5,7 +5,6 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -15,14 +14,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentComboDamage extends Enchantment {
+public class EnchantmentGoldAndBoosted extends Enchantment {
 
-    private int hitCount = 0;
-
-    public EnchantmentComboDamage() {
+    public EnchantmentGoldAndBoosted() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("combo_damage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_damage"));
+        this.setName("gold_and_boosted");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":gold_and_boosted"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -41,23 +38,13 @@ public class EnchantmentComboDamage extends Enchantment {
         return 3;
     }
 
-    @Override
-    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-
-    }
-
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
-                hitCount += 1;
-                int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
-                if(hitCount >= hitReq) {
-                    hitCount = 0;
-                    event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.025)+(0.025 * level) + 0.15))));
-                }
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLD_AND_BOOSTED, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            if(level > 0 && source.getAbsorptionAmount() > 0) {
+                event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.01) + (0.01 * level) + 0.03))));
             }
         }
     }

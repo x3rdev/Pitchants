@@ -53,7 +53,6 @@ public class EnchantmentCricket extends Enchantment {
 
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent event) {
-
         EntityPlayer player = event.player;
         BlockPos posBelow = player.getPosition().down();
         IBlockState blockStateBelow = player.world.getBlockState(posBelow);

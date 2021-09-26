@@ -5,9 +5,9 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -15,14 +15,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentComboDamage extends Enchantment {
+public class EnchantmentKingBuster extends Enchantment {
 
-    private int hitCount = 0;
+    private static boolean handled = false;
 
-    public EnchantmentComboDamage() {
+    public EnchantmentKingBuster() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("combo_damage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_damage"));
+        this.setName("king_buster");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":king_buster"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -41,23 +41,13 @@ public class EnchantmentComboDamage extends Enchantment {
         return 3;
     }
 
-    @Override
-    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-
-    }
-
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
-                hitCount += 1;
-                int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
-                if(hitCount >= hitReq) {
-                    hitCount = 0;
-                    event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.025)+(0.025 * level) + 0.15))));
-                }
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.KING_BUSTER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            if(level > 0 && event.getEntityLiving().getHealth() > (event.getEntityLiving().getMaxHealth()/2)) {
+                event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.005) + (level * 0.045) + 0.02))));
             }
         }
     }

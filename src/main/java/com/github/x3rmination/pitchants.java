@@ -6,10 +6,7 @@ import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBeatTheSpammer;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBerserker;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentBulletTime;
-import com.github.x3rmination.common.enchantments.sword.EnchantmentComboDamage;
+import com.github.x3rmination.common.enchantments.sword.*;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -104,6 +101,10 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentBerserker());
         MinecraftForge.EVENT_BUS.register(new EnchantmentBulletTime());
         MinecraftForge.EVENT_BUS.register(new EnchantmentComboDamage());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentDiamondStomp());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentGoldAndBoosted());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentGrasshopper());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentKingBuster());
 //        RegistryHandler.postInitRegistries(event);
 
     }

@@ -5,9 +5,9 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -15,14 +15,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentComboDamage extends Enchantment {
+public class EnchantmentDiamondStomp extends Enchantment {
 
-    private int hitCount = 0;
-
-    public EnchantmentComboDamage() {
+    public EnchantmentDiamondStomp() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("combo_damage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_damage"));
+        this.setName("diamond_stomp");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":diamond_stomp"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -41,22 +39,15 @@ public class EnchantmentComboDamage extends Enchantment {
         return 3;
     }
 
-    @Override
-    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-
-    }
-
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DIAMOND_STOMP, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if(level > 0) {
-                hitCount += 1;
-                int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
-                if(hitCount >= hitReq) {
-                    hitCount = 0;
-                    event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.025)+(0.025 * level) + 0.15))));
+                EntityLivingBase living = event.getEntityLiving();
+                if(living.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem().equals(Items.DIAMOND_HELMET) || living.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem().equals(Items.DIAMOND_CHESTPLATE) || living.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem().equals(Items.DIAMOND_LEGGINGS) || living.getItemStackFromSlot(EntityEquipmentSlot.FEET).getItem().equals(Items.DIAMOND_BOOTS)) {
+                    event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.035) - (0.045 * level)  + 0.07))));
                 }
             }
         }

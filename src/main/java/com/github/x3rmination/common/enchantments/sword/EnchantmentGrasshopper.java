@@ -2,27 +2,28 @@ package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentComboDamage extends Enchantment {
+@Mod.EventBusSubscriber(modid= pitchants.MODID)
+public class EnchantmentGrasshopper extends Enchantment {
 
-    private int hitCount = 0;
-
-    public EnchantmentComboDamage() {
+    public EnchantmentGrasshopper() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("combo_damage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_damage"));
+        this.setName("grasshopper");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":grasshopper"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -41,23 +42,16 @@ public class EnchantmentComboDamage extends Enchantment {
         return 3;
     }
 
-    @Override
-    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-
-    }
-
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
-                hitCount += 1;
-                int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
-                if(hitCount >= hitReq) {
-                    hitCount = 0;
-                    event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.025)+(0.025 * level) + 0.15))));
-                }
+            EntityLivingBase livingBase = event.getEntityLiving();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLD_AND_BOOSTED, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            BlockPos posBelow = livingBase.getPosition().down();
+            IBlockState blockStateBelow = livingBase.world.getBlockState(posBelow);
+            if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS)) {
+                event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.01) + (0.01 * level) + 0.03))));
             }
         }
     }
