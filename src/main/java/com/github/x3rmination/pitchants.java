@@ -108,6 +108,7 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentLifesteal());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPainFocus());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPunisher());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentShark());
 //        RegistryHandler.postInitRegistries(event);
 
     }

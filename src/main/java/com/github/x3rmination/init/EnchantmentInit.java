@@ -99,5 +99,7 @@ public final class EnchantmentInit {
     public static final Enchantment LIFESTEAL = new EnchantmentLifesteal();
     public static final Enchantment PAIN_FOCUS = new EnchantmentPainFocus();
     public static final Enchantment PUNISHER = new EnchantmentPunisher();
+    public static final Enchantment SHARK = new EnchantmentShark();
+
 
 }

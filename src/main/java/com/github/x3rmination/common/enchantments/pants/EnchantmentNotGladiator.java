@@ -6,6 +6,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -47,10 +48,9 @@ public class EnchantmentNotGladiator extends Enchantment {
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NOT_GLADIATOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {
-                AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 16D, entityLiving.getPosition().getY() - 16D, entityLiving.getPosition().getZ() - 16D, entityLiving.getPosition().getX() + 32D, entityLiving.getPosition().getY() + 32D, entityLiving.getPosition().getZ() + 32D);
-                double damageReduc = event.getAmount() * ((0.005*level) + 0.005) * world.getEntitiesWithinAABB(EntityLiving.class, bounding).size();
+                AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 16D, entityLiving.getPosition().getY() - 16D, entityLiving.getPosition().getZ() - 16D, entityLiving.getPosition().getX() + 16D, entityLiving.getPosition().getY() + 16D, entityLiving.getPosition().getZ() + 16D);
+                double damageReduc = event.getAmount() * ((0.005*level) + 0.005) * world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size();
                 event.setAmount((float) (event.getAmount() - damageReduc));
-
             }
         }
     }
