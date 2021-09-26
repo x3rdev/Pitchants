@@ -23,6 +23,7 @@ public class EnchantmentShark extends Enchantment {
     private int subSixHealth = 0;
     private int iterator = 0;
     private AxisAlignedBB bounding;
+
     public EnchantmentShark() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("shark");
@@ -64,15 +65,9 @@ public class EnchantmentShark extends Enchantment {
                     subSixHealth = 0;
                     iterator = 0;
                 }
+                event.setAmount((float) (event.getAmount() + (event.getAmount() * subSixHealth * (Math.pow(level, 2) * 0.005) + (0.005 * level) + 0.01)));
             }
-        }
-    }
 
-    @SubscribeEvent
-    public void onTick(TickEvent.PlayerTickEvent event) {
-        if(bounding != null) {
-            World world = event.player.getEntityWorld();
-            event.player.sendStatusMessage(new TextComponentString(String.valueOf(world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size())), true);
         }
     }
 }
