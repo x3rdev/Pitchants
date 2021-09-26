@@ -105,6 +105,9 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentGoldAndBoosted());
         MinecraftForge.EVENT_BUS.register(new EnchantmentGrasshopper());
         MinecraftForge.EVENT_BUS.register(new EnchantmentKingBuster());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentLifesteal());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentPainFocus());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentPunisher());
 //        RegistryHandler.postInitRegistries(event);
 
     }

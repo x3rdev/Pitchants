@@ -96,5 +96,8 @@ public final class EnchantmentInit {
     public static final Enchantment GRASSHOPPER = new EnchantmentGrasshopper();
     public static final Enchantment GUTS = new EnchantmentGuts();
     public static final Enchantment KING_BUSTER = new EnchantmentKingBuster();
+    public static final Enchantment LIFESTEAL = new EnchantmentLifesteal();
+    public static final Enchantment PAIN_FOCUS = new EnchantmentPainFocus();
+    public static final Enchantment PUNISHER = new EnchantmentPunisher();
 
 }

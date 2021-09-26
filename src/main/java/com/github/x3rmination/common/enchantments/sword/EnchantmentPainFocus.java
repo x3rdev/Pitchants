@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid=pitchants.MODID)
-public class EnchantmentKingBuster extends Enchantment {
+public class EnchantmentPainFocus extends Enchantment {
 
-    public EnchantmentKingBuster() {
+    public EnchantmentPainFocus() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("king_buster");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":king_buster"));
+        this.setName("pain_focus");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":pain_focus"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -42,10 +42,11 @@ public class EnchantmentKingBuster extends Enchantment {
     public void onHurt(LivingHurtEvent event) {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.KING_BUSTER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && event.getEntityLiving().getHealth() > (event.getEntityLiving().getMaxHealth()/2)) {
-                event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.005) + (level * 0.045) + 0.02))));
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PAIN_FOCUS, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            if(level > 0) {
+                event.setAmount((float) (event.getAmount() + ((event.getAmount() * ((Math.pow(level, 2)*0.01) - (0.02*level) + 0.02))*((source.getMaxHealth() - source.getHealth())/2))));
             }
         }
     }
+
 }

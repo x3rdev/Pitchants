@@ -17,7 +17,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= pitchants.MODID)
+@Mod.EventBusSubscriber(modid=pitchants.MODID)
 public class EnchantmentGrasshopper extends Enchantment {
 
     public EnchantmentGrasshopper() {
@@ -47,7 +47,7 @@ public class EnchantmentGrasshopper extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             EntityLivingBase livingBase = event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLD_AND_BOOSTED, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GRASSHOPPER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             BlockPos posBelow = livingBase.getPosition().down();
             IBlockState blockStateBelow = livingBase.world.getBlockState(posBelow);
             if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS)) {

@@ -15,8 +15,8 @@ public class EnchantmentGuts extends Enchantment {
 
     public EnchantmentGuts() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("gold_and_boosted");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":gold_and_boosted"));
+        this.setName("guts");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":guts"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
