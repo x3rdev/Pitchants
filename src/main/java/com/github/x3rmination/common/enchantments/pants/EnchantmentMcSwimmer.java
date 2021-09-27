@@ -6,6 +6,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
@@ -41,8 +42,8 @@ public class EnchantmentMcSwimmer extends Enchantment {
 
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityLiving) {
-            EntityLiving entityLiving = (EntityLiving) event.getEntityLiving();
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MCSWIMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && entityLiving.getLastDamageSource().isUnblockable()) {
                 int percent = (int) (2.5 * Math.pow(level, 2) + (7.5 * level) + 15);

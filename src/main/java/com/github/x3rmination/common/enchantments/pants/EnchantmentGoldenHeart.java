@@ -5,6 +5,7 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -39,17 +40,17 @@ public class EnchantmentGoldenHeart extends Enchantment {
 
     @SubscribeEvent
     public void onKill(LivingDeathEvent event) {
-        if(event.getSource().getTrueSource() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLDEN_HEART, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+        if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
+            EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLDEN_HEART, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0) {
-                float absorptionAmount = player.getAbsorptionAmount();
+                float absorptionAmount = entityLivingBase.getAbsorptionAmount();
                 int i = (int) (0.5 * Math.pow(level, 2) - (0.5 * level) + 1);
                 int max = (2*level) + 6;
                 if(absorptionAmount + i > max) {
-                    player.setAbsorptionAmount(absorptionAmount);
+                    entityLivingBase.setAbsorptionAmount(absorptionAmount);
                 } else {
-                    player.setAbsorptionAmount(absorptionAmount + i);
+                    entityLivingBase.setAbsorptionAmount(absorptionAmount + i);
                 }
             }
         }

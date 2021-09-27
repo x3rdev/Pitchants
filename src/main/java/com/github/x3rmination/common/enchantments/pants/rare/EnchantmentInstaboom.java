@@ -28,7 +28,7 @@ public class EnchantmentInstaboom extends Enchantment {
 
     private boolean triggered = false;
     public EnchantmentInstaboom() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("instaboom");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":instaboom"));
 

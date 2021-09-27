@@ -6,6 +6,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
@@ -51,7 +52,7 @@ public class EnchantmentArrowArmory extends Enchantment {
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
 
-        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
+        if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getSource().isProjectile()) {
 
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
@@ -66,7 +67,7 @@ public class EnchantmentArrowArmory extends Enchantment {
 
 
                 if (player.isCreative() || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND)) > 0) {
-                    EntityLiving entity = (EntityLiving) event.getEntityLiving();
+                    EntityLivingBase entity = event.getEntityLiving();
                     entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
                 } else if (itemStackMatching(player, arrowCount)) {
                     ItemStack playerArrows = new ItemStack(Items.ARROW);
@@ -79,7 +80,7 @@ public class EnchantmentArrowArmory extends Enchantment {
                         playerArrows.setCount(player.getItemStackFromSlot(EntityEquipmentSlot.OFFHAND).getCount() - arrowCount - 1);
                         player.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, playerArrows);
                     }
-                    EntityLiving entity = (EntityLiving) event.getEntityLiving();
+                    EntityLivingBase entity = event.getEntityLiving();
                     entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
                 }
 

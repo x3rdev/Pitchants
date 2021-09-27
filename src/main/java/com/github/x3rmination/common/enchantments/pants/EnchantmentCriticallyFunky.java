@@ -5,6 +5,7 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
@@ -44,9 +45,9 @@ public class EnchantmentCriticallyFunky extends Enchantment {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLivingBase = event.getEntityLiving();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne) {
                 event.setAmount(event.getAmount());
                 empowered = true;
@@ -56,9 +57,9 @@ public class EnchantmentCriticallyFunky extends Enchantment {
 
     @SubscribeEvent
     public void onAttack(LivingAttackEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLivingBase = event.getEntityLiving();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && empowered) {
                 empowered = false;
                 float percent = (float) ((Math.pow(level, 2) * 0.01) + (0.11 * level) - 0.12);

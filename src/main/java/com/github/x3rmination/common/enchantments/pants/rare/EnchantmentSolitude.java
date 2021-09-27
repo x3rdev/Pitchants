@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EnchantmentSolitude extends Enchantment {
 
     public EnchantmentSolitude() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("solitude");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":solitude"));
 
@@ -41,8 +41,8 @@ public class EnchantmentSolitude extends Enchantment {
 
     @SubscribeEvent
     public void onHit(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer entityLiving = (EntityPlayer) event.getEntityLiving();
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOLITUDE, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {

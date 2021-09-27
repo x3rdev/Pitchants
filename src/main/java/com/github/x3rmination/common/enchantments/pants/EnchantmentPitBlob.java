@@ -6,6 +6,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -55,7 +56,7 @@ public class EnchantmentPitBlob extends Enchantment {
 
     @SubscribeEvent
     public void onLivingDeath(LivingDeathEvent event) {
-        if (event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityPlayer) {
+        if (event.getEntityLiving() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
             World world = event.getEntityLiving().getEntityWorld();
             EntityPlayer user = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PIT_BLOB, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS));

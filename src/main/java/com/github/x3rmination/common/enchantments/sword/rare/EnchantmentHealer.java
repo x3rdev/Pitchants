@@ -1,32 +1,27 @@
-package com.github.x3rmination.common.enchantments.bow;
+package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Objects;
-
-public class EnchantmentParasite extends Enchantment {
-
+public class EnchantmentHealer extends Enchantment {
     private static boolean handled = false;
 
-    public EnchantmentParasite() {
-        super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("parasite");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":parasite"));
-
+    public EnchantmentHealer() {
+        super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        this.setName("healer");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":healer"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 8 * enchantmentLevel;
+        return 20 * enchantmentLevel;
     }
 
     @Override
@@ -41,13 +36,13 @@ public class EnchantmentParasite extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile()) {
-            if (handled) {
-                handled = false;
-                return;
-            }
-            user.heal((float) (0.125*(Math.pow(level, 2)) - (0.125*level) + 0.25));
-            handled = true;
+        if (handled){
+            handled = false;
+            return;
         }
+        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4)) {
+            target.setDead();
+        }
+        handled = true;
     }
 }

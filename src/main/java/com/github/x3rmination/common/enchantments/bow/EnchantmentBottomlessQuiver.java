@@ -5,9 +5,7 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
@@ -15,7 +13,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class EnchantmentBottomlessQuiver extends Enchantment {
 
@@ -37,8 +34,8 @@ public class EnchantmentBottomlessQuiver extends Enchantment {
                 return;
             }
 
-            if (!(target instanceof EntityLiving)) return;
-            DamageSource lastHit = ((EntityLiving) target).getLastDamageSource();
+            if (!(target instanceof EntityLivingBase)) return;
+            DamageSource lastHit = ((EntityLivingBase) target).getLastDamageSource();
             assert lastHit != null;
             if (lastHit.isProjectile()) {
                 ItemStack arrow = new ItemStack(Items.ARROW);

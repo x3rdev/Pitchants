@@ -1,32 +1,31 @@
-package com.github.x3rmination.common.enchantments.bow;
+package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Objects;
-
-public class EnchantmentParasite extends Enchantment {
+public class EnchantmentComboStun extends Enchantment {
 
     private static boolean handled = false;
+    private int hitCount = 0;
 
-    public EnchantmentParasite() {
-        super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("parasite");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":parasite"));
-
+    public EnchantmentComboStun() {
+        super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        this.setName("combo_stun");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_stun"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
-        return 8 * enchantmentLevel;
+        return 20 * enchantmentLevel;
     }
 
     @Override
@@ -41,13 +40,15 @@ public class EnchantmentParasite extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile()) {
-            if (handled) {
-                handled = false;
-                return;
-            }
-            user.heal((float) (0.125*(Math.pow(level, 2)) - (0.125*level) + 0.25));
-            handled = true;
+        if (handled){
+            handled = false;
+            return;
         }
+        hitCount +=1;
+        if(hitCount >= 5 && !user.isSwingInProgress) {
+            hitCount = 0;
+            user.addPotionEffect(new PotionEffect(PotionInit.STUN, 10 * level, 0));
+        }
+        handled = true;
     }
 }

@@ -70,9 +70,9 @@ public class EnchantmentCricket extends Enchantment {
 
     @SubscribeEvent
     public void onHit(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntity();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLivingBase = (EntityLivingBase) event.getEntity();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && onGrass) {
                 float percent = (float) ((Math.pow(level, 2) * 0.08) - (0.22 * level) + 0.19);
                 event.setAmount(event.getAmount()-(event.getAmount()*percent));

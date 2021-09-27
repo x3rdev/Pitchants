@@ -6,6 +6,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -41,8 +42,8 @@ public class EnchantmentRingArmor extends Enchantment {
 
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityLiving) {
-            EntityLiving entityLiving = (EntityLiving) event.getEntityLiving();
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.RING_ARMOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(event.getSource().getTrueSource() instanceof EntityArrow && level > 0) {
                 event.setAmount((float) (event.getAmount() - (event.getAmount() * (0.2 * level))));

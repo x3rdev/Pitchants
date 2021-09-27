@@ -1,21 +1,16 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
-import ibxm.Player;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -47,10 +42,10 @@ public class EnchantmentJumpSpammer extends Enchantment {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            if(player.isAirBorne) {
-                int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+        if(event.getEntityLiving() instanceof EntityLivingBase) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
+            if(entityLiving.isAirBorne) {
+                int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
                 if (level > 0) {
                     float baseDamage = event.getAmount();
                     event.setAmount(baseDamage * ((10*level) - 10));

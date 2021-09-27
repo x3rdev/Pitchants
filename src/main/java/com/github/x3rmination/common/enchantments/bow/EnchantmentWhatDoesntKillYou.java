@@ -7,9 +7,7 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Objects;
@@ -42,18 +40,15 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLiving) {
-            if((Objects.requireNonNull(((EntityLiving) target).getLastDamageSource())).isProjectile()) {
-                if (handled) {
-                    handled = false;
-                    return;
-                }
-                if(user == target) {
-                    user.heal((float) (1 + (level * 0.5)));
-                }
-                handled = true;
+        if(target instanceof EntityLivingBase && (Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile()) {
+            if (handled) {
+                handled = false;
+                return;
             }
+            if(user == target) {
+                user.heal((float) (1 + (level * 0.5)));
+            }
+            handled = true;
         }
-
     }
 }

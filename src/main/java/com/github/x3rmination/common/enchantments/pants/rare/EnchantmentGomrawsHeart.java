@@ -23,7 +23,7 @@ public class EnchantmentGomrawsHeart extends Enchantment {
     private boolean inCombat = false;
     private boolean isReady = true;
     public EnchantmentGomrawsHeart() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("gomraws_heart");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":gomraws_heart"));
 

@@ -17,7 +17,7 @@ public class EnchantmentAssassin extends Enchantment {
     private boolean isReady = true;
     private static boolean handled = false;
     public EnchantmentAssassin() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("assassin");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":assassin"));
 
@@ -41,15 +41,13 @@ public class EnchantmentAssassin extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(user instanceof EntityPlayer && user.isSneaking() && isReady) {
-            Minecraft mc = Minecraft.getMinecraft();
+        if(user.isSneaking() && isReady) {
             if (handled) {
                 handled = false;
                 return;
             }
             BlockPos pos = new BlockPos(attacker.posX+(-2*attacker.getLookVec().x), attacker.posY+10, attacker.posZ+(-2*attacker.getLookVec().z));
-            user.attemptTeleport(pos.getX(), pos.getY(), pos.getZ());
-            mc.player.sendChatMessage(String.valueOf(pos));
+            user.setPosition(pos.getX(), pos.getY(), pos.getZ());
             new Thread(() -> {
                 try {
                     Thread.sleep((long) (1000*((Math.pow(level, 2)*2.5)-(12.5*level)+20)));

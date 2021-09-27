@@ -1,24 +1,24 @@
-package com.github.x3rmination.common.enchantments.sword;
+package com.github.x3rmination.common.enchantments.sword.rare;
 
+import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Mod;
 
-public class EnchantmentComboPerunsWrath extends Enchantment {
-
+@Mod.EventBusSubscriber(modid= pitchants.MODID)
+public class EnchantmentExecutioner extends Enchantment {
     private static boolean handled = false;
-    private int hitCount = 0;
 
-    public EnchantmentComboPerunsWrath() {
-        super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setName("combo_peruns_wrath");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_peruns_wrath"));
+    public EnchantmentExecutioner() {
+        super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        this.setName("executioner");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":executioner"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 
@@ -43,13 +43,9 @@ public class EnchantmentComboPerunsWrath extends Enchantment {
             handled = false;
             return;
         }
-        hitCount +=1;
-        int hitReq = (int) ((Math.pow(level, 2)*0.5) - (-2.5 * level) + 7);
-        if(hitCount>=hitReq && !user.isSwingInProgress) {
-            target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, (float) (2.0*level));
-            user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
+        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4)) {
+            target.setDead();
         }
         handled = true;
     }
-
 }

@@ -8,6 +8,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -30,7 +31,7 @@ public class EnchantmentEscapePod extends Enchantment {
 
 
     public EnchantmentEscapePod() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("escape_pod");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":escape_pod"));
 
@@ -54,19 +55,19 @@ public class EnchantmentEscapePod extends Enchantment {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ESCAPE_POD, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && player.getHealth() <= 5 && isReady) {
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLivingBase = event.getEntityLiving();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ESCAPE_POD, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            if (level > 0 && entityLivingBase.getHealth() <= 5 && isReady) {
                 isReady = false;
                 event.setCanceled(true);
-                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, ((5*level)+15)*20, level));
-                player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 15, 9));
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 40, 4));
-                player.getEntityWorld().spawnParticle(EnumParticleTypes.CLOUD, player.posX, player.posY, player.posZ, 1, 1, 1);
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, ((5*level)+15)*20, level));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 15, 9));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 40, 4));
+                entityLivingBase.getEntityWorld().spawnParticle(EnumParticleTypes.CLOUD, entityLivingBase.posX, entityLivingBase.posY, entityLivingBase.posZ, 1, 1, 1);
 
-                AxisAlignedBB bounding = new AxisAlignedBB(player.getPosition().getX() - 2D, player.getPosition().getY() - 2D, player.getPosition().getZ() - 2D, player.getPosition().getX() + 2D, player.getPosition().getY() + 2D, player.getPosition().getZ() + 2D);
-                List<Entity> dmgList = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, bounding);
+                AxisAlignedBB bounding = new AxisAlignedBB(entityLivingBase.getPosition().getX() - 2D, entityLivingBase.getPosition().getY() - 2D, entityLivingBase.getPosition().getZ() - 2D, entityLivingBase.getPosition().getX() + 2D, entityLivingBase.getPosition().getY() + 2D, entityLivingBase.getPosition().getZ() + 2D);
+                List<Entity> dmgList = entityLivingBase.getEntityWorld().getEntitiesWithinAABBExcludingEntity(entityLivingBase, bounding);
                 int index = 0;
                 while(index < dmgList.size()) {
                     Entity bT = dmgList.get(index);
@@ -85,7 +86,7 @@ public class EnchantmentEscapePod extends Enchantment {
                     }
                 }).start();
             }
-            if(level > 0 && player.getHealth() <= 5 && !isReady) {
+            if(level > 0 && entityLivingBase.getHealth() <= 5 && !isReady) {
                 Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString("Escape Pod is still on cooldown!"), true);
             }
         }

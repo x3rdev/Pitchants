@@ -7,6 +7,7 @@ import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentBillionare;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -109,6 +110,9 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentPainFocus());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPunisher());
         MinecraftForge.EVENT_BUS.register(new EnchantmentShark());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentBillionare());
+
+
 //        RegistryHandler.postInitRegistries(event);
 
     }

@@ -48,9 +48,9 @@ public class EnchantmentPushComesToShove extends Enchantment {
 
     @SubscribeEvent
     public void onKnockBack(LivingKnockBackEvent event) {
-        if (event.getAttacker() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getAttacker();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PUSH_COMES_TO_SHOVE, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+        if (event.getAttacker() instanceof EntityLivingBase) {
+            EntityLivingBase entityLivingBase = (EntityLivingBase) event.getAttacker();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PUSH_COMES_TO_SHOVE, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if (level > 0) {
                 if(hitcount < 3) {
                     hitcount++;

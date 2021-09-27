@@ -7,6 +7,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -43,8 +44,8 @@ public class EnchantmentMirror extends Enchantment{
 
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityLiving) {
-            EntityLiving entityLiving = (EntityLiving) event.getEntityLiving();
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIRROR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(event.getSource().getDamageType().equals(TrueDamage.TRUE_DAMAGE.getDamageType())) {
                 event.setCanceled(true);

@@ -5,17 +5,11 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -50,18 +44,18 @@ public class EnchantmentElectrolytes extends Enchantment {
 
     @SubscribeEvent
     public void onKill(LivingDeathEvent event) {
-        if(event.getSource().getTrueSource() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ELECTROLYTES, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && player.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240) {
-                int amplifier = Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED)).getAmplifier();
+        if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
+            EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ELECTROLYTES, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240) {
+                int amplifier = Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getAmplifier();
                 if(amplifier == 0) {
                     int ticksAddedPerKill = level * 40;
-                    player.addPotionEffect(new PotionEffect(MobEffects.SPEED, (Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED)).getDuration() + ticksAddedPerKill), (Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED))).getAmplifier(), true, true));
+                    entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SPEED, (Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() + ticksAddedPerKill), (Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED))).getAmplifier(), true, true));
                 }
                 if(amplifier > 1) {
                     int ticksAddedPerKill = level * 20;
-                    player.addPotionEffect(new PotionEffect(MobEffects.SPEED, (Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED)).getDuration() + ticksAddedPerKill), (Objects.requireNonNull(player.getActivePotionEffect(MobEffects.SPEED))).getAmplifier(), true, true));
+                    entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SPEED, (Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() + ticksAddedPerKill), (Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED))).getAmplifier(), true, true));
                 }
             }
         }

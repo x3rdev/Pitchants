@@ -8,6 +8,10 @@ import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentBillionare;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentComboPerunsWrath;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentComboStun;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentExecutioner;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -44,6 +48,7 @@ public final class EnchantmentInit {
     public static final Enchantment SNIPER = new EnchantmentSniper();
     public static final Enchantment WHAT_DOESNT_KILL_YOU = new EnchantmentWhatDoesntKillYou();
     public static final Enchantment WASP = new EnchantmentWasp();
+
     public static final Enchantment DEVIL_CHICKS = new EnchantmentDevilChicks();
     public static final Enchantment EXPLOSIVE = new EnchantmentExplosive();
     public static final Enchantment LUCKY_SHOT = new EnchantmentLuckyShot();
@@ -74,6 +79,7 @@ public final class EnchantmentInit {
     public static final Enchantment REVITALIZE = new EnchantmentRevitalize();
     public static final Enchantment RING_ARMOR = new EnchantmentRingArmor();
     public static final Enchantment TNT = new EnchantmentTNT();
+
     public static final Enchantment ASSASSIN = new EnchantmentAssassin();
     public static final Enchantment ESCAPE_POD = new EnchantmentEscapePod();
     public static final Enchantment GOMRAWS_HEART = new EnchantmentGomrawsHeart();
@@ -89,7 +95,7 @@ public final class EnchantmentInit {
     public static final Enchantment BERSERKER = new EnchantmentBerserker();
     public static final Enchantment BULLET_TIME = new EnchantmentBulletTime();
     public static final Enchantment COMBO_DAMAGE = new EnchantmentComboDamage();
-    public static final Enchantment COMBO_PERUNS_WRATH = new EnchantmentComboPerunsWrath();
+    public static final Enchantment COMBO_HEAL = new EnchantmentComboHeal();
     public static final Enchantment CRUSH = new EnchantmentCrush();
     public static final Enchantment DIAMOND_STOMP = new EnchantmentDiamondStomp();
     public static final Enchantment GOLD_AND_BOOSTED = new EnchantmentGoldAndBoosted();
@@ -100,6 +106,12 @@ public final class EnchantmentInit {
     public static final Enchantment PAIN_FOCUS = new EnchantmentPainFocus();
     public static final Enchantment PUNISHER = new EnchantmentPunisher();
     public static final Enchantment SHARK = new EnchantmentShark();
+    public static final Enchantment SPEEDY_KILL = new EnchantmentSpeedyKill();
+
+    public static final Enchantment BILLIONARE = new EnchantmentBillionare();
+    public static final Enchantment COMBO_PERUNS_WRATH = new EnchantmentComboPerunsWrath();
+    public static final Enchantment COMBO_STUN = new EnchantmentComboStun();
+    public static final Enchantment EXECUTIONER = new EnchantmentExecutioner();
 
 
 }

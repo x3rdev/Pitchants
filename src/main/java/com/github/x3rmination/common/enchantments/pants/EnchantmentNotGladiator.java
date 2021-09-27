@@ -43,9 +43,9 @@ public class EnchantmentNotGladiator extends Enchantment {
 
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityLiving) {
-            EntityLiving entityLiving = (EntityLiving) event.getEntityLiving();
-            World world = event.getEntityLiving().getEntityWorld();
+        if(event.getEntityLiving() != null) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
+            World world = entityLiving.getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NOT_GLADIATOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {
                 AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 16D, entityLiving.getPosition().getY() - 16D, entityLiving.getPosition().getZ() - 16D, entityLiving.getPosition().getX() + 16D, entityLiving.getPosition().getY() + 16D, entityLiving.getPosition().getZ() + 16D);

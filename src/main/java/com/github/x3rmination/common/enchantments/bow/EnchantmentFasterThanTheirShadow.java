@@ -1,22 +1,14 @@
 package com.github.x3rmination.common.enchantments.bow;
 
-import akka.japi.Effect;
-import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
-import net.minecraft.potion.PotionType;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Objects;
@@ -37,7 +29,7 @@ public class EnchantmentFasterThanTheirShadow extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(Objects.requireNonNull(((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile()) {
             if (handled) {
                 handled = false;
                 return;

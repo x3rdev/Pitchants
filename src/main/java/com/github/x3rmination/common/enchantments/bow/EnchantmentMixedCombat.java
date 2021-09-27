@@ -5,6 +5,7 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -42,8 +43,8 @@ public class EnchantmentMixedCombat extends Enchantment {
 
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
-        if (event.getSource().getTrueSource() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
+            EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIXED_COMBAT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if (level > 0) {
                 if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().damageType.equals("player")) {

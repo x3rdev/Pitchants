@@ -29,7 +29,7 @@ public class EnchantmentChipping extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if((((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+        if((Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile()) {
             if (handled) {
                 handled = false;
                 return;

@@ -48,7 +48,7 @@ public class EnchantmentPinDown extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(Objects.requireNonNull(((EntityLiving) target).getLastDamageSource()).isProjectile()) {
+        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile()) {
             if (handled) {
                 handled = false;
                 return;
@@ -56,7 +56,7 @@ public class EnchantmentPinDown extends Enchantment {
             int potionDuration = (int) (((1.5 * Math.pow(level, 2)) - (2.5*level) + 4)*20);
             PotionEffect pinDown = new PotionEffect(PotionInit.PIN_DOWN, potionDuration*20, 0, true, true);
 
-            ((EntityLiving) target).addPotionEffect(pinDown);
+            ((EntityLivingBase) target).addPotionEffect(pinDown);
             handled = true;
         }
     }

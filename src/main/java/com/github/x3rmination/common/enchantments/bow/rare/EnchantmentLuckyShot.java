@@ -45,9 +45,9 @@ public class EnchantmentLuckyShot extends Enchantment{
 
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
-        if (event.getSource().getTrueSource() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
+        if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
+            EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             float reqAmount = (float) (Math.pow(level, 2) + 1);
             if (level > 0 && (Math.random()*100) < reqAmount) {
                 event.setAmount(event.getAmount()*4);

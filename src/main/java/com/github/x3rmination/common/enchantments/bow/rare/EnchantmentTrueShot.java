@@ -5,6 +5,7 @@ import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -41,8 +42,8 @@ public class EnchantmentTrueShot extends Enchantment {
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
 
-        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getSource().isProjectile()) {
+            EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TRUE_SHOT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if (level > 0) {
                 float hearts = (float) ((0.25 * level) - 0.25);

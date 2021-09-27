@@ -23,7 +23,7 @@ public class EnchantmentWolfPack extends Enchantment {
     private EntityWolf wolf;
 
     public EnchantmentWolfPack() {
-        super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("wolf_pack");
         this.setRegistryName(new ResourceLocation(pitchants.MODID + ":wolf_pack"));
 
