@@ -8,10 +8,7 @@ import com.github.x3rmination.common.enchantments.bow.rare.*;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
-import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentBillionare;
-import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentComboPerunsWrath;
-import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentComboStun;
-import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentExecutioner;
+import com.github.x3rmination.common.enchantments.sword.rare.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
 import java.util.ArrayList;
@@ -112,6 +109,8 @@ public final class EnchantmentInit {
     public static final Enchantment COMBO_PERUNS_WRATH = new EnchantmentComboPerunsWrath();
     public static final Enchantment COMBO_STUN = new EnchantmentComboStun();
     public static final Enchantment EXECUTIONER = new EnchantmentExecutioner();
+    public static final Enchantment HEALER = new EnchantmentHealer();
+    public static final Enchantment HEMORRHAGE = new EnchantmentHemorrhage();
 
 
 }

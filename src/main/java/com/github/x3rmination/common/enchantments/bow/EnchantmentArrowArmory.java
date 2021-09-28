@@ -52,7 +52,7 @@ public class EnchantmentArrowArmory extends Enchantment {
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
 
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getSource().isProjectile()) {
+        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
 
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));

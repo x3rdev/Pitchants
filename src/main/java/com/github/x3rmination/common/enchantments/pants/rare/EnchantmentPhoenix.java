@@ -54,7 +54,7 @@ public class EnchantmentPhoenix extends Enchantment {
             int itemDura = legs.getMaxDamage()/10;
             if(itemDura < legs.getMaxDamage()-legs.getItemDamage() && level > 0) {
                 event.setCanceled(true);
-                entityLiving.addPotionEffect(new PotionEffect(PotionInit.RESURRECTED_POTION, 60, 0));
+                entityLiving.addPotionEffect(new PotionEffect(PotionInit.RESURRECTED, 60, 0));
                 legs.damageItem(itemDura, entityLiving);
                 entityLiving.sendStatusMessage(new TextComponentString("Resurrected").setStyle(new Style().setColor(TextFormatting.GREEN)), true);
             }
@@ -66,7 +66,7 @@ public class EnchantmentPhoenix extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PHOENIX, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 1 && entityLiving.isPotionActive(PotionInit.RESURRECTED_POTION)) {
+            if(level > 1 && entityLiving.isPotionActive(PotionInit.RESURRECTED)) {
                 event.setAmount((float) (event.getAmount()+(event.getAmount()*((Math.pow(level, 2) * -0.025) + (0.175*level) - 0.15))));
             }
         }

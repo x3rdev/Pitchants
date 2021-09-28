@@ -40,8 +40,9 @@ public class EnchantmentHealer extends Enchantment {
             handled = false;
             return;
         }
-        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4)) {
-            target.setDead();
+        user.heal((float) (2.0*level));
+        if(target instanceof EntityLivingBase) {
+            ((EntityLivingBase) target).heal((float) (2.0*level));
         }
         handled = true;
     }
