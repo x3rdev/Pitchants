@@ -18,7 +18,7 @@ public final class PotionInit {
     public static final Potion STUN = new StunPotion("stun", true, 0x4d5a6e, 0, 0).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "C821B10E-651F-4135-8D29-B0270B71A274", -1D, 2);
     public static final Potion PIN_DOWN = new PinDownPotion("pin_down", true, 5123996, 1, 0);
     public static final Potion RESURRECTED = new ResurrectedPotion("resurrected", false, 0xff4400, 2, 0);
-    public static final Potion BLEEDING = new BleedingPotion("bleeding", true, 0xff0000, 3, 0).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "C821B10E-651F-4135-8D29-B0270B71A274", -1D, 2);
+    public static final Potion BLEEDING = new BleedingPotion("bleeding", true, 0xff0000, 3, 0).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "FA395A1E-D8DE-4850-942F-034F5274938E", -0.1D, 2);
 
     public static void registerPotions(){
         registerPotion(STUN);

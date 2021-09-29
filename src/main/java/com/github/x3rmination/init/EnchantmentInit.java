@@ -2,9 +2,9 @@ package com.github.x3rmination.init;
 
 
 
-import com.github.x3rmination.common.enchantments.EnchantmentPerun;
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSomber;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
@@ -21,6 +21,7 @@ public final class EnchantmentInit {
     }
 
     public static final List<Enchantment> ENCHANTMENTS = new ArrayList<>();
+    public static final List<Enchantment> DARK_ENCHANTMENTS = new ArrayList<>();
     public static final DamageSource TRUE_DAMAGE = (new DamageSource("trueDamage")).setDamageBypassesArmor().setDamageIsAbsolute();
 
 
@@ -28,7 +29,6 @@ public final class EnchantmentInit {
     /*
     Bow Enchantments
      */
-    public static final Enchantment PERUN = new EnchantmentPerun();
     public static final Enchantment ARROW_ARMORY = new EnchantmentArrowArmory();
     public static final Enchantment BOTTOMLESS_QUIVER = new EnchantmentBottomlessQuiver();
     public static final Enchantment CHIPPING = new EnchantmentChipping();
@@ -111,6 +111,11 @@ public final class EnchantmentInit {
     public static final Enchantment EXECUTIONER = new EnchantmentExecutioner();
     public static final Enchantment HEALER = new EnchantmentHealer();
     public static final Enchantment HEMORRHAGE = new EnchantmentHemorrhage();
+    public static final Enchantment SPEEDY_HIT = new EnchantmentSpeedyHit();
 
+    /*
+    Other Enchantments
+     */
+    public static final Enchantment SOMBER = new EnchantmentSomber();
 
 }

@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 public class FindAmmo {
 
     public boolean isArrow(ItemStack stack) {
-
         return stack.getItem() instanceof ItemArrow;
     }
 

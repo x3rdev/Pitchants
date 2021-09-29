@@ -29,6 +29,7 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void registerEnchantment(RegistryEvent.Register<Enchantment> event) {
         event.getRegistry().registerAll(EnchantmentInit.ENCHANTMENTS.toArray(new Enchantment[0]));
+        event.getRegistry().registerAll(EnchantmentInit.DARK_ENCHANTMENTS.toArray(new Enchantment[0]));
     }
 
     public static void preInitRegistries(FMLPreInitializationEvent event) {
