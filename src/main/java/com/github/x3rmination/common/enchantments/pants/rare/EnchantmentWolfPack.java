@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -51,7 +52,7 @@ public class EnchantmentWolfPack extends Enchantment {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.WOLF_PACK, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && wolfcount < (2 * level) + 3) {
+            if(level > 0 && wolfcount < (2 * level) + 3 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                 killcount+=1;
                 if(killcount >= ((Math.pow(level, 2) * 0.5) - (2.5*level) + 6)){
                     killcount = 0;

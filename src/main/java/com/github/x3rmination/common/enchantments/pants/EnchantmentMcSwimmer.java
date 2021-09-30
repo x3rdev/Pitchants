@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -14,6 +15,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid= pitchants.MODID)
 public class EnchantmentMcSwimmer extends Enchantment {
@@ -45,7 +48,7 @@ public class EnchantmentMcSwimmer extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MCSWIMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && entityLiving.getLastDamageSource().isUnblockable()) {
+            if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && Objects.requireNonNull(entityLiving.getLastDamageSource()).isUnblockable() && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                 int percent = (int) (2.5 * Math.pow(level, 2) + (7.5 * level) + 15);
                 event.setAmount((event.getAmount() * 100) - (event.getAmount() * percent));
             }

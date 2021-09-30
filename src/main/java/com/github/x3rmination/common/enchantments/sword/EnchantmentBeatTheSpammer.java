@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,7 +48,7 @@ public class EnchantmentBeatTheSpammer extends Enchantment {
             EntityLivingBase victim = event.getEntityLiving();
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BEAT_THE_SPAMMER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).getItem() instanceof ItemBow) {
+            if(level > 0 && victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).getItem() instanceof ItemBow && !source.isPotionActive(PotionInit.VENOM)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.09) - (0.2 * level) + 0.19))));
             }
         }

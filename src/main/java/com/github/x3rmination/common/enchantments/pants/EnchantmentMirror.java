@@ -2,6 +2,7 @@ package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,7 +48,7 @@ public class EnchantmentMirror extends Enchantment{
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIRROR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(event.getSource().getDamageType().equals(TrueDamage.TRUE_DAMAGE.getDamageType())) {
+            if(event.getSource().getDamageType().equals(TrueDamage.TRUE_DAMAGE.getDamageType()) && !entityLiving.isPotionActive(PotionInit.VENOM) && level > 0) {
                 event.setCanceled(true);
                 float reflected = (float) (event.getAmount() * ((0.25 * level) - 0.25));
                 if(level > 1) {

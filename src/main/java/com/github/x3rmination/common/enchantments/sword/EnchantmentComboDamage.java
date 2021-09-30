@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -51,7 +52,7 @@ public class EnchantmentComboDamage extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
+            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
                 hitCount += 1;
                 int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
                 if(hitCount >= hitReq) {

@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -41,7 +42,7 @@ public class EnchantmentGuts extends Enchantment {
             handled = false;
             return;
         }
-        if(target.isDead) {
+        if(target.isDead && !user.isPotionActive(PotionInit.VENOM)) {
             user.heal((float) ((Math.pow(level, 2) * 0.0625) + (0.6875 * level) - 0.625));
         }
         handled = true;

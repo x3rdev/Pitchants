@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -43,7 +44,7 @@ public class EnchantmentSpeedyHit extends Enchantment {
             handled = false;
             return;
         }
-        if(isReady) {
+        if(isReady && !user.isPotionActive(PotionInit.VENOM)) {
             isReady = false;
             user.addPotionEffect(new PotionEffect(MobEffects.SPEED, (40 * level) + 60, 0));
             new Thread(() -> {

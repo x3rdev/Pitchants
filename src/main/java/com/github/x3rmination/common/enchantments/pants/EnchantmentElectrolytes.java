@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,7 +48,7 @@ public class EnchantmentElectrolytes extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ELECTROLYTES, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240) {
+            if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 int amplifier = Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getAmplifier();
                 if(amplifier == 0) {
                     int ticksAddedPerKill = level * 40;

@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -50,7 +51,7 @@ public class EnchantmentExplosive extends Enchantment {
             if (arrow.shootingEntity instanceof EntityPlayer) {
                 EntityPlayer entityLiving = (EntityPlayer) arrow.shootingEntity;
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPLOSIVE, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0 && !world.isRemote) {
+                if (level > 0 && !world.isRemote && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                     world.createExplosion(null, arrow.posX, arrow.posY, arrow.posZ, (float) (level + 1.0), false);
                 }
             }

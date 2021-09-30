@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -45,7 +46,7 @@ public class EnchantmentRingArmor extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.RING_ARMOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(event.getSource().getTrueSource() instanceof EntityArrow && level > 0) {
+            if(event.getSource().getTrueSource() instanceof EntityArrow && level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                 event.setAmount((float) (event.getAmount() - (event.getAmount() * (0.2 * level))));
             }
         }

@@ -2,6 +2,7 @@ package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -43,7 +44,7 @@ public class EnchantmentExecutioner extends Enchantment {
             handled = false;
             return;
         }
-        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4)) {
+        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4) && !user.isPotionActive(PotionInit.VENOM)) {
             target.setDead();
         }
         handled = true;

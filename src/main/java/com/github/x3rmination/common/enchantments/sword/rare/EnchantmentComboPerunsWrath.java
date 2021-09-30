@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -43,12 +44,14 @@ public class EnchantmentComboPerunsWrath extends Enchantment {
             handled = false;
             return;
         }
-        hitCount +=1;
-        int hitReq = (int) ((Math.pow(level, 2)*0.5) - (-2.5 * level) + 7);
-        if(hitCount>=hitReq && !user.isSwingInProgress) {
-            hitCount = 0;
-            target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, (float) (2.0*level));
-            user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            hitCount += 1;
+            int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (-2.5 * level) + 7);
+            if (hitCount >= hitReq && !user.isSwingInProgress) {
+                hitCount = 0;
+                target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, (float) (2.0 * level));
+                user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
+            }
         }
         handled = true;
     }

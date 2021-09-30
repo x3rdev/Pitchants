@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -12,6 +13,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -49,7 +51,7 @@ public class EnchantmentDevilChicks extends Enchantment {
             if(arrow.shootingEntity instanceof EntityPlayer) {
                 EntityPlayer entityPlayer = (EntityPlayer) arrow.shootingEntity;
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DEVIL_CHICKS, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0) {
+                if (level > 0 && !entityPlayer.isPotionActive(PotionInit.VENOM)) {
                     int i = (int) (0.5 * Math.pow(level, 2) - (0.5 * level) + 1);
                     while (i > 0 && !world.isRemote) {
                         BlockPos pos = event.getEntity().getPosition();

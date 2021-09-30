@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
@@ -57,7 +58,7 @@ public class EnchantmentCricket extends Enchantment {
         BlockPos posBelow = player.getPosition().down();
         IBlockState blockStateBelow = player.world.getBlockState(posBelow);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS)) {
+        if (level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !player.isPotionActive(PotionInit.VENOM)) {
             if(!player.isPotionActive(MobEffects.REGENERATION)) {
                 player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 40, 0, true, true));
             }
@@ -73,7 +74,7 @@ public class EnchantmentCricket extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && onGrass) {
+            if (level > 0 && onGrass && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 float percent = (float) ((Math.pow(level, 2) * 0.08) - (0.22 * level) + 0.19);
                 event.setAmount(event.getAmount()-(event.getAmount()*percent));
             }

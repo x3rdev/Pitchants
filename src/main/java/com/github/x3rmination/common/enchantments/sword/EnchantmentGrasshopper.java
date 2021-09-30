@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -50,7 +51,7 @@ public class EnchantmentGrasshopper extends Enchantment {
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GRASSHOPPER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             BlockPos posBelow = livingBase.getPosition().down();
             IBlockState blockStateBelow = livingBase.world.getBlockState(posBelow);
-            if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS)) {
+            if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !source.isPotionActive(PotionInit.VENOM)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.01) + (0.01 * level) + 0.03))));
             }
         }

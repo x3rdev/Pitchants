@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -49,7 +50,7 @@ public class EnchantmentHearts extends Enchantment {
         EntityLivingBase living = event.getEntityLiving();
         ItemStack eventItem = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.HEARTS, living.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 ) {
+        if (level > 0 && !living.isPotionActive(PotionInit.VENOM)) {
             float attribute = (float) (0.25 * Math.pow(level, 2) - (0.25 * level) + 0.5);
             Collection<AttributeModifier> collection = eventItem.getAttributeModifiers(EntityEquipmentSlot.LEGS).get("generic.armor");
             if(!collection.isEmpty()){

@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -42,9 +43,8 @@ public class EnchantmentBooboo extends Enchantment {
     public void onTick(TickEvent.PlayerTickEvent event) {
 
         EntityPlayer player = event.player;
-
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BOOBOO, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && isReady) {
+        if (level > 0 && isReady && !player.isPotionActive(PotionInit.VENOM)) {
             isReady = false;
             int waitAmount = 6000 - (level * 1000);
             new Thread(() -> {

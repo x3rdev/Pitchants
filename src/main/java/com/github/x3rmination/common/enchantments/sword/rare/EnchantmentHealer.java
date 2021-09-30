@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -40,9 +41,11 @@ public class EnchantmentHealer extends Enchantment {
             handled = false;
             return;
         }
-        user.heal((float) (2.0*level));
-        if(target instanceof EntityLivingBase) {
-            ((EntityLivingBase) target).heal((float) (2.0*level));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            user.heal((float) (2.0 * level));
+            if (target instanceof EntityLivingBase) {
+                ((EntityLivingBase) target).heal((float) (2.0 * level));
+            }
         }
         handled = true;
     }

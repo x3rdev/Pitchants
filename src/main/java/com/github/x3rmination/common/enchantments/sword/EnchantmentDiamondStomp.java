@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -44,7 +45,7 @@ public class EnchantmentDiamondStomp extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DIAMOND_STOMP, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
+            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
                 EntityLivingBase living = event.getEntityLiving();
                 if(living.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem().equals(Items.DIAMOND_HELMET) || living.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem().equals(Items.DIAMOND_CHESTPLATE) || living.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem().equals(Items.DIAMOND_LEGGINGS) || living.getItemStackFromSlot(EntityEquipmentSlot.FEET).getItem().equals(Items.DIAMOND_BOOTS)) {
                     event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.035) - (0.045 * level)  + 0.07))));

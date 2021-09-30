@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -43,7 +44,7 @@ public class EnchantmentCounterJanitor extends Enchantment {
             handled = false;
             return;
         }
-        if(target.isDead) {
+        if(target.isDead && !user.isPotionActive(PotionInit.VENOM)) {
             user.addPotionEffect(new PotionEffect(MobEffects.SPEED , (int) ((Math.pow(level, 2) * 10) - (10 * level) +40), 0));
         }
         handled = true;

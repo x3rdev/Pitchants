@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,7 +48,7 @@ public class EnchantmentEggs extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer && event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EGGS, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0) {
+            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 ItemStack eggs = new ItemStack(Items.EGG, (int) (Math.pow(level, 2)*5) - (13 * level) + 10);
                 player.addItemStackToInventory(eggs);
             }

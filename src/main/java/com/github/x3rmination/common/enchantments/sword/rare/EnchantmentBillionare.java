@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -43,7 +44,7 @@ public class EnchantmentBillionare extends Enchantment {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             ItemStack itemStack = source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BILLIONARE, itemStack);
-            if(level > 0) {
+            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
                 itemStack.damageItem(itemStack.getMaxDamage()/20, source);
                 event.setAmount((float) (event.getAmount()*((Math.pow(level, 2) * -0.005) + (0.355 * level) + 0.98)));
             }

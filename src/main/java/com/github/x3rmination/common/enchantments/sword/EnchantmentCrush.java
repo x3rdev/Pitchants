@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -44,7 +45,7 @@ public class EnchantmentCrush extends Enchantment {
             handled = false;
             return;
         }
-        if(isReady) {
+        if(isReady && !user.isPotionActive(PotionInit.VENOM)) {
             isReady=false;
             user.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (Math.pow(level, 2) * -1) + (7 * level) - 2, level + 3));
             new Thread(() -> {

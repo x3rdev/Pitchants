@@ -3,6 +3,11 @@ package com.github.x3rmination.common.enchantments.other.dark;
 import com.github.x3rmination.core.helpers.CheckEnchantments;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.gui.GuiUtilRenderComponents;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -10,6 +15,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.GuiIngameForge;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -63,7 +70,6 @@ public class EnchantmentSomber extends Enchantment {
                     entityLiving.attackEntityFrom(DamageSource.GENERIC, event.getAmount());
                 }
             }
-
         }
     }
 }

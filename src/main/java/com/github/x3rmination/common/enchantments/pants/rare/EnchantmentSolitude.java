@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -45,7 +46,7 @@ public class EnchantmentSolitude extends Enchantment {
             EntityLivingBase entityLiving = event.getEntityLiving();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOLITUDE, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0) {
+            if(level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                 AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 3.5D, entityLiving.getPosition().getY() - 3.5D, entityLiving.getPosition().getZ() - 3.5D, entityLiving.getPosition().getX() + 3.5D, entityLiving.getPosition().getY() + 3.5D, entityLiving.getPosition().getZ() + 3.5D);
                 int reqEntities = (int) ((Math.pow(level, 2)*(-0.5))+(2.5*level)-1);
                 if(world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size() <= reqEntities) {

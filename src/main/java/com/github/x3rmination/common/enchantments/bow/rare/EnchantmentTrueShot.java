@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -45,7 +46,7 @@ public class EnchantmentTrueShot extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getSource().isProjectile()) {
             EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TRUE_SHOT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0) {
+            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 float hearts = (float) ((0.25 * level) - 0.25);
                 float percentDamage = (float) ((0.1 * level) + 0.15);
                 event.getEntityLiving().attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, (hearts + (event.getAmount()*percentDamage)));

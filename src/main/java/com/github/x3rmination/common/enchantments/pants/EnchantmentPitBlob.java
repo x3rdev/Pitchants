@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -60,7 +61,7 @@ public class EnchantmentPitBlob extends Enchantment {
             World world = event.getEntityLiving().getEntityWorld();
             EntityPlayer user = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PIT_BLOB, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && !world.isRemote && slimeSize <= 10) {
+            if (level > 0 && !world.isRemote && slimeSize <= 10 && !user.isPotionActive(PotionInit.VENOM)) {
                 entityPlayer = user;
                 kills += 1;
                 short killreq = (short) (4 - level);
@@ -100,7 +101,6 @@ public class EnchantmentPitBlob extends Enchantment {
     public void onTick(LivingAttackEvent event) {
         if(entityPlayer != null && event.getEntityLiving() == entityPlayer && event.getSource().getTrueSource() == blob) {
             event.setCanceled(true);
-
         }
     }
 

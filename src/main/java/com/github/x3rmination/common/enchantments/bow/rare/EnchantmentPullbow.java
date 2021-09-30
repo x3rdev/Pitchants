@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -44,7 +45,7 @@ public class EnchantmentPullbow extends Enchantment {
         if (event.getAttacker() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getAttacker();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PULL_BOW, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(isReady && level > 0) {
+            if(isReady && level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 float distance = (float) Math.sqrt(Math.pow(event.getEntity().posX-event.getAttacker().posX, 2)+Math.pow(event.getEntity().posY-event.getAttacker().posY, 2)+Math.pow(event.getEntity().posZ-event.getAttacker().posZ, 2));
                 event.setStrength((float) (-distance*0.37));
                 isReady = false;

@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -43,7 +44,7 @@ public class EnchantmentComboHeal extends Enchantment {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             ItemStack itemStack = source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_HEAL, itemStack);
-            if(level > 0) {
+            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
                 source.heal((float) (0.4 * level));
                 source.setAbsorptionAmount((float) (source.getAbsorptionAmount() + (0.4 * level)));
             }

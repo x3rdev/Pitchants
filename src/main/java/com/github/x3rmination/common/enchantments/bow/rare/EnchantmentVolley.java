@@ -2,6 +2,7 @@ package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.core.helpers.FindAmmo;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -52,7 +53,7 @@ public class EnchantmentVolley extends Enchantment {
         int i = event.getCharge();
         float f = getArrowVelocity(i);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.VOLLEY, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-        if (level > 0 && !event.getWorld().isRemote) {
+        if (level > 0 && !event.getWorld().isRemote && !event.getEntityLiving().isPotionActive(PotionInit.VENOM)) {
             if(ammoFinder.findAmmo(event.getEntityPlayer()).getItem() instanceof ItemArrow || event.getEntityPlayer().isCreative()) {
                 itemArrow = ammoFinder.findAmmo(event.getEntityPlayer());
                 int iterable = level + 1;

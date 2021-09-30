@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -43,12 +44,14 @@ public class EnchantmentLastStand extends Enchantment {
             handled = false;
             return;
         }
-        if(user.getHealth() <= 6 && ready) {
-            ready = false;
-            user.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, (int) (((-0.5 * Math.pow(level, 2)) + (2.5 * level) + 1)*20), level -1, true, true));
-        }
-        if(user.getHealth() > 6) {
-            ready = true;
+        if(!user.isPotionActive(PotionInit.VENOM)){
+            if (user.getHealth() <= 6 && ready) {
+                ready = false;
+                user.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, (int) (((-0.5 * Math.pow(level, 2)) + (2.5 * level) + 1) * 20), level - 1, true, true));
+            }
+            if (user.getHealth() > 6) {
+                ready = true;
+            }
         }
         handled = true;
     }

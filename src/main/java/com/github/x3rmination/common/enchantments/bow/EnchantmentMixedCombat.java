@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -46,7 +47,7 @@ public class EnchantmentMixedCombat extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIXED_COMBAT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0) {
+            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().damageType.equals("player")) {
                     if (empowered) {
                         event.setAmount((float) (event.getAmount() + (event.getAmount() * (0.1 * level))));

@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 
@@ -51,7 +52,7 @@ public class EnchantmentPushComesToShove extends Enchantment {
         if (event.getAttacker() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getAttacker();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PUSH_COMES_TO_SHOVE, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0) {
+            if (level > 0 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 if(hitcount < 3) {
                     hitcount++;
                 }

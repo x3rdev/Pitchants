@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -42,13 +43,11 @@ public class EnchantmentFirstShot extends Enchantment {
 
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
-
         if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
 
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.FIRST_SHOT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-
-            if (level > 0 && (event.getEntityLiving().getHealth() + 1 >= event.getEntityLiving().getMaxHealth())) {
+            if (level > 0 && (event.getEntityLiving().getHealth() + 1 >= event.getEntityLiving().getMaxHealth()) && !player.isPotionActive(PotionInit.VENOM)) {
                 int x = (int) event.getAmount();
                 int calcAmount = (int) (1.5*(Math.pow(x, 2)) + 1.5*x + 7);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);

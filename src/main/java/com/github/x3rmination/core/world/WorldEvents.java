@@ -44,11 +44,19 @@ public class WorldEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void bleedingPotionActive(LivingEvent.LivingUpdateEvent event) {
         EntityLivingBase entityLivingBase = event.getEntityLiving();
         if(entityLivingBase.isPotionActive(PotionInit.BLEEDING)) {
             entityLivingBase.setAbsorptionAmount(0);
+        }
+    }
+
+    @SubscribeEvent
+    public static void venomPotionActive(LivingEvent.LivingUpdateEvent event) {
+        EntityLivingBase entityLivingBase = event.getEntityLiving();
+        if(entityLivingBase.isPotionActive(PotionInit.VENOM)) {
         }
     }
 }

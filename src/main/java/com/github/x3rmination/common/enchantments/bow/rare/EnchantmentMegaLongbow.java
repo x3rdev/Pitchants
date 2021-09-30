@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -46,11 +47,10 @@ public class EnchantmentMegaLongbow extends Enchantment {
 
     @SubscribeEvent
     public void onLetGo(ArrowLooseEvent event) {
-
         EntityPlayer player = event.getEntityPlayer();
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
-        if(level > 0) {
+        if(level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
             player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, level, true, false));
             event.setCharge(27000);
             isReady = false;
@@ -62,7 +62,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
-        if(!isReady && level>0) {
+        if(!isReady && level>0 && !player.isPotionActive(PotionInit.VENOM)) {
             event.setCanceled(true);
             new Thread(() -> {
                 try {

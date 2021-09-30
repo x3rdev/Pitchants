@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -42,7 +43,7 @@ public class EnchantmentRevitalize extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(user.getHealth() <= 6 && isReady) {
+        if(user.getHealth() <= 6 && isReady && !user.isPotionActive(PotionInit.VENOM)) {
             if (handled) {
                 handled = false;
                 return;

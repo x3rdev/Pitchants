@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -28,11 +29,12 @@ public class EnchantmentBottomlessQuiver extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(!((EntityPlayer)user).isCreative()) {
-            if (handled) {
-                handled = false;
-                return;
-            }
+        if (handled) {
+            handled = false;
+            return;
+        }
+        if(!((EntityPlayer)user).isCreative() && !user.isPotionActive(PotionInit.VENOM)) {
+
 
             if (!(target instanceof EntityLivingBase)) return;
             DamageSource lastHit = ((EntityLivingBase) target).getLastDamageSource();

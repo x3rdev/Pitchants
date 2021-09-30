@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
@@ -41,7 +42,7 @@ public class EnchantmentAssassin extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(user.isSneaking() && isReady) {
+        if(user.isSneaking() && isReady && !user.isPotionActive(PotionInit.VENOM)) {
             if (handled) {
                 handled = false;
                 return;

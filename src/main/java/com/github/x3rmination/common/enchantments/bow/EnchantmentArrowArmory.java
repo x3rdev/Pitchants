@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -57,7 +58,7 @@ public class EnchantmentArrowArmory extends Enchantment {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
 
-            if (level > 0) {
+            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 float damage = event.getAmount();
                 double percentcalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
                 int percentDamage = (int) (percentcalc * damage);

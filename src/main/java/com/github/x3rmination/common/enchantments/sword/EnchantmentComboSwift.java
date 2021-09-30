@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -44,10 +45,12 @@ public class EnchantmentComboSwift extends Enchantment {
             handled = false;
             return;
         }
-        hitCount+=1;
-        int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
-        if(hitCount >= hitReq) {
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED ,(20*level) + 40, (int) ((Math.pow(level, 2) * -0.5) + (2.5 * level) - 2)));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            hitCount += 1;
+            int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
+            if (hitCount >= hitReq) {
+                user.addPotionEffect(new PotionEffect(MobEffects.SPEED, (20 * level) + 40, (int) ((Math.pow(level, 2) * -0.5) + (2.5 * level) - 2)));
+            }
         }
         handled = true;
     }

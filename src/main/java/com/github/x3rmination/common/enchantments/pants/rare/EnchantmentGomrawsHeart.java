@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -79,11 +80,11 @@ public class EnchantmentGomrawsHeart extends Enchantment {
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent event) {
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOMRAWS_HEART, event.player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if(level>1 && inCombat && isReady){
+        if(level>1 && inCombat && isReady && !event.player.isPotionActive(PotionInit.VENOM)){
             isReady = false;
             event.player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (level-1)*20, 3));
         }
-        if(level>0 && !inCombat){
+        if(level>0 && !inCombat && !event.player.isPotionActive(PotionInit.VENOM)){
             isReady = true;
             event.player.setHealth(event.player.getMaxHealth());
         }

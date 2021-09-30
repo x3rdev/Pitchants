@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
@@ -58,7 +59,7 @@ public class EnchantmentEscapePod extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ESCAPE_POD, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && entityLivingBase.getHealth() <= 5 && isReady) {
+            if (level > 0 && entityLivingBase.getHealth() <= 5 && isReady && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 isReady = false;
                 event.setCanceled(true);
                 entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, ((5*level)+15)*20, level));

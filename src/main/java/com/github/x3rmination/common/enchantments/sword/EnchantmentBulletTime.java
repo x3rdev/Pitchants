@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -44,7 +45,7 @@ public class EnchantmentBulletTime extends Enchantment {
         if(event.getRayTraceResult().entityHit instanceof EntityPlayer) {
             EntityPlayer victim = (EntityPlayer) event.getRayTraceResult().entityHit;
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BULLET_TIME, victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0) {
+            if(level > 0 && !victim.isPotionActive(PotionInit.VENOM)) {
                 victim.heal((float) (1.0+level));
             }
         }

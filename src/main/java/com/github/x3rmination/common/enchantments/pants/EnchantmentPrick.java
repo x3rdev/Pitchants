@@ -2,6 +2,7 @@ package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -37,6 +38,8 @@ public class EnchantmentPrick extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        attacker.attackEntityFrom(TrueDamage.TRUE_DAMAGE, (float) ((0.125*level) + 0.125));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            attacker.attackEntityFrom(TrueDamage.TRUE_DAMAGE, (float) ((0.125 * level) + 0.125));
+        }
     }
 }

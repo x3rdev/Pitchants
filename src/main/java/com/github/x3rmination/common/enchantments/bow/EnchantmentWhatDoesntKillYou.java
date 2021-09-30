@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -40,7 +41,7 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLivingBase && (Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile()) {
+        if(target instanceof EntityLivingBase && (Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile() && !user.isPotionActive(PotionInit.VENOM)) {
             if (handled) {
                 handled = false;
                 return;

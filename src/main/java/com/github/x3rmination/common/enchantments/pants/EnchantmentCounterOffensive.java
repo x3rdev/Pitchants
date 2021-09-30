@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -38,11 +39,13 @@ public class EnchantmentCounterOffensive extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(hitCount>5-level) {
-            hitCount=0;
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, ((2*level)+1)*20, 1, true, true));
-        } else {
-            hitCount+=1;
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            if (hitCount > 5 - level) {
+                hitCount = 0;
+                user.addPotionEffect(new PotionEffect(MobEffects.SPEED, ((2 * level) + 1) * 20, 1, true, true));
+            } else {
+                hitCount += 1;
+            }
         }
     }
 }

@@ -51,7 +51,7 @@ public class EnchantmentHemorrhage extends Enchantment {
             EntityLivingBase victim = event.getEntityLiving();
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.HEMORRHAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && isReady) {
+            if(level > 0 && isReady && !source.isPotionActive(PotionInit.VENOM)) {
                 isReady = false;
                 new Thread(() -> {
                     try {

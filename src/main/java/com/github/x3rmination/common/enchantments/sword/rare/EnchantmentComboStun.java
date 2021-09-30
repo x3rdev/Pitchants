@@ -44,10 +44,12 @@ public class EnchantmentComboStun extends Enchantment {
             handled = false;
             return;
         }
-        hitCount +=1;
-        if(hitCount >= 5 && !user.isSwingInProgress) {
-            hitCount = 0;
-            user.addPotionEffect(new PotionEffect(PotionInit.STUN, 10 * level, 0));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            hitCount += 1;
+            if (hitCount >= 5 && !user.isSwingInProgress) {
+                hitCount = 0;
+                user.addPotionEffect(new PotionEffect(PotionInit.STUN, 10 * level, 0));
+            }
         }
         handled = true;
     }

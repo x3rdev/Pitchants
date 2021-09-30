@@ -48,7 +48,7 @@ public class EnchantmentPinDown extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile()) {
+        if(Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource()).isProjectile() && !user.isPotionActive(PotionInit.VENOM)) {
             if (handled) {
                 handled = false;
                 return;

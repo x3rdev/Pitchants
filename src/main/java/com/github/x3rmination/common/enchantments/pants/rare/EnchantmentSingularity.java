@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -45,7 +46,7 @@ public class EnchantmentSingularity extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SINGULARITY, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0) {
+            if(level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                 int max = (int) ((Math.pow(level, 2) * 0.5) - (3.5 * level) + 9);
                 if(event.getAmount() > max){
                     event.setAmount(max);

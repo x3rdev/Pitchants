@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockJukebox;
@@ -57,7 +58,7 @@ public class EnchantmentTelebow extends Enchantment {
             EntityArrow arrow = (EntityArrow) event.getEntity();
             EntityPlayer player = (EntityPlayer) arrow.shootingEntity;
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TELE_BOW, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (isReady && level > 0 && player.isSneaking()) {
+            if (isReady && level > 0 && player.isSneaking() && !player.isPotionActive(PotionInit.VENOM)) {
                 coolDown = (int) (((Math.pow(level, 2) * 10) - (75 * level) + 155)*100);
                 player.setPosition(event.getEntity().getPosition().getX(), event.getEntity().getPosition().getY(), event.getEntity().getPosition().getZ());
                 isReady = false;

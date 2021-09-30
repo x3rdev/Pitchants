@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -48,7 +49,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne) {
+            if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 event.setAmount(event.getAmount());
                 empowered = true;
             }
@@ -60,7 +61,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && empowered) {
+            if (level > 0 && empowered && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
                 empowered = false;
                 float percent = (float) ((Math.pow(level, 2) * 0.01) + (0.11 * level) - 0.12);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, event.getAmount()*percent);

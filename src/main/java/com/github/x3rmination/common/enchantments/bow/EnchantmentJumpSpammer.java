@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -46,7 +47,7 @@ public class EnchantmentJumpSpammer extends Enchantment {
             EntityLivingBase entityLiving = event.getEntityLiving();
             if(entityLiving.isAirBorne) {
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0) {
+                if (level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
                     float baseDamage = event.getAmount();
                     event.setAmount(baseDamage * ((10*level) - 10));
                 }
@@ -60,7 +61,7 @@ public class EnchantmentJumpSpammer extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0) {
+            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
                 int x = (int) event.getAmount();
                 int calcAmount = (int) (Math.pow(x, 2) + 3*x + 6);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);

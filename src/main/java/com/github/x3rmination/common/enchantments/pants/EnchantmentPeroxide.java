@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -44,7 +45,9 @@ public class EnchantmentPeroxide extends Enchantment {
             handled = false;
             return;
         }
-        user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) ((Math.pow(level, 2) * -30) + (150 * level) - 20), (int) ((Math.pow(level, 2)*0.25) - (1.5*level) + 1)));
+        if(!user.isPotionActive(PotionInit.VENOM)) {
+            user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) ((Math.pow(level, 2) * -30) + (150 * level) - 20), (int) ((Math.pow(level, 2) * 0.25) - (1.5 * level) + 1)));
+        }
         handled = true;
     }
 }
