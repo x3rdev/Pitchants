@@ -48,7 +48,7 @@ public class EnchantmentBeatTheSpammer extends Enchantment {
             EntityLivingBase victim = event.getEntityLiving();
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BEAT_THE_SPAMMER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).getItem() instanceof ItemBow && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).getItem() instanceof ItemBow && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.09) - (0.2 * level) + 0.19))));
             }
         }

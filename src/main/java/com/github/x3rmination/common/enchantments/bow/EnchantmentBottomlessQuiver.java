@@ -4,6 +4,7 @@ import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,9 +34,7 @@ public class EnchantmentBottomlessQuiver extends Enchantment {
             handled = false;
             return;
         }
-        if(!((EntityPlayer)user).isCreative() && !user.isPotionActive(PotionInit.VENOM)) {
-
-
+        if(!((EntityPlayer)user).isCreative() && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             if (!(target instanceof EntityLivingBase)) return;
             DamageSource lastHit = ((EntityLivingBase) target).getLastDamageSource();
             assert lastHit != null;

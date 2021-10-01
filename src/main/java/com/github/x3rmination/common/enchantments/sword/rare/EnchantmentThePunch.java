@@ -44,7 +44,7 @@ public class EnchantmentThePunch extends Enchantment {
             handled = false;
             return;
         }
-        if(isReady && !user.isPotionActive(PotionInit.VENOM)) {
+        if(isReady && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             isReady = false;
             if(target instanceof EntityLivingBase) {
                 EntityLivingBase entityLivingBase = (EntityLivingBase) target;

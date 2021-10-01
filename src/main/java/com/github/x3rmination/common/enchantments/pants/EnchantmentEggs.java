@@ -48,7 +48,7 @@ public class EnchantmentEggs extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer && event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EGGS, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 ItemStack eggs = new ItemStack(Items.EGG, (int) (Math.pow(level, 2)*5) - (13 * level) + 10);
                 player.addItemStackToInventory(eggs);
             }

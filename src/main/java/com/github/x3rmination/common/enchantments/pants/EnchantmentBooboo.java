@@ -44,7 +44,7 @@ public class EnchantmentBooboo extends Enchantment {
 
         EntityPlayer player = event.player;
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BOOBOO, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && isReady && !player.isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && isReady && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             isReady = false;
             int waitAmount = 6000 - (level * 1000);
             new Thread(() -> {

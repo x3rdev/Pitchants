@@ -43,7 +43,7 @@ public class EnchantmentRevitalize extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(user.getHealth() <= 6 && isReady && !user.isPotionActive(PotionInit.VENOM)) {
+        if(user.getHealth() <= 6 && isReady && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             if (handled) {
                 handled = false;
                 return;

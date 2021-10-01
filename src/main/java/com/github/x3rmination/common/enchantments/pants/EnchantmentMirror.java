@@ -48,7 +48,7 @@ public class EnchantmentMirror extends Enchantment{
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIRROR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(event.getSource().getDamageType().equals(TrueDamage.TRUE_DAMAGE.getDamageType()) && !entityLiving.isPotionActive(PotionInit.VENOM) && level > 0) {
+            if(event.getSource().getDamageType().equals(TrueDamage.TRUE_DAMAGE.getDamageType()) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0) && level > 0) {
                 event.setCanceled(true);
                 float reflected = (float) (event.getAmount() * ((0.25 * level) - 0.25));
                 if(level > 1) {

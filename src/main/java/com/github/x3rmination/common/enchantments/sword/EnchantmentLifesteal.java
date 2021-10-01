@@ -44,7 +44,7 @@ public class EnchantmentLifesteal extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.LIFESTEAL, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 source.heal((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2)*0.005)+(0.025*level)+0.01))));
             }
         }

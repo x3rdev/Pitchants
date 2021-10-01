@@ -50,7 +50,7 @@ public class EnchantmentHearts extends Enchantment {
         EntityLivingBase living = event.getEntityLiving();
         ItemStack eventItem = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.HEARTS, living.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && !living.isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && !(living.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, living.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             float attribute = (float) (0.25 * Math.pow(level, 2) - (0.25 * level) + 0.5);
             Collection<AttributeModifier> collection = eventItem.getAttributeModifiers(EntityEquipmentSlot.LEGS).get("generic.armor");
             if(!collection.isEmpty()){

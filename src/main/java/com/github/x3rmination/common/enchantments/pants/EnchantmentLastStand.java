@@ -44,7 +44,7 @@ public class EnchantmentLastStand extends Enchantment {
             handled = false;
             return;
         }
-        if(!user.isPotionActive(PotionInit.VENOM)){
+        if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)){
             if (user.getHealth() <= 6 && ready) {
                 ready = false;
                 user.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, (int) (((-0.5 * Math.pow(level, 2)) + (2.5 * level) + 1) * 20), level - 1, true, true));

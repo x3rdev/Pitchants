@@ -45,7 +45,7 @@ public class EnchantmentCrush extends Enchantment {
             handled = false;
             return;
         }
-        if(isReady && !user.isPotionActive(PotionInit.VENOM)) {
+        if(isReady && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             isReady=false;
             user.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (Math.pow(level, 2) * -1) + (7 * level) - 2, level + 3));
             new Thread(() -> {

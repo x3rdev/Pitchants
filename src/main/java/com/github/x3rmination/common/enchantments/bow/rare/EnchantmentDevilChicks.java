@@ -51,7 +51,7 @@ public class EnchantmentDevilChicks extends Enchantment {
             if(arrow.shootingEntity instanceof EntityPlayer) {
                 EntityPlayer entityPlayer = (EntityPlayer) arrow.shootingEntity;
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DEVIL_CHICKS, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0 && !entityPlayer.isPotionActive(PotionInit.VENOM)) {
+                if (level > 0 && !(entityPlayer.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                     int i = (int) (0.5 * Math.pow(level, 2) - (0.5 * level) + 1);
                     while (i > 0 && !world.isRemote) {
                         BlockPos pos = event.getEntity().getPosition();

@@ -50,7 +50,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
-        if(level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
+        if(level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, level, true, false));
             event.setCharge(27000);
             isReady = false;
@@ -62,7 +62,7 @@ public class EnchantmentMegaLongbow extends Enchantment {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack mainHandBow = player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, mainHandBow);
-        if(!isReady && level>0 && !player.isPotionActive(PotionInit.VENOM)) {
+        if(!isReady && level>0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             event.setCanceled(true);
             new Thread(() -> {
                 try {

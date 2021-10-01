@@ -41,7 +41,7 @@ public class EnchantmentHealer extends Enchantment {
             handled = false;
             return;
         }
-        if(!user.isPotionActive(PotionInit.VENOM)) {
+        if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             user.heal((float) (2.0 * level));
             if (target instanceof EntityLivingBase) {
                 ((EntityLivingBase) target).heal((float) (2.0 * level));

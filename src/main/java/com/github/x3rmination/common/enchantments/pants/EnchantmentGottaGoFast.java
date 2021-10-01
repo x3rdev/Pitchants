@@ -50,7 +50,7 @@ public class EnchantmentGottaGoFast extends Enchantment {
         EntityLivingBase living = event.getEntityLiving();
         ItemStack eventItem = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOTTA_GO_FAST, living.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && !living.isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && !(living.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, living.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             float attribute = (float) (0.02 * Math.pow(level, 2) + 0.02);
             Collection<AttributeModifier> collection = eventItem.getAttributeModifiers(EntityEquipmentSlot.LEGS).get("generic.armor");
             if(!collection.isEmpty()){

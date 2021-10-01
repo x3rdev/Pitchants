@@ -44,7 +44,7 @@ public class EnchantmentComboHeal extends Enchantment {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             ItemStack itemStack = source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_HEAL, itemStack);
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 source.heal((float) (0.4 * level));
                 source.setAbsorptionAmount((float) (source.getAbsorptionAmount() + (0.4 * level)));
             }

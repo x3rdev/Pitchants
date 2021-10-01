@@ -47,7 +47,7 @@ public class EnchantmentMixedCombat extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MIXED_COMBAT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().damageType.equals("player")) {
                     if (empowered) {
                         event.setAmount((float) (event.getAmount() + (event.getAmount() * (0.1 * level))));

@@ -44,7 +44,7 @@ public class EnchantmentSpeedyHit extends Enchantment {
             handled = false;
             return;
         }
-        if(isReady && !user.isPotionActive(PotionInit.VENOM)) {
+        if(isReady && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             isReady = false;
             user.addPotionEffect(new PotionEffect(MobEffects.SPEED, (40 * level) + 60, 0));
             new Thread(() -> {

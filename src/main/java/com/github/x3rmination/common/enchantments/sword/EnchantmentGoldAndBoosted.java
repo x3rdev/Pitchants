@@ -44,7 +44,7 @@ public class EnchantmentGoldAndBoosted extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLD_AND_BOOSTED, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && source.getAbsorptionAmount() > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && source.getAbsorptionAmount() > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.01) + (0.01 * level) + 0.03))));
             }
         }

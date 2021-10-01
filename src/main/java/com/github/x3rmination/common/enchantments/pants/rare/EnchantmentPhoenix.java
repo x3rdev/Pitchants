@@ -52,7 +52,7 @@ public class EnchantmentPhoenix extends Enchantment {
             ItemStack legs = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PHOENIX, legs);
             int itemDura = legs.getMaxDamage()/10;
-            if(itemDura < legs.getMaxDamage()-legs.getItemDamage() && level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(itemDura < legs.getMaxDamage()-legs.getItemDamage() && level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setCanceled(true);
                 entityLiving.addPotionEffect(new PotionEffect(PotionInit.RESURRECTED, 60, 0));
                 legs.damageItem(itemDura, entityLiving);
@@ -66,7 +66,7 @@ public class EnchantmentPhoenix extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PHOENIX, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 1 && entityLiving.isPotionActive(PotionInit.RESURRECTED) && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(level > 1 && entityLiving.isPotionActive(PotionInit.RESURRECTED) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount()+(event.getAmount()*((Math.pow(level, 2) * -0.025) + (0.175*level) - 0.15))));
             }
         }

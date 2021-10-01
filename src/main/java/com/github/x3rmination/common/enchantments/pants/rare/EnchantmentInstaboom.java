@@ -56,7 +56,7 @@ public class EnchantmentInstaboom extends Enchantment {
         if(event.getEntity() instanceof EntityPlayer && event.getPlacedBlock().getBlock() instanceof BlockTNT) {
             EntityPlayer entityLiving = (EntityPlayer) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.INSTABOOM, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("Instaboom TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText()) && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("Instaboom TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText()) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 triggered = true;
                 BlockTNT tntBlock = (BlockTNT) event.getPlacedBlock().getBlock();
                 tntBlock.removedByPlayer(event.getPlacedBlock(), event.getWorld(), event.getPos(), entityLiving, false);
@@ -82,7 +82,7 @@ public class EnchantmentInstaboom extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.INSTABOOM, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 ItemStack tnt = new ItemStack(Item.getItemById(46), level);
                 tnt.setStackDisplayName((new TextComponentString("Instaboom TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText());
                 if(EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.INSTABOOM, tnt) <= 0) {
@@ -98,7 +98,7 @@ public class EnchantmentInstaboom extends Enchantment {
         if(event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer entityLiving = (EntityPlayer) event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.INSTABOOM, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && triggered && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && triggered && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setCanceled(true);
                 new Thread(() -> {
                     try {

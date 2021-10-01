@@ -80,11 +80,11 @@ public class EnchantmentGomrawsHeart extends Enchantment {
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent event) {
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOMRAWS_HEART, event.player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if(level>1 && inCombat && isReady && !event.player.isPotionActive(PotionInit.VENOM)){
+        if(level > 1 && inCombat && isReady && !(event.player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)){
             isReady = false;
             event.player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (level-1)*20, 3));
         }
-        if(level>0 && !inCombat && !event.player.isPotionActive(PotionInit.VENOM)){
+        if(level > 0 && !inCombat && !(event.player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)){
             isReady = true;
             event.player.setHealth(event.player.getMaxHealth());
         }

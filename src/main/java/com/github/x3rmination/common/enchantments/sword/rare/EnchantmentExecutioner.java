@@ -44,7 +44,7 @@ public class EnchantmentExecutioner extends Enchantment {
             handled = false;
             return;
         }
-        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4) && !user.isPotionActive(PotionInit.VENOM)) {
+        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getHealth() < ((Math.pow(level, 2) * 0.5) - (1.5 * level) + 4) && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             target.setDead();
         }
         handled = true;

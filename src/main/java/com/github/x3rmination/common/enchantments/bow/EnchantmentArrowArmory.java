@@ -58,7 +58,7 @@ public class EnchantmentArrowArmory extends Enchantment {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
 
-            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float damage = event.getAmount();
                 double percentcalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
                 int percentDamage = (int) (percentcalc * damage);

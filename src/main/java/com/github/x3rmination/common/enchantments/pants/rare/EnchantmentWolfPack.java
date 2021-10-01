@@ -52,7 +52,7 @@ public class EnchantmentWolfPack extends Enchantment {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.WOLF_PACK, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && wolfcount < (2 * level) + 3 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && wolfcount < (2 * level) + 3 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 killcount+=1;
                 if(killcount >= ((Math.pow(level, 2) * 0.5) - (2.5*level) + 6)){
                     killcount = 0;

@@ -53,7 +53,7 @@ public class EnchantmentVolley extends Enchantment {
         int i = event.getCharge();
         float f = getArrowVelocity(i);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.VOLLEY, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-        if (level > 0 && !event.getWorld().isRemote && !event.getEntityLiving().isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && !event.getWorld().isRemote && !(event.getEntityLiving().isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             if(ammoFinder.findAmmo(event.getEntityPlayer()).getItem() instanceof ItemArrow || event.getEntityPlayer().isCreative()) {
                 itemArrow = ammoFinder.findAmmo(event.getEntityPlayer());
                 int iterable = level + 1;

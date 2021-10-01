@@ -44,7 +44,7 @@ public class EnchantmentPainFocus extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PAIN_FOCUS, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() + ((event.getAmount() * ((Math.pow(level, 2)*0.01) - (0.02*level) + 0.02))*((source.getMaxHealth() - source.getHealth())/2))));
             }
         }

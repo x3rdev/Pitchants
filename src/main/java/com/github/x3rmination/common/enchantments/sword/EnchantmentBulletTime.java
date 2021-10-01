@@ -45,7 +45,7 @@ public class EnchantmentBulletTime extends Enchantment {
         if(event.getRayTraceResult().entityHit instanceof EntityPlayer) {
             EntityPlayer victim = (EntityPlayer) event.getRayTraceResult().entityHit;
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BULLET_TIME, victim.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !victim.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(victim.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, victim.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 victim.heal((float) (1.0+level));
             }
         }

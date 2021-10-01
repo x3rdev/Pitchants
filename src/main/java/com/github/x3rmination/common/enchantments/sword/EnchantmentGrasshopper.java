@@ -51,7 +51,7 @@ public class EnchantmentGrasshopper extends Enchantment {
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GRASSHOPPER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             BlockPos posBelow = livingBase.getPosition().down();
             IBlockState blockStateBelow = livingBase.world.getBlockState(posBelow);
-            if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * ((Math.pow(level, 2) * 0.01) + (0.01 * level) + 0.03))));
             }
         }

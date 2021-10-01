@@ -42,7 +42,7 @@ public class EnchantmentPunisher extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PUNISHER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && event.getEntityLiving().getHealth() < (event.getEntityLiving().getMaxHealth()/2) && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && event.getEntityLiving().getHealth() < (event.getEntityLiving().getMaxHealth()/2) && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() + (event.getAmount() * (0.06 * level))));
             }
         }

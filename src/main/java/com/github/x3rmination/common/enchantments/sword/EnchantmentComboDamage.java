@@ -52,7 +52,7 @@ public class EnchantmentComboDamage extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.COMBO_DAMAGE, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 hitCount += 1;
                 int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 6);
                 if(hitCount >= hitReq) {

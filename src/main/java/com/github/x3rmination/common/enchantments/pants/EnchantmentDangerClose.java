@@ -50,7 +50,7 @@ public class EnchantmentDangerClose extends Enchantment {
     public void onTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DANGER_CLOSE, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && event.player.getHealth() <= 8 && isReady && !player.isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && event.player.getHealth() <= 8 && isReady && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             player.addPotionEffect(new PotionEffect(MobEffects.SPEED, (3*level)*20, 2, true, true));
             isReady = false;
             new Thread(() -> {

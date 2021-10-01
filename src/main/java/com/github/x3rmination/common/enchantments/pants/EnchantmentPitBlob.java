@@ -61,7 +61,7 @@ public class EnchantmentPitBlob extends Enchantment {
             World world = event.getEntityLiving().getEntityWorld();
             EntityPlayer user = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PIT_BLOB, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && !world.isRemote && slimeSize <= 10 && !user.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !world.isRemote && slimeSize <= 10 && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 entityPlayer = user;
                 kills += 1;
                 short killreq = (short) (4 - level);

@@ -2,6 +2,7 @@ package com.github.x3rmination.common.enchantments.other.dark;
 
 import com.github.x3rmination.core.helpers.CheckEnchantments;
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -12,12 +13,16 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,23 +57,13 @@ public class EnchantmentSomber extends Enchantment {
         return super.canApplyTogether(ench) && !EnchantmentInit.ENCHANTMENTS.contains(ench);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDamage(LivingHurtEvent event) {
         if(event.getEntityLiving() != null && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLiving = event.getEntityLiving();
-            EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {
-                CheckEnchantments eC = new CheckEnchantments();
-                if(eC.isNormalEnchantment(source.getItemStackFromSlot(EntityEquipmentSlot.LEGS))) {
-                    event.setCanceled(true);
-                    entityLiving.attackEntityFrom(DamageSource.GENERIC, event.getAmount());
-                    return;
-                }
-                if(eC.isNormalEnchantment(source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND))) {
-                    event.setCanceled(true);
-                    entityLiving.attackEntityFrom(DamageSource.GENERIC, event.getAmount());
-                }
+                ((EntityLivingBase) event.getSource().getTrueSource()).addPotionEffect(new PotionEffect(PotionInit.VENOM, 10, 0, true, false));
             }
         }
     }

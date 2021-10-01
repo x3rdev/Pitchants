@@ -58,7 +58,7 @@ public class EnchantmentTelebow extends Enchantment {
             EntityArrow arrow = (EntityArrow) event.getEntity();
             EntityPlayer player = (EntityPlayer) arrow.shootingEntity;
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TELE_BOW, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (isReady && level > 0 && player.isSneaking() && !player.isPotionActive(PotionInit.VENOM)) {
+            if (isReady && level > 0 && player.isSneaking() && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 coolDown = (int) (((Math.pow(level, 2) * 10) - (75 * level) + 155)*100);
                 player.setPosition(event.getEntity().getPosition().getX(), event.getEntity().getPosition().getY(), event.getEntity().getPosition().getZ());
                 isReady = false;

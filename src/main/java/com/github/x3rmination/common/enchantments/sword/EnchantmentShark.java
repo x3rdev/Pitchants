@@ -52,7 +52,7 @@ public class EnchantmentShark extends Enchantment {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SHARK, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 bounding = new AxisAlignedBB(source.getPosition().getX() - 16D, source.getPosition().getY() - 16D, source.getPosition().getZ() - 16D, source.getPosition().getX() + 16D, source.getPosition().getY() + 16D, source.getPosition().getZ() + 16D);
                 while(iterator < world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size() ) {
                     if(world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).get(iterator).getHealth() <= 12){

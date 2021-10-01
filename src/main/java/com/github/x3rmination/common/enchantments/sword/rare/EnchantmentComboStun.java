@@ -44,7 +44,7 @@ public class EnchantmentComboStun extends Enchantment {
             handled = false;
             return;
         }
-        if(!user.isPotionActive(PotionInit.VENOM)) {
+        if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             hitCount += 1;
             if (hitCount >= 5 && !user.isSwingInProgress) {
                 hitCount = 0;

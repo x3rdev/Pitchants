@@ -44,7 +44,7 @@ public class EnchantmentCounterJanitor extends Enchantment {
             handled = false;
             return;
         }
-        if(target.isDead && !user.isPotionActive(PotionInit.VENOM)) {
+        if(target.isDead && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             user.addPotionEffect(new PotionEffect(MobEffects.SPEED , (int) ((Math.pow(level, 2) * 10) - (10 * level) +40), 0));
         }
         handled = true;

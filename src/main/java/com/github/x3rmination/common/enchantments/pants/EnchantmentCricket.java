@@ -58,7 +58,7 @@ public class EnchantmentCricket extends Enchantment {
         BlockPos posBelow = player.getPosition().down();
         IBlockState blockStateBelow = player.world.getBlockState(posBelow);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-        if (level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !player.isPotionActive(PotionInit.VENOM)) {
+        if (level > 0 && Block.isEqualTo(blockStateBelow.getBlock(), Blocks.GRASS) && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             if(!player.isPotionActive(MobEffects.REGENERATION)) {
                 player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 40, 0, true, true));
             }
@@ -74,7 +74,7 @@ public class EnchantmentCricket extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRICKET, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && onGrass && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && onGrass && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float percent = (float) ((Math.pow(level, 2) * 0.08) - (0.22 * level) + 0.19);
                 event.setAmount(event.getAmount()-(event.getAmount()*percent));
             }

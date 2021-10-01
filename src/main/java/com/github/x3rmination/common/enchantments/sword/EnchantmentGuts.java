@@ -42,7 +42,7 @@ public class EnchantmentGuts extends Enchantment {
             handled = false;
             return;
         }
-        if(target.isDead && !user.isPotionActive(PotionInit.VENOM)) {
+        if(target.isDead && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             user.heal((float) ((Math.pow(level, 2) * 0.0625) + (0.6875 * level) - 0.625));
         }
         handled = true;

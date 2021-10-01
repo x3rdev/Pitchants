@@ -41,7 +41,7 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        if(target instanceof EntityLivingBase && (Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile() && !user.isPotionActive(PotionInit.VENOM)) {
+        if(target instanceof EntityLivingBase && (Objects.requireNonNull(((EntityLivingBase) target).getLastDamageSource())).isProjectile() && !(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             if (handled) {
                 handled = false;
                 return;

@@ -52,7 +52,7 @@ public class EnchantmentPushComesToShove extends Enchantment {
         if (event.getAttacker() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getAttacker();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.PUSH_COMES_TO_SHOVE, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 if(hitcount < 3) {
                     hitcount++;
                 }

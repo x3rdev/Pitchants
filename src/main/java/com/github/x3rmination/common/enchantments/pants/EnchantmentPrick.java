@@ -38,7 +38,7 @@ public class EnchantmentPrick extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if(!user.isPotionActive(PotionInit.VENOM)) {
+        if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             attacker.attackEntityFrom(TrueDamage.TRUE_DAMAGE, (float) ((0.125 * level) + 0.125));
         }
     }

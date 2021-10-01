@@ -47,7 +47,7 @@ public class EnchantmentJumpSpammer extends Enchantment {
             EntityLivingBase entityLiving = event.getEntityLiving();
             if(entityLiving.isAirBorne) {
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+                if (level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                     float baseDamage = event.getAmount();
                     event.setAmount(baseDamage * ((10*level) - 10));
                 }
@@ -61,7 +61,7 @@ public class EnchantmentJumpSpammer extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0 && !player.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 int x = (int) event.getAmount();
                 int calcAmount = (int) (Math.pow(x, 2) + 3*x + 6);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);

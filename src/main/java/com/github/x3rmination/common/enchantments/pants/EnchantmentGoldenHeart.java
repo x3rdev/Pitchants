@@ -44,7 +44,7 @@ public class EnchantmentGoldenHeart extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.GOLDEN_HEART, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float absorptionAmount = entityLivingBase.getAbsorptionAmount();
                 int i = (int) (0.5 * Math.pow(level, 2) - (0.5 * level) + 1);
                 int max = (2*level) + 6;

@@ -47,7 +47,7 @@ public class EnchantmentFirstShot extends Enchantment {
 
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.FIRST_SHOT, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0 && (event.getEntityLiving().getHealth() + 1 >= event.getEntityLiving().getMaxHealth()) && !player.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && (event.getEntityLiving().getHealth() + 1 >= event.getEntityLiving().getMaxHealth()) && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 int x = (int) event.getAmount();
                 int calcAmount = (int) (1.5*(Math.pow(x, 2)) + 1.5*x + 7);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, calcAmount);

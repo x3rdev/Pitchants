@@ -48,7 +48,7 @@ public class EnchantmentElectrolytes extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ELECTROLYTES, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240 && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 int amplifier = Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getAmplifier();
                 if(amplifier == 0) {
                     int ticksAddedPerKill = level * 40;

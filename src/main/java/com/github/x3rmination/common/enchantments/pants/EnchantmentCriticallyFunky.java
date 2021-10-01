@@ -49,7 +49,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount(event.getAmount());
                 empowered = true;
             }
@@ -61,7 +61,7 @@ public class EnchantmentCriticallyFunky extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && empowered && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && empowered && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 empowered = false;
                 float percent = (float) ((Math.pow(level, 2) * 0.01) + (0.11 * level) - 0.12);
                 event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, event.getAmount()*percent);

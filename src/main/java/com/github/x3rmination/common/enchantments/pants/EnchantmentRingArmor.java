@@ -46,7 +46,7 @@ public class EnchantmentRingArmor extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.RING_ARMOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(event.getSource().getTrueSource() instanceof EntityArrow && level > 0 && !entityLiving.isPotionActive(PotionInit.VENOM)) {
+            if(event.getSource().getTrueSource() instanceof EntityArrow && level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount((float) (event.getAmount() - (event.getAmount() * (0.2 * level))));
             }
         }

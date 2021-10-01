@@ -45,7 +45,7 @@ public class EnchantmentBerserker extends Enchantment {
         if(event.getEntityLiving() instanceof EntityLiving && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BERSERKER, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if(level > 0 && !source.isPotionActive(PotionInit.VENOM)) {
+            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float rollReq = (float) ((Math.pow(level, 2)*0.01) + (0.05 * level) + 0.06);
                 if(Math.random() <= rollReq) {
                     event.setAmount((float) (event.getAmount() + (event.getAmount()*0.5)));

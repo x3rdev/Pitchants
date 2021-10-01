@@ -1,6 +1,7 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
+import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -49,7 +50,7 @@ public class EnchantmentLuckyShot extends Enchantment{
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MEGA_LONGBOW, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             float reqAmount = (float) (Math.pow(level, 2) + 1);
-            if (level > 0 && (Math.random()*100) < reqAmount) {
+            if (level > 0 && (Math.random()*100) < reqAmount && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount(event.getAmount()*4);
             }
         }

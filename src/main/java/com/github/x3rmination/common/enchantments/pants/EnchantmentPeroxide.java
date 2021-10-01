@@ -45,7 +45,7 @@ public class EnchantmentPeroxide extends Enchantment {
             handled = false;
             return;
         }
-        if(!user.isPotionActive(PotionInit.VENOM)) {
+        if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) ((Math.pow(level, 2) * -30) + (150 * level) - 20), (int) ((Math.pow(level, 2) * 0.25) - (1.5 * level) + 1)));
         }
         handled = true;

@@ -45,7 +45,7 @@ public class EnchantmentSpammerAndProud extends Enchantment {
         if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SPAMMER_AND_PROUD, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-            if (level > 0 && event.getEntity().getDistance(event.getSource().getTrueSource()) < 8 && !entityLivingBase.isPotionActive(PotionInit.VENOM)) {
+            if (level > 0 && event.getEntity().getDistance(event.getSource().getTrueSource()) < 8 && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float totalAmount = event.getAmount() + ((event.getAmount()*((6*level) + 3))/100);
                 event.setAmount(totalAmount);
             }
