@@ -1,27 +1,27 @@
-package com.github.x3rmination.common.enchantments.other.dark;
+package com.github.x3rmination.common.enchantments.other.dark.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
 import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
+public class EnchantmentComboVenom extends Enchantment {
 
-public class EnchantmentSomber extends Enchantment {
+    private static boolean handled = false;
+    private int hitCount = 0;
 
-    public EnchantmentSomber() {
+    public EnchantmentComboVenom() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("somber");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":somber"));
+        this.setName("combo_venom");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_venom"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }
@@ -46,14 +46,18 @@ public class EnchantmentSomber extends Enchantment {
         return super.canApplyTogether(ench) && (!EnchantmentInit.ENCHANTMENTS.contains(ench) || !EnchantmentInit.RAGE_ENCHANTMENTS.contains(ench));
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving() != null && event.getSource().getTrueSource() instanceof EntityLivingBase) {
-            EntityLivingBase entityLiving = event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0) {
-                ((EntityLivingBase) event.getSource().getTrueSource()).addPotionEffect(new PotionEffect(PotionInit.VENOM, 10, 0, true, false));
-            }
+    @Override
+    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
+        if (handled){
+            handled = false;
+            return;
         }
+        hitCount += 1;
+        if(target instanceof EntityLivingBase && hitCount >= 3) {
+            hitCount = 0;
+            ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.POISON, 240, 0));
+            ((EntityLivingBase) target).addPotionEffect(new PotionEffect(PotionInit.VENOM, 240, 0));
+        }
+        handled = true;
     }
 }

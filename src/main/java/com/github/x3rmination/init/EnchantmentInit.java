@@ -4,7 +4,15 @@ package com.github.x3rmination.init;
 
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentMindAssault;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSanguisage;
 import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSomber;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSpite;
+import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentComboVenom;
+import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentNostalgia;
+import com.github.x3rmination.common.enchantments.other.rage.EnchantmentDoItLikeTheFrench;
+import com.github.x3rmination.common.enchantments.other.rage.EnchantmentHeighHo;
+import com.github.x3rmination.common.enchantments.other.rage.EnchantmentNewDeal;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
@@ -22,6 +30,7 @@ public final class EnchantmentInit {
 
     public static final List<Enchantment> ENCHANTMENTS = new ArrayList<>();
     public static final List<Enchantment> DARK_ENCHANTMENTS = new ArrayList<>();
+    public static final List<Enchantment> RAGE_ENCHANTMENTS = new ArrayList<>();
     public static final DamageSource TRUE_DAMAGE = (new DamageSource("trueDamage")).setDamageBypassesArmor().setDamageIsAbsolute();
 
 
@@ -114,8 +123,19 @@ public final class EnchantmentInit {
     public static final Enchantment SPEEDY_HIT = new EnchantmentSpeedyHit();
 
     /*
-    Other Enchantments
+    Dark Enchantments
      */
     public static final Enchantment SOMBER = new EnchantmentSomber();
+    public static final Enchantment SANGUISAGE = new EnchantmentSanguisage();
+    public static final Enchantment MIND_ASSAULT = new EnchantmentMindAssault();
+    public static final Enchantment SPITE = new EnchantmentSpite();
+    public static final Enchantment COMBO_VENOM = new EnchantmentComboVenom();
+    public static final Enchantment NOSTALGIA = new EnchantmentNostalgia();
 
+    /*
+    Rage Enchantments
+     */
+    public static final Enchantment HEIGH_HO = new EnchantmentHeighHo();
+    public static final Enchantment NEW_DEAL = new EnchantmentNewDeal();
+    public static final Enchantment DO_IT_LIKE_THE_FRENCH = new EnchantmentDoItLikeTheFrench();
 }

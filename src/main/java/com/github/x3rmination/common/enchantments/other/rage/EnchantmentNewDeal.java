@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments.other.dark;
+package com.github.x3rmination.common.enchantments.other.rage;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
@@ -15,15 +15,14 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
+public class EnchantmentNewDeal extends Enchantment {
 
-public class EnchantmentSomber extends Enchantment {
-
-    public EnchantmentSomber() {
+    public EnchantmentNewDeal() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("somber");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":somber"));
+        this.setName("heigh_ho");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":heigh_ho"));
 
-        EnchantmentInit.DARK_ENCHANTMENTS.add(this);
+        EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }
 
     @Override
@@ -38,21 +37,21 @@ public class EnchantmentSomber extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 3;
     }
 
     @Override
     protected boolean canApplyTogether(@NotNull Enchantment ench) {
-        return super.canApplyTogether(ench) && (!EnchantmentInit.ENCHANTMENTS.contains(ench) || !EnchantmentInit.RAGE_ENCHANTMENTS.contains(ench));
+        return super.canApplyTogether(ench) && (!EnchantmentInit.ENCHANTMENTS.contains(ench) || !EnchantmentInit.DARK_ENCHANTMENTS.contains(ench));
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDamage(LivingHurtEvent event) {
         if(event.getEntityLiving() != null && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLiving = event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NEW_DEAL, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0) {
-                ((EntityLivingBase) event.getSource().getTrueSource()).addPotionEffect(new PotionEffect(PotionInit.VENOM, 10, 0, true, false));
+                event.setAmount(event.getAmount() - (event.getAmount() * (2 + (level * 2))));
             }
         }
     }

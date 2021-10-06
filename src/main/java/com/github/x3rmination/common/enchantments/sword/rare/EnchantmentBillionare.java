@@ -44,7 +44,7 @@ public class EnchantmentBillionare extends Enchantment {
             EntityLivingBase source = (EntityLivingBase) event.getSource().getTrueSource();
             ItemStack itemStack = source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.BILLIONARE, itemStack);
-            if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if(level > 0 && !(event.getEntityLiving().isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0) && EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NEW_DEAL, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0) {
                 itemStack.damageItem(itemStack.getMaxDamage()/20, source);
                 event.setAmount((float) (event.getAmount()*((Math.pow(level, 2) * -0.005) + (0.355 * level) + 0.98)));
             }

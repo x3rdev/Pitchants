@@ -43,11 +43,11 @@ public class EnchantmentJumpSpammer extends Enchantment {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
-        if(event.getEntityLiving() instanceof EntityLivingBase) {
+        if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             if(entityLiving.isAirBorne) {
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.JUMP_SPAMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-                if (level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+                if (level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                     float baseDamage = event.getAmount();
                     event.setAmount(baseDamage * ((10*level) - 10));
                 }

@@ -46,7 +46,7 @@ public class EnchantmentSolitude extends Enchantment {
             EntityLivingBase entityLiving = event.getEntityLiving();
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOLITUDE, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 3.5D, entityLiving.getPosition().getY() - 3.5D, entityLiving.getPosition().getZ() - 3.5D, entityLiving.getPosition().getX() + 3.5D, entityLiving.getPosition().getY() + 3.5D, entityLiving.getPosition().getZ() + 3.5D);
                 int reqEntities = (int) ((Math.pow(level, 2)*(-0.5))+(2.5*level)-1);
                 if(world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size() <= reqEntities) {

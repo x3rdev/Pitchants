@@ -3,7 +3,11 @@ package com.github.x3rmination;
 
 import com.github.x3rmination.common.enchantments.bow.*;
 import com.github.x3rmination.common.enchantments.bow.rare.*;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentMindAssault;
 import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSomber;
+import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSpite;
+import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentNostalgia;
+import com.github.x3rmination.common.enchantments.other.rage.EnchantmentNewDeal;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
@@ -112,6 +116,10 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentBillionare());
 
         MinecraftForge.EVENT_BUS.register(new EnchantmentSomber());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentMindAssault());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentSpite());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentNostalgia());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentNewDeal());
 
 
 //        RegistryHandler.postInitRegistries(event);

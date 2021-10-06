@@ -48,7 +48,7 @@ public class EnchantmentMcSwimmer extends Enchantment {
         if(event.getEntityLiving() != null) {
             EntityLivingBase entityLiving = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.MCSWIMMER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && Objects.requireNonNull(entityLiving.getLastDamageSource()).isUnblockable() && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if ((entityLiving.isInLava() || entityLiving.isInWater()) && level > 0 && Objects.requireNonNull(entityLiving.getLastDamageSource()).isUnblockable() && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 int percent = (int) (2.5 * Math.pow(level, 2) + (7.5 * level) + 15);
                 event.setAmount((event.getAmount() * 100) - (event.getAmount() * percent));
             }

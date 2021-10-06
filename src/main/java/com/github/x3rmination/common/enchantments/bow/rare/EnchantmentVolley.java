@@ -53,22 +53,20 @@ public class EnchantmentVolley extends Enchantment {
         int i = event.getCharge();
         float f = getArrowVelocity(i);
         int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.VOLLEY, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-        if (level > 0 && !event.getWorld().isRemote && !(event.getEntityLiving().isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
-            if(ammoFinder.findAmmo(event.getEntityPlayer()).getItem() instanceof ItemArrow || event.getEntityPlayer().isCreative()) {
-                itemArrow = ammoFinder.findAmmo(event.getEntityPlayer());
-                int iterable = level + 1;
-                while (iterable > 0) {
-                    iterable -= 1;
-                    ItemStack itemArrow1 = itemArrow.copy();
-                    if (event.getEntityPlayer().isCreative()) {
-                        ammoArrow = (new ItemArrow()).createArrow(event.getWorld(), new ItemStack(Items.ARROW), event.getEntityLiving());
-                    } else {
-                        ammoArrow = ((ItemArrow) itemArrow1.getItem()).createArrow(event.getWorld(), ammoFinder.findAmmo(event.getEntityPlayer()), event.getEntityLiving());
-                    }
-                    ammoArrow.setEnchantmentEffectsFromEntity(event.getEntityLiving(), 1);
-                    ammoArrow.shoot(event.getEntityLiving(), event.getEntityLiving().rotationPitch, event.getEntityLiving().rotationYaw, 0, f * 3.0F, 6);
-                    event.getWorld().spawnEntity(ammoArrow);
+        if (level > 0 && !event.getWorld().isRemote && !(event.getEntityLiving().isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0) && ammoFinder.findAmmo(event.getEntityPlayer()).getItem() instanceof ItemArrow || event.getEntityPlayer().isCreative()) {
+            itemArrow = ammoFinder.findAmmo(event.getEntityPlayer());
+            int iterable = level + 1;
+            while (iterable > 0) {
+                iterable -= 1;
+                ItemStack itemArrow1 = itemArrow.copy();
+                if (event.getEntityPlayer().isCreative()) {
+                    ammoArrow = (new ItemArrow()).createArrow(event.getWorld(), new ItemStack(Items.ARROW), event.getEntityLiving());
+                } else {
+                    ammoArrow = ((ItemArrow) itemArrow1.getItem()).createArrow(event.getWorld(), ammoFinder.findAmmo(event.getEntityPlayer()), event.getEntityLiving());
                 }
+                ammoArrow.setEnchantmentEffectsFromEntity(event.getEntityLiving(), 1);
+                ammoArrow.shoot(event.getEntityLiving(), event.getEntityLiving().rotationPitch, event.getEntityLiving().rotationYaw, 0, f * 3.0F, 6);
+                event.getWorld().spawnEntity(ammoArrow);
             }
         }
     }

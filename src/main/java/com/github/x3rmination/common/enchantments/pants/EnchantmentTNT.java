@@ -55,7 +55,7 @@ public class EnchantmentTNT extends Enchantment {
         if(event.getEntity() instanceof EntityPlayer && event.getPlacedBlock().getBlock() instanceof BlockTNT) {
             EntityPlayer entityLiving = (EntityPlayer) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TNT, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText()) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText()) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 BlockTNT tntBlock = (BlockTNT) event.getPlacedBlock().getBlock();
                 tntBlock.removedByPlayer(event.getPlacedBlock(), event.getWorld(), event.getPos(), entityLiving, false);
                 EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(event.getWorld(), event.getPos().getX() + 0.5F, event.getPos().getY(), event.getPos().getZ() + 0.5F, entityLiving);
@@ -79,7 +79,7 @@ public class EnchantmentTNT extends Enchantment {
         if(event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TNT, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 tnt = new ItemStack(Item.getItemById(46), level);
                 tnt.setStackDisplayName((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText());
                 entityLiving.addItemStackToInventory(tnt);

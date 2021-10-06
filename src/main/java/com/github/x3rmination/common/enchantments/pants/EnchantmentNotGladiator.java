@@ -48,7 +48,7 @@ public class EnchantmentNotGladiator extends Enchantment {
             EntityLivingBase entityLiving = event.getEntityLiving();
             World world = entityLiving.getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NOT_GLADIATOR, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 AxisAlignedBB bounding = new AxisAlignedBB(entityLiving.getPosition().getX() - 16D, entityLiving.getPosition().getY() - 16D, entityLiving.getPosition().getZ() - 16D, entityLiving.getPosition().getX() + 16D, entityLiving.getPosition().getY() + 16D, entityLiving.getPosition().getZ() + 16D);
                 double damageReduc = event.getAmount() * ((0.005*level) + 0.005) * world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size();
                 event.setAmount((float) (event.getAmount() - damageReduc));
