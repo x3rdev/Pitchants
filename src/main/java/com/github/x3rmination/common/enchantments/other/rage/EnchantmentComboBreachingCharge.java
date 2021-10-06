@@ -6,20 +6,20 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class EnchantmentDoItLikeTheFrench extends Enchantment {
+public class EnchantmentComboBreachingCharge extends Enchantment {
 
     private static boolean handled = false;
+    private int hitCount = 0;
 
-    public EnchantmentDoItLikeTheFrench() {
+    public EnchantmentComboBreachingCharge() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("do_it_like_the_french");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":do_it_like_the_french"));
+        this.setName("combo_breaching_charge");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_breaching_charge"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }
@@ -50,8 +50,10 @@ public class EnchantmentDoItLikeTheFrench extends Enchantment {
             handled = false;
             return;
         }
-        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem().equals(Items.GOLDEN_HELMET)) {
-            target.attackEntityFrom(DamageSource.GENERIC, level);
+        hitCount += 1;
+        if(target instanceof EntityLivingBase && hitCount >= level + 1) {
+            hitCount = 0;
+            ((EntityLivingBase) target).removePotionEffect(MobEffects.RESISTANCE);
         }
         handled = true;
     }

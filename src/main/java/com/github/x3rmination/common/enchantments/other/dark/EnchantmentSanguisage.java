@@ -49,7 +49,6 @@ public class EnchantmentSanguisage extends Enchantment {
             handled = false;
             return;
         }
-
         if(target instanceof EntityLivingBase && (((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem().equals(Items.LEATHER_HELMET) || ((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem().equals(Items.LEATHER_CHESTPLATE) || ((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem().equals(Items.LEATHER_LEGGINGS) || ((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.FEET).getItem().equals(Items.LEATHER_BOOTS))) {
             user.heal(1);
         }

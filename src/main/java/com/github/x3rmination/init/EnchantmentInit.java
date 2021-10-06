@@ -10,9 +10,8 @@ import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSomber;
 import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSpite;
 import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentComboVenom;
 import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentNostalgia;
-import com.github.x3rmination.common.enchantments.other.rage.EnchantmentDoItLikeTheFrench;
-import com.github.x3rmination.common.enchantments.other.rage.EnchantmentHeighHo;
-import com.github.x3rmination.common.enchantments.other.rage.EnchantmentNewDeal;
+import com.github.x3rmination.common.enchantments.other.rage.*;
+import com.github.x3rmination.common.enchantments.other.rage.rare.EnchantmentRegularity;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
@@ -129,6 +128,7 @@ public final class EnchantmentInit {
     public static final Enchantment SANGUISAGE = new EnchantmentSanguisage();
     public static final Enchantment MIND_ASSAULT = new EnchantmentMindAssault();
     public static final Enchantment SPITE = new EnchantmentSpite();
+
     public static final Enchantment COMBO_VENOM = new EnchantmentComboVenom();
     public static final Enchantment NOSTALGIA = new EnchantmentNostalgia();
 
@@ -138,4 +138,8 @@ public final class EnchantmentInit {
     public static final Enchantment HEIGH_HO = new EnchantmentHeighHo();
     public static final Enchantment NEW_DEAL = new EnchantmentNewDeal();
     public static final Enchantment DO_IT_LIKE_THE_FRENCH = new EnchantmentDoItLikeTheFrench();
+    public static final Enchantment COMBO_BREACHING_CHARGE = new EnchantmentComboBreachingCharge();
+    public static final Enchantment BRAKES = new EnchantmentBrakes();
+
+    public static final Enchantment REGULARITY = new EnchantmentRegularity();
 }

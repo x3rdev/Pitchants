@@ -8,6 +8,7 @@ import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSomber;
 import com.github.x3rmination.common.enchantments.other.dark.EnchantmentSpite;
 import com.github.x3rmination.common.enchantments.other.dark.rare.EnchantmentNostalgia;
 import com.github.x3rmination.common.enchantments.other.rage.EnchantmentNewDeal;
+import com.github.x3rmination.common.enchantments.other.rage.rare.EnchantmentRegularity;
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
@@ -120,6 +121,7 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentSpite());
         MinecraftForge.EVENT_BUS.register(new EnchantmentNostalgia());
         MinecraftForge.EVENT_BUS.register(new EnchantmentNewDeal());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentRegularity());
 
 
 //        RegistryHandler.postInitRegistries(event);

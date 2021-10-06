@@ -6,20 +6,22 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.DamageSource;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class EnchantmentDoItLikeTheFrench extends Enchantment {
+import java.util.Objects;
+
+public class EnchantmentBrakes extends Enchantment {
 
     private static boolean handled = false;
 
-    public EnchantmentDoItLikeTheFrench() {
+    public EnchantmentBrakes() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("do_it_like_the_french");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":do_it_like_the_french"));
+        this.setName("brakes");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":brakes"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }
@@ -50,8 +52,10 @@ public class EnchantmentDoItLikeTheFrench extends Enchantment {
             handled = false;
             return;
         }
-        if(target instanceof EntityLivingBase && ((EntityLivingBase) target).getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem().equals(Items.GOLDEN_HELMET)) {
-            target.attackEntityFrom(DamageSource.GENERIC, level);
+        if(target instanceof EntityLivingBase && Objects.requireNonNull(((EntityLivingBase) target).getActivePotionEffect(MobEffects.SPEED)).getAmplifier() >= 1) {
+            int potDur = Objects.requireNonNull(((EntityLivingBase) target).getActivePotionEffect(MobEffects.SPEED)).getDuration();
+            ((EntityLivingBase) target).removeActivePotionEffect(MobEffects.SPEED);
+            ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.SPEED, potDur, 0));
         }
         handled = true;
     }

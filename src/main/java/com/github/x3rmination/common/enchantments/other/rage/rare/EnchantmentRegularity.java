@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments.other.rage;
+package com.github.x3rmination.common.enchantments.other.rage.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.pitchants;
@@ -7,18 +7,19 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class EnchantmentNewDeal extends Enchantment {
+public class EnchantmentRegularity extends Enchantment {
 
-    public EnchantmentNewDeal() {
+    public EnchantmentRegularity() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
-        this.setName("heigh_ho");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":heigh_ho"));
+        this.setName("regularity");
+        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":regularity"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }
@@ -46,10 +47,18 @@ public class EnchantmentNewDeal extends Enchantment {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDamage(LivingHurtEvent event) {
         if(event.getEntityLiving() != null && event.getSource().getTrueSource() instanceof EntityLivingBase) {
-            EntityLivingBase entityLiving = event.getEntityLiving();
-            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.NEW_DEAL, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if(level > 0) {
-                event.setAmount(event.getAmount() - (event.getAmount() * (2 + (level * 2))));
+            EntityLivingBase entityLiving = (EntityLivingBase) event.getSource().getTrueSource();
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.REGULARITY, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            if(level > 0 && event.getAmount() < ((0.4 * level) + 1.8)) {
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(100);
+                        event.getEntityLiving().attackEntityFrom(DamageSource.GENERIC, (float) (event.getAmount() * ((0.15 * level) + 0.3)));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
+                    }
+                }).start();
             }
         }
     }
