@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.sword.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,7 +20,7 @@ public class EnchantmentThePunch extends Enchantment {
     public EnchantmentThePunch() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("the_punch");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":the_punch"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":the_punch"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

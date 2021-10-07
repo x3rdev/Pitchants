@@ -113,7 +113,7 @@ public final class EnchantmentInit {
     public static final Enchantment SHARK = new EnchantmentShark();
     public static final Enchantment SPEEDY_KILL = new EnchantmentSpeedyKill();
 
-    public static final Enchantment BILLIONARE = new EnchantmentBillionare();
+    public static final Enchantment BILLIONAIRE = new EnchantmentBillionaire();
     public static final Enchantment COMBO_PERUNS_WRATH = new EnchantmentComboPerunsWrath();
     public static final Enchantment COMBO_STUN = new EnchantmentComboStun();
     public static final Enchantment EXECUTIONER = new EnchantmentExecutioner();

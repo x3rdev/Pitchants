@@ -1,12 +1,11 @@
 package com.github.x3rmination.common.enchantments.bow;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
@@ -22,17 +21,16 @@ import java.util.Iterator;
 
 
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentArrowArmory extends Enchantment {
 
     public EnchantmentArrowArmory() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("arrow_armory");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":arrow_armory"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":arrow_armory"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
-
 
     @Override
     public int getMinEnchantability(int enchantmentLevel) {
@@ -52,12 +50,9 @@ public class EnchantmentArrowArmory extends Enchantment {
 
     @SubscribeEvent
     public void onAttack(LivingHurtEvent event) {
-
         if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().isProjectile()) {
-
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
-
             if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float damage = event.getAmount();
                 double percentcalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
@@ -65,8 +60,6 @@ public class EnchantmentArrowArmory extends Enchantment {
                 int arrowCount = (int) ((0.5 * (Math.pow(level, 2))) + (0.5 * level) + 2);
                 ItemStack arrow = new ItemStack(Items.ARROW);
                 arrow.setCount(arrowCount);
-
-
                 if (player.isCreative() || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND)) > 0) {
                     EntityLivingBase entity = event.getEntityLiving();
                     entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);

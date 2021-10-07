@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -14,14 +14,14 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentFirstShot extends Enchantment {
 
 
     public EnchantmentFirstShot() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("first_shot");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":first_shot"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":first_shot"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

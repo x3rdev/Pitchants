@@ -1,26 +1,25 @@
 package com.github.x3rmination.common.enchantments.bow;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentSpammerAndProud extends Enchantment {
 
     public EnchantmentSpammerAndProud() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("spammer_and_proud");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":spammer_and_proud"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":spammer_and_proud"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.dark;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -18,7 +18,7 @@ public class EnchantmentMindAssault extends Enchantment {
     public EnchantmentMindAssault() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("mind_assault");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":mind_assault"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":mind_assault"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }

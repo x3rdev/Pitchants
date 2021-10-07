@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,7 +10,6 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
@@ -25,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentEscapePod extends Enchantment {
 
     private boolean isReady = true;
@@ -34,7 +33,7 @@ public class EnchantmentEscapePod extends Enchantment {
     public EnchantmentEscapePod() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("escape_pod");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":escape_pod"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":escape_pod"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

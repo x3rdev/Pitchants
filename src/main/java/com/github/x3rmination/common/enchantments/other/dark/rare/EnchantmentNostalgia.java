@@ -1,14 +1,13 @@
 package com.github.x3rmination.common.enchantments.other.dark.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +17,7 @@ public class EnchantmentNostalgia extends Enchantment {
     public EnchantmentNostalgia() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("nostalgia");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":nostalgia"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":nostalgia"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }

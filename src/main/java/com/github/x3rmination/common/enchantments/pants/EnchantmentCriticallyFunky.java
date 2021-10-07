@@ -1,13 +1,12 @@
 package com.github.x3rmination.common.enchantments.pants;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -18,14 +17,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentCriticallyFunky extends Enchantment {
 
     private static boolean empowered = false;
     public EnchantmentCriticallyFunky() {
         super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("critically_funky");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":critically_funky"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":critically_funky"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

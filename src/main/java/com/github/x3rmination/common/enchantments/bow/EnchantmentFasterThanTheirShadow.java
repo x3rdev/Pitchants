@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -24,7 +24,7 @@ public class EnchantmentFasterThanTheirShadow extends Enchantment {
     public EnchantmentFasterThanTheirShadow() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("faster_than_their_shadow");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":faster_than_their_shadow"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":faster_than_their_shadow"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

@@ -2,14 +2,12 @@ package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
-import net.minecraft.client.Minecraft;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +19,7 @@ public class EnchantmentAssassin extends Enchantment {
     public EnchantmentAssassin() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("assassin");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":assassin"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":assassin"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

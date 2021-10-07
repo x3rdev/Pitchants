@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -19,7 +19,7 @@ public class EnchantmentComboHeal extends Enchantment {
     public EnchantmentComboHeal() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("combo_heal");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_heal"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":combo_heal"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

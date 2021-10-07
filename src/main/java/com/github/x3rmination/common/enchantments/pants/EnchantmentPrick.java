@@ -1,9 +1,9 @@
 package com.github.x3rmination.common.enchantments.pants;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -17,7 +17,7 @@ public class EnchantmentPrick extends Enchantment {
     public EnchantmentPrick() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("prick");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":prick"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":prick"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

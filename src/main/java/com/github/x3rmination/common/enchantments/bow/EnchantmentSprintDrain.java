@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.bow;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -21,7 +21,7 @@ public class EnchantmentSprintDrain extends Enchantment {
     public EnchantmentSprintDrain() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("sprint_drain");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":sprint_drain"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":sprint_drain"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

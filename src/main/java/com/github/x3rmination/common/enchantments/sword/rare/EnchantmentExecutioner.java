@@ -1,9 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
-import com.github.x3rmination.core.damagesources.TrueDamage;
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -13,14 +12,14 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid= pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentExecutioner extends Enchantment {
     private static boolean handled = false;
 
     public EnchantmentExecutioner() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("executioner");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":executioner"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":executioner"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

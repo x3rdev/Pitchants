@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.pants;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,7 +20,7 @@ public class EnchantmentLastStand extends Enchantment {
     public EnchantmentLastStand() {
         super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("last_stand");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":last_stand"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":last_stand"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.other.dark;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
@@ -19,7 +19,7 @@ public class EnchantmentMisery extends Enchantment {
     public EnchantmentMisery() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("misery");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":misery"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":misery"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }

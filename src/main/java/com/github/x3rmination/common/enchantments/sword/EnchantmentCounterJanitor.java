@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,7 +20,7 @@ public class EnchantmentCounterJanitor extends Enchantment {
     public EnchantmentCounterJanitor() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("counter_janitor");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":counter_janitor"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":counter_janitor"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

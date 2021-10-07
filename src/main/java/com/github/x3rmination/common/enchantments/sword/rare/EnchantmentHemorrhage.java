@@ -1,22 +1,21 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemBow;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentHemorrhage extends Enchantment {
 
     private boolean isReady = true;
@@ -24,7 +23,7 @@ public class EnchantmentHemorrhage extends Enchantment {
     public EnchantmentHemorrhage() {
         super(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("hemorrhage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":hemorrhage"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":hemorrhage"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

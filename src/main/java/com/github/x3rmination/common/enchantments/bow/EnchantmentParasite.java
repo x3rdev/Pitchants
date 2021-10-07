@@ -1,13 +1,12 @@
 package com.github.x3rmination.common.enchantments.bow;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +20,7 @@ public class EnchantmentParasite extends Enchantment {
     public EnchantmentParasite() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("parasite");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":parasite"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":parasite"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

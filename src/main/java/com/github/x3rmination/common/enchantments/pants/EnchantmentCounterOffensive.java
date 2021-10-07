@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.pants;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -19,7 +19,7 @@ public class EnchantmentCounterOffensive extends Enchantment {
     public EnchantmentCounterOffensive() {
         super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("counter_offensive");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":counter_offensive"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":counter_offensive"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

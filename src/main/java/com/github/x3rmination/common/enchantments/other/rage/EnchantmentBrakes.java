@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.rage;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
@@ -21,7 +21,7 @@ public class EnchantmentBrakes extends Enchantment {
     public EnchantmentBrakes() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("brakes");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":brakes"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":brakes"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }

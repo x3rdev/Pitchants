@@ -3,14 +3,12 @@ package com.github.x3rmination.common.enchantments.bow;
 import com.github.x3rmination.core.damagesources.TrueDamage;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 
@@ -24,7 +22,7 @@ public class EnchantmentChipping extends Enchantment {
     public EnchantmentChipping() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("chipping");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":chipping"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":chipping"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

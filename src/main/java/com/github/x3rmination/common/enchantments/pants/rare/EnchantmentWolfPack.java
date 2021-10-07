@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.pants.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentWolfPack extends Enchantment {
 
     private int wolfcount = 0;
@@ -26,7 +26,7 @@ public class EnchantmentWolfPack extends Enchantment {
     public EnchantmentWolfPack() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("wolf_pack");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":wolf_pack"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":wolf_pack"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

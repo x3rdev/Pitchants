@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.dark;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
@@ -18,7 +18,7 @@ public class EnchantmentSanguisage extends Enchantment {
     public EnchantmentSanguisage() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("sanguisage");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":sanguisage"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":sanguisage"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }

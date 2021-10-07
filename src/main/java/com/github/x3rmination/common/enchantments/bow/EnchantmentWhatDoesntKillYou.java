@@ -2,12 +2,11 @@ package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +19,7 @@ public class EnchantmentWhatDoesntKillYou extends Enchantment {
     public EnchantmentWhatDoesntKillYou() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("what_doesn't_kill_you");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":what_doesn't_kill_you"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":what_doesn't_kill_you"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

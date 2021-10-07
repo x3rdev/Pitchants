@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.sword;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,7 +20,7 @@ public class EnchantmentSpeedyKill extends Enchantment {
     public EnchantmentSpeedyKill() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("speedy_kill");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":speedy_kill"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":speedy_kill"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

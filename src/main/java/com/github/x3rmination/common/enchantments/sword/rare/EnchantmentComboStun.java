@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,7 +20,7 @@ public class EnchantmentComboStun extends Enchantment {
     public EnchantmentComboStun() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("combo_stun");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_stun"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":combo_stun"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

@@ -12,7 +12,7 @@ import com.github.x3rmination.common.enchantments.other.rage.rare.EnchantmentReg
 import com.github.x3rmination.common.enchantments.pants.*;
 import com.github.x3rmination.common.enchantments.pants.rare.*;
 import com.github.x3rmination.common.enchantments.sword.*;
-import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentBillionare;
+import com.github.x3rmination.common.enchantments.sword.rare.EnchantmentBillionaire;
 import com.github.x3rmination.proxy.CommonProxy;
 import com.github.x3rmination.util.handlers.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,15 +21,14 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = pitchants.MODID, name = pitchants.NAME, version = pitchants.VERSION)
-public class pitchants {
+@Mod(modid = Pitchants.MODID, name = Pitchants.NAME, version = Pitchants.VERSION)
+public class Pitchants {
 
     public static final String MODID = "pitchants";
-    public static final String NAME = "pitchants";
+    public static final String NAME = "Pitchants";
     public static final String VERSION = "1.0";
     public static final String ACCEPTED_MINECRAFT_VERSIONS = "[1.12.2]";
     public static final Logger LOGGER = LogManager.getLogger();
@@ -38,7 +37,7 @@ public class pitchants {
     public static CommonProxy proxy;
 
     @Mod.Instance
-    public static pitchants instance;
+    public static Pitchants instance;
 
     public static Logger gamelogger;
 
@@ -52,7 +51,6 @@ public class pitchants {
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         proxy.init(e);
-//        RegistryHandler.initRegistries(event);
     }
 
     @Mod.EventHandler
@@ -114,7 +112,7 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentPainFocus());
         MinecraftForge.EVENT_BUS.register(new EnchantmentPunisher());
         MinecraftForge.EVENT_BUS.register(new EnchantmentShark());
-        MinecraftForge.EVENT_BUS.register(new EnchantmentBillionare());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentBillionaire());
 
         MinecraftForge.EVENT_BUS.register(new EnchantmentSomber());
         MinecraftForge.EVENT_BUS.register(new EnchantmentMindAssault());
@@ -122,16 +120,6 @@ public class pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentNostalgia());
         MinecraftForge.EVENT_BUS.register(new EnchantmentNewDeal());
         MinecraftForge.EVENT_BUS.register(new EnchantmentRegularity());
-
-
-//        RegistryHandler.postInitRegistries(event);
-
-    }
-
-    @Mod.EventHandler
-    public static void serverInit(FMLServerStartingEvent event)
-    {
-//        RegistryHandler.serverRegistries(event);
     }
 
 }

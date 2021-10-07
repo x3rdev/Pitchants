@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -17,14 +17,14 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentMegaLongbow extends Enchantment {
 
     private boolean isReady = true;
     public EnchantmentMegaLongbow() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("mega_longbow");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":mega_longbow"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":mega_longbow"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

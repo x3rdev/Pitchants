@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -13,14 +13,14 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentPullbow extends Enchantment {
 
     private boolean isReady = true;
     public EnchantmentPullbow() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("pullbow");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":pullbow"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":pullbow"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

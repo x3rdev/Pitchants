@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.rage.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -19,7 +19,7 @@ public class EnchantmentRegularity extends Enchantment {
     public EnchantmentRegularity() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("regularity");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":regularity"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":regularity"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }

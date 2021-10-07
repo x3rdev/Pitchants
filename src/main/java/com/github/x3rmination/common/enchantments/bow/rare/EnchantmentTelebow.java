@@ -2,11 +2,7 @@ package com.github.x3rmination.common.enchantments.bow.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
-import net.minecraft.block.BlockBed;
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngame;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -15,16 +11,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.network.play.server.SPacketTitle;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentTelebow extends Enchantment {
 
     private boolean isReady = true;
@@ -32,7 +25,7 @@ public class EnchantmentTelebow extends Enchantment {
     public EnchantmentTelebow() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("telebow");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":telebow"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":telebow"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

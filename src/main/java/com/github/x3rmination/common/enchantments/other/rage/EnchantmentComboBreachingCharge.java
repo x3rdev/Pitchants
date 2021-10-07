@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.rage;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
@@ -19,7 +19,7 @@ public class EnchantmentComboBreachingCharge extends Enchantment {
     public EnchantmentComboBreachingCharge() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("combo_breaching_charge");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":combo_breaching_charge"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":combo_breaching_charge"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }

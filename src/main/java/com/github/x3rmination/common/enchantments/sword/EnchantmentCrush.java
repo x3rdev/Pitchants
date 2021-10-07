@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -21,7 +21,7 @@ public class EnchantmentCrush extends Enchantment {
     public EnchantmentCrush() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("crush");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":crush"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":crush"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

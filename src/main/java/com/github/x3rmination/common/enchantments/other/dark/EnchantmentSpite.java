@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.dark;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -17,7 +17,7 @@ public class EnchantmentSpite extends Enchantment {
     public EnchantmentSpite() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("spite");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":spite"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":spite"));
 
         EnchantmentInit.DARK_ENCHANTMENTS.add(this);
     }

@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -13,13 +13,13 @@ import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentBulletTime extends Enchantment {
 
     public EnchantmentBulletTime() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setName("bullet_time");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":bullet_time"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":bullet_time"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.pants;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid=pitchants.MODID)
+@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentGottaGoFast extends Enchantment {
 
     public EnchantmentGottaGoFast() {
         super(Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("gotta_go_fast");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":gotta_go_fast"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":gotta_go_fast"));
         EnchantmentInit.ENCHANTMENTS.add(this);
     }
 

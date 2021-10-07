@@ -2,7 +2,7 @@ package com.github.x3rmination.common.enchantments.bow;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -21,7 +21,7 @@ public class EnchantmentWasp extends Enchantment{
     public EnchantmentWasp() {
         super(Rarity.RARE, EnumEnchantmentType.BOW, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
         this.setName("wasp");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":wasp"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":wasp"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

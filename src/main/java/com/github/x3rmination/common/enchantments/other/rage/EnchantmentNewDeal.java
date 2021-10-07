@@ -1,7 +1,7 @@
 package com.github.x3rmination.common.enchantments.other.rage;
 
 import com.github.x3rmination.init.EnchantmentInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -18,7 +18,7 @@ public class EnchantmentNewDeal extends Enchantment {
     public EnchantmentNewDeal() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("heigh_ho");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":heigh_ho"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":heigh_ho"));
 
         EnchantmentInit.RAGE_ENCHANTMENTS.add(this);
     }

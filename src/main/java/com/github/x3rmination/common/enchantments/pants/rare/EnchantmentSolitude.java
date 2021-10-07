@@ -2,12 +2,11 @@ package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.pitchants;
+import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -20,7 +19,7 @@ public class EnchantmentSolitude extends Enchantment {
     public EnchantmentSolitude() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
         this.setName("solitude");
-        this.setRegistryName(new ResourceLocation(pitchants.MODID + ":solitude"));
+        this.setRegistryName(new ResourceLocation(Pitchants.MODID + ":solitude"));
 
         EnchantmentInit.ENCHANTMENTS.add(this);
     }

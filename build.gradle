@@ -17,8 +17,8 @@ apply plugin: 'maven-publish'
 
 
 version = '1.0'
-group = 'com.github.x3rmination.pitchants' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'pitchants'
+group = 'com.github.x3rmination.Pitchants' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'Pitchants'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -90,13 +90,11 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "pitchants",
-            "Specification-Vendor": "pitchants",
+            "Specification-Title": "Pitchants",
+            "Specification-Vendor": "Pitchants",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"examplemodsareus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
