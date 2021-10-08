@@ -13,14 +13,15 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentGottaGoFast extends Enchantment {
 
     public EnchantmentGottaGoFast() {
@@ -54,7 +55,7 @@ public class EnchantmentGottaGoFast extends Enchantment {
             float attribute = (float) (0.02 * Math.pow(level, 2) + 0.02);
             Collection<AttributeModifier> collection = eventItem.getAttributeModifiers(EntityEquipmentSlot.LEGS).get("generic.armor");
             if(!collection.isEmpty()){
-                AttributeModifier attMod = (AttributeModifier) (new ArrayList(collection).get(0));
+                AttributeModifier attMod = (new ArrayList<AttributeModifier>(collection).get(0));
                 eventItem.addAttributeModifier("Movement Speed", new AttributeModifier(UUID.fromString("37FEC639-D92C-4682-AB9E-7C72788B5B7F"), "placeholder", attribute, 2), EntityEquipmentSlot.LEGS);
                 eventItem.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(UUID.fromString("8D87F9E0-13AD-4A20-AB3F-41E7DC58D738"), "placeholder1", attMod.getAmount(), 0), EntityEquipmentSlot.LEGS);
             }

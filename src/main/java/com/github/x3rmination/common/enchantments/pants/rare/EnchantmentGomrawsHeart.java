@@ -12,11 +12,12 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentGomrawsHeart extends Enchantment {
 
     private boolean inCombat = false;

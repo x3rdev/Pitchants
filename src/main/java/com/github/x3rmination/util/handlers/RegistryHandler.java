@@ -4,25 +4,14 @@ package com.github.x3rmination.util.handlers;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class RegistryHandler {
+public final class RegistryHandler {
 
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-    }
-
-
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event)
-    {
+    private RegistryHandler() {
 
     }
 
@@ -32,11 +21,7 @@ public class RegistryHandler {
         event.getRegistry().registerAll(EnchantmentInit.DARK_ENCHANTMENTS.toArray(new Enchantment[0]));
     }
 
-    public static void preInitRegistries(FMLPreInitializationEvent event) {
+    public static void preInitRegistries() {
         PotionInit.registerPotions();
     }
-
-//    public static void postInitRegistries(FMLPreInitializationEvent event) {
-//
-//    }
 }

@@ -12,12 +12,13 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentDiamondAllergy extends Enchantment {
 
     public EnchantmentDiamondAllergy() {

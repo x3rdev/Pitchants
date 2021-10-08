@@ -10,10 +10,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentPullbow extends Enchantment {
 
     private boolean isReady = true;

@@ -9,11 +9,9 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentBooboo extends Enchantment {
     private boolean isReady = true;
     public EnchantmentBooboo() {

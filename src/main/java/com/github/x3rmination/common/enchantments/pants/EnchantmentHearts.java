@@ -13,14 +13,15 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentHearts extends Enchantment {
 
     public EnchantmentHearts() {
@@ -54,7 +55,7 @@ public class EnchantmentHearts extends Enchantment {
             float attribute = (float) (0.25 * Math.pow(level, 2) - (0.25 * level) + 0.5);
             Collection<AttributeModifier> collection = eventItem.getAttributeModifiers(EntityEquipmentSlot.LEGS).get("generic.armor");
             if(!collection.isEmpty()){
-                AttributeModifier attMod = (AttributeModifier) (new ArrayList(collection).get(0));
+                AttributeModifier attMod = (new ArrayList<AttributeModifier>(collection).get(0));
                 eventItem.addAttributeModifier(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(UUID.fromString("adf1cb25-c542-4543-83a5-af13479b2d4e"), "placeholder", attribute, 0), EntityEquipmentSlot.LEGS);
                 eventItem.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(UUID.fromString("b8c33982-3db2-4a38-9f8d-8eb156697489"), "placeholder1", attMod.getAmount(), 0), EntityEquipmentSlot.LEGS);
             }

@@ -16,7 +16,6 @@ import java.util.Objects;
 
 public class EnchantmentChipping extends Enchantment {
 
-
     private static boolean handled = false;
 
     public EnchantmentChipping() {

@@ -1,17 +1,21 @@
 package com.github.x3rmination.core.world;
 
 
-import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.PotionInit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
-public class WorldEvents {
+ 
+
+
+public final class WorldEvents {
+
+    private WorldEvents() {
+
+    }
 
     @SubscribeEvent
     public static void stunPotionActive(LivingEvent.LivingUpdateEvent event) {
@@ -20,8 +24,10 @@ public class WorldEvents {
                 EntityPlayer entityPlayer = (EntityPlayer) event.getEntityLiving();
                 entityPlayer.closeScreen();
             }
+            if(event.getEntityLiving().onGround) {
+                event.getEntityLiving().setVelocity(0, 0, 0);
+            }
             event.getEntityLiving().stopActiveHand();
-            event.getEntityLiving().setJumping(false);
         }
     }
 
@@ -50,13 +56,6 @@ public class WorldEvents {
         EntityLivingBase entityLivingBase = event.getEntityLiving();
         if(entityLivingBase.isPotionActive(PotionInit.BLEEDING)) {
             entityLivingBase.setAbsorptionAmount(0);
-        }
-    }
-
-    @SubscribeEvent
-    public static void venomPotionActive(LivingEvent.LivingUpdateEvent event) {
-        EntityLivingBase entityLivingBase = event.getEntityLiving();
-        if(entityLivingBase.isPotionActive(PotionInit.VENOM)) {
         }
     }
 }

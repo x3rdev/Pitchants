@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.bow.rare;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -14,10 +14,11 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentTelebow extends Enchantment {
 
     private boolean isReady = true;

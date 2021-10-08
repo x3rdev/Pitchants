@@ -2,7 +2,7 @@
 {
   "modid": "pitchants",
   "name": "Pitchants",
-  "description": "Example placeholder mod.",
+  "description": "Mod which adds Enchantments inspired by the Hypixel Pit",
   "version": "1.0",
   "mcversion": "1.12.2",
   "url": "",

@@ -18,14 +18,13 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
-public class EnchantmentTNT extends Enchantment {
+ 
 
-    private ItemStack tnt;
+
+public class EnchantmentTNT extends Enchantment {
 
     public EnchantmentTNT() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
@@ -80,7 +79,7 @@ public class EnchantmentTNT extends Enchantment {
             EntityPlayer entityLiving = (EntityPlayer) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.TNT, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0 && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
-                tnt = new ItemStack(Item.getItemById(46), level);
+                ItemStack tnt = new ItemStack(Item.getItemById(46), level);
                 tnt.setStackDisplayName((new TextComponentString("TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText());
                 entityLiving.addItemStackToInventory(tnt);
             }

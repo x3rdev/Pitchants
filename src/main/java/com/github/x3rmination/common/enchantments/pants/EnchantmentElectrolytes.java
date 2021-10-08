@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.pants;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -12,12 +12,13 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentElectrolytes extends Enchantment {
 
     public EnchantmentElectrolytes() {

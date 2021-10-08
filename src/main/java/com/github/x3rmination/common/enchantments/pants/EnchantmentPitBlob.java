@@ -19,16 +19,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentPitBlob extends Enchantment {
     private EntitySlime blob;
     private int kills = 0;
     private int slimeSize = 0;
     private EntityPlayer entityPlayer;
-    private EntityLiving revengeTarget;
 
     public EnchantmentPitBlob() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_LEGS, new EntityEquipmentSlot[]{EntityEquipmentSlot.LEGS});
@@ -107,7 +107,7 @@ public class EnchantmentPitBlob extends Enchantment {
     public void onTick(LivingEvent.LivingUpdateEvent event) {
         if (blob != null && event.getEntity() == blob) {
             AxisAlignedBB bounding = new AxisAlignedBB(blob.getPosition().getX() - 8D, blob.getPosition().getY(), blob.getPosition().getZ() - 8D, blob.getPosition().getX() + 16D, blob.getPosition().getY() + 8D, blob.getPosition().getZ() + 16D);
-            revengeTarget = blob.getEntityWorld().getEntitiesWithinAABB(EntityLiving.class, bounding).get(0);
+            EntityLiving revengeTarget = blob.getEntityWorld().getEntitiesWithinAABB(EntityLiving.class, bounding).get(0);
             if(revengeTarget == blob) {
                 revengeTarget = blob.getEntityWorld().getEntitiesWithinAABB(EntityLiving.class, bounding).remove(0);
             }

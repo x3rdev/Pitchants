@@ -1,8 +1,8 @@
 package com.github.x3rmination.common.enchantments.sword;
 
+import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;
 import com.github.x3rmination.init.PotionInit;
-import com.github.x3rmination.Pitchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -13,15 +13,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
+ 
+
+
 public class EnchantmentShark extends Enchantment {
 
     private int subSixHealth = 0;
     private int iterator = 0;
-    private AxisAlignedBB bounding;
 
     public EnchantmentShark() {
         super(Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
@@ -53,7 +53,7 @@ public class EnchantmentShark extends Enchantment {
             World world = event.getEntityLiving().getEntityWorld();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SHARK, source.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if(level > 0 && !(source.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, source.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
-                bounding = new AxisAlignedBB(source.getPosition().getX() - 16D, source.getPosition().getY() - 16D, source.getPosition().getZ() - 16D, source.getPosition().getX() + 16D, source.getPosition().getY() + 16D, source.getPosition().getZ() + 16D);
+                AxisAlignedBB bounding = new AxisAlignedBB(source.getPosition().getX() - 16D, source.getPosition().getY() - 16D, source.getPosition().getZ() - 16D, source.getPosition().getX() + 16D, source.getPosition().getY() + 16D, source.getPosition().getZ() + 16D);
                 while(iterator < world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).size() ) {
                     if(world.getEntitiesWithinAABB(EntityLivingBase.class, bounding).get(iterator).getHealth() <= 12){
                         subSixHealth+=1;

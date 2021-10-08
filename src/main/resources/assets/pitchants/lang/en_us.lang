@@ -191,6 +191,11 @@ enchantment.pitchants.punisher.desc=Deal +X percent damage vs. players below 50 
 enchantment.pitchants.shark.desc=Deal +X percent damage per other player below 6 hearts in 12 block radius
 enchantment.pitchants.speedy_kill.desc=Gain Speed I on kill
 
-
+#potions
+effect.venom=Venom
+effect.stun=Stun
+effect.resurrected=Resurrected
+effect.pin_down=Pin Down Potion
+effect.bleeding=Bleeding
 
 

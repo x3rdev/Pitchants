@@ -6,22 +6,19 @@ import com.github.x3rmination.init.PotionInit;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 import java.util.Iterator;
 
 
 
-@Mod.EventBusSubscriber(modid= Pitchants.MODID)
 public class EnchantmentArrowArmory extends Enchantment {
 
     public EnchantmentArrowArmory() {
@@ -55,14 +52,13 @@ public class EnchantmentArrowArmory extends Enchantment {
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ARROW_ARMORY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND));
             if (level > 0 && !(player.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, player.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 float damage = event.getAmount();
-                double percentcalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
-                int percentDamage = (int) (percentcalc * damage);
+                double percentCalc = ((11 * (Math.pow(level, 2))) - (20 * level) + 21) / 100;
+                int percentDamage = (int) (percentCalc * damage);
                 int arrowCount = (int) ((0.5 * (Math.pow(level, 2))) + (0.5 * level) + 2);
                 ItemStack arrow = new ItemStack(Items.ARROW);
                 arrow.setCount(arrowCount);
                 if (player.isCreative() || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND)) > 0) {
-                    EntityLivingBase entity = event.getEntityLiving();
-                    entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
+                    event.setAmount(damage + percentDamage);
                 } else if (itemStackMatching(player, arrowCount)) {
                     ItemStack playerArrows = new ItemStack(Items.ARROW);
                     try {
@@ -74,10 +70,8 @@ public class EnchantmentArrowArmory extends Enchantment {
                         playerArrows.setCount(player.getItemStackFromSlot(EntityEquipmentSlot.OFFHAND).getCount() - arrowCount - 1);
                         player.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, playerArrows);
                     }
-                    EntityLivingBase entity = event.getEntityLiving();
-                    entity.attackEntityFrom(DamageSource.GENERIC, damage + percentDamage);
+                    event.setAmount(damage + percentDamage);
                 }
-
             }
         }
     }

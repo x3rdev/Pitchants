@@ -45,7 +45,7 @@ public class Pitchants {
     public void preInit(FMLPreInitializationEvent event) {
         gamelogger = event.getModLog();
         proxy.preInit(event);
-        RegistryHandler.preInitRegistries(event);
+        RegistryHandler.preInitRegistries();
     }
 
     @Mod.EventHandler
