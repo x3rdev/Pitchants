@@ -45,7 +45,7 @@ public class EnchantmentDiamondAllergy extends Enchantment {
 
     @SubscribeEvent
     public void onTick(LivingHurtEvent event) {
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getEntityLiving() != null) {
+        if (event.getSource().getTrueSource() instanceof EntityLivingBase && event.getEntityLiving() != null && event.getSource().getTrueSource() != null) {
             EntityLivingBase victimEntity = event.getEntityLiving();
             EntityLivingBase attackerEntity = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.DIAMOND_ALLERGY, victimEntity.getItemStackFromSlot(EntityEquipmentSlot.LEGS));

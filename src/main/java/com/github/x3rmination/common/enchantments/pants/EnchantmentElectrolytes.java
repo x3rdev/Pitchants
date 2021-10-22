@@ -45,7 +45,7 @@ public class EnchantmentElectrolytes extends Enchantment {
 
     @SubscribeEvent
     public void onKill(LivingDeathEvent event) {
-        if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
+        if(event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase) event.getSource().getTrueSource();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.ELECTROLYTES, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if (level > 0 && entityLivingBase.isPotionActive(MobEffects.SPEED) && Objects.requireNonNull(entityLivingBase.getActivePotionEffect(MobEffects.SPEED)).getDuration() <= (120*level) + 240 && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {

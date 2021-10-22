@@ -14,8 +14,6 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.Objects;
-
  
 
 
@@ -46,10 +44,10 @@ public class EnchantmentCriticallyFunky extends Enchantment {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
-        if(event.getEntityLiving() != null) {
+        if(event.getEntityLiving() != null && event.getSource().getTrueSource() != null) {
             EntityLivingBase entityLivingBase = event.getEntityLiving();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.CRITICALLY_FUNKY, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
-            if (level > 0 && Objects.requireNonNull(event.getSource().getTrueSource()).isAirBorne && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
+            if (level > 0 && event.getSource().getTrueSource().isAirBorne && !(entityLivingBase.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLivingBase.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
                 event.setAmount(event.getAmount());
                 empowered = true;
             }
