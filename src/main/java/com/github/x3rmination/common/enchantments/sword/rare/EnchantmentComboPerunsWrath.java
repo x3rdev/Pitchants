@@ -47,7 +47,7 @@ public class EnchantmentComboPerunsWrath extends Enchantment {
         }
         if(!(user.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, user.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
             hitCount += 1;
-            int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (-2.5 * level) + 7);
+            int hitReq = (int) ((Math.pow(level, 2) * 0.5) - (2.5 * level) + 7);
             if (hitCount >= hitReq && !user.isSwingInProgress) {
                 hitCount = 0;
                 target.attackEntityFrom(EnchantmentInit.TRUE_DAMAGE, (float) (2.0 * level));

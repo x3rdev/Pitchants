@@ -62,7 +62,9 @@ public class EnchantmentDevilChicks extends Enchantment {
                         float dPosZ = (float) (pos.getZ() + (Math.random() * 2));
                         devilChick.setLocationAndAngles(dPosX, dPosY, dPosZ, 0.0F, 0.0F);
                         world.spawnEntity(devilChick);
-                        world.removeEntity(event.getEntity());
+                        if(event.getEntity() != null) {
+                            world.removeEntity(event.getEntity());
+                        }
                         new Thread(() -> {
                             try {
                                 Thread.sleep(1000);

@@ -92,6 +92,7 @@ public class Pitchants {
         MinecraftForge.EVENT_BUS.register(new EnchantmentPitBlob());
         MinecraftForge.EVENT_BUS.register(new EnchantmentRingArmor());
         MinecraftForge.EVENT_BUS.register(new EnchantmentTNT());
+        MinecraftForge.EVENT_BUS.register(new EnchantmentAssassin());
         MinecraftForge.EVENT_BUS.register(new EnchantmentEscapePod());
         MinecraftForge.EVENT_BUS.register(new EnchantmentGomrawsHeart());
         MinecraftForge.EVENT_BUS.register(new EnchantmentInstaboom());

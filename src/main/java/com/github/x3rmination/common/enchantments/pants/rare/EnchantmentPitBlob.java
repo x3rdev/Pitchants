@@ -1,4 +1,4 @@
-package com.github.x3rmination.common.enchantments.pants;
+package com.github.x3rmination.common.enchantments.pants.rare;
 
 import com.github.x3rmination.Pitchants;
 import com.github.x3rmination.init.EnchantmentInit;

@@ -57,7 +57,7 @@ public class EnchantmentInstaboom extends Enchantment {
             EntityPlayer entityLiving = (EntityPlayer) event.getEntity();
             int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.INSTABOOM, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
             if(level > 0 && entityLiving.getHeldItemMainhand().getDisplayName().equals((new TextComponentString("Instaboom TNT").setStyle(new Style().setColor(TextFormatting.RED))).getFormattedText()) && !(entityLiving.isPotionActive(PotionInit.VENOM) || EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.SOMBER, entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS)) > 0)) {
-                triggered = true;
+
                 BlockTNT tntBlock = (BlockTNT) event.getPlacedBlock().getBlock();
                 tntBlock.removedByPlayer(event.getPlacedBlock(), event.getWorld(), event.getPos(), entityLiving, false);
                 EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(event.getWorld(), event.getPos().getX()+0.5f, event.getPos().getY(), event.getPos().getZ()+0.5f, entityLiving);
@@ -66,6 +66,7 @@ public class EnchantmentInstaboom extends Enchantment {
                 new Thread(() -> {
                     try {
                         Thread.sleep(1);
+                        triggered = true;
                         event.getWorld().removeEntity(entitytntprimed);
                         event.getWorld().createExplosion(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), 0, false);
                         Minecraft.getMinecraft().player.addVelocity((-4*entityLiving.getLookVec().x), (-1*entityLiving.getLookVec().y), (-4*entityLiving.getLookVec().z));
@@ -102,7 +103,7 @@ public class EnchantmentInstaboom extends Enchantment {
                 event.setCanceled(true);
                 new Thread(() -> {
                     try {
-                        Thread.sleep(10);
+                        Thread.sleep(100);
                         triggered = false;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
